@@ -157,3 +157,41 @@ DREAD is a risk assessment model used to evaluate and prioritize security risks 
 - Discoverability: The ease with which the vulnerability can be discovered or detected.
 
 # CEH Hacking Methodolgy
+
+# Diamond Model of Intrusion Analysis
+
+![image](https://github.com/Darwish-md/CEH/assets/72353586/4782e1b5-e874-48ac-a569-8edba69389fc)
+
+  - **Adversary**
+    + The threat actor and/or group that is responsible for utilizing a Capability
+      against the Victim to achieve their goals and intents.
+    + Little to no knowledge about the Adversary usually
+      - Empty for most events
+    + <u>Adversary Operator</u>
+      - Actual threat actor performing attacks
+    + <u>Adversary Customer</u>
+      - Person(s) that stand to gain from attack
+        + Might be the same as Adversary Operator, but not necessarily
+  - **Capability**
+    + TTPs of the Adversary
+      - <u>Capability Capacity</u>
+      - <u>Adversary Arsenal</u>
+  - **Victim**
+    + The target of the Adversary
+      - <u>Victim Persona</u>
+        + The people and organizations
+      - <u>Victim Asset</u>
+        + The Victim's attack surface
+	  - Networks, servers, email, hosts, etc 
+  - **Infrastructure**
+    + Any physical and/or logical communication structures used to attack the
+      Victim and effect the Victim
+    + <u>Type 1</u>
+      - Fully owned and controlled by the Adversary and used to carry out attack
+    + <u>Type 2</u>
+      - Infrastructure owned by a 3rd-party, but used by Adversary to attack
+	+ Bots, Zombies, compromised accounts, etc
+    + <u>Service Providers</u>
+      - Any organization that provides the Attacker with services
+	+ Wittingly or Unwittingly
+        + ISPs, Email providers, DNS, Cloud, etc
