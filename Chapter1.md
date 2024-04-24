@@ -72,9 +72,9 @@ Threat hunting is the proactive process of searching for signs of malicious acti
 1. Atomic: These could include things like specific file hashes, IP addresses, domain names, or registry keys associated with known malware or suspicious activity.
    
 2. Computed: These could include things like correlating multiple events over time, identifying unusual network traffic patterns, or detecting anomalies in user behavior. Computed indicators often require more advanced analysis and may involve aggregating, correlating, or applying statistical techniques to large volumes of data.
-  > For example, if a security analyst notices a spike in failed login attempts across multiple user accounts from various IP addresses within a 10-minute window, this could indicate a brute-force password attack.
+   > For example, if a security analyst notices a spike in failed login attempts across multiple user accounts from various IP addresses within a 10-minute window, this could indicate a brute-force password attack.
 
-3. Behavioral: Behavioral indicators focus on identifying patterns of activity or behavior that deviate from normal based on heuristics or machine learning algorithms. These could include things like unauthorized access attempts, unusual file access patterns, or abnormal network traffic.
+4. Behavioral: Behavioral indicators focus on identifying patterns of activity or behavior that deviate from normal based on heuristics or machine learning algorithms. These could include things like unauthorized access attempts, unusual file access patterns, or abnormal network traffic.
    > For example, if a user account that typically accesses only a specific set of files suddenly starts accessing sensitive or confidential files outside of their normal behavior, this could indicate potential data exfiltration or insider threat activity.
 
 # Risk & Risk Managament
@@ -88,3 +88,71 @@ Cyber threat intelligence (CTI) involves collecting, analyzing, and disseminatin
 1. ****Strategic CTI*** focuses on providing high-level insights and *long-term* planning to support strategic decision-making within an organization. It typically involves analyzing trends, threat actors' motivations and capabilities, geopolitical factors, and industry-specific risks to inform strategic planning, resource allocation, and investment in cybersecurity measures.
 
 2. ***Operational CTI*** focuses on providing actionable intelligence to support *day-to-day* cybersecurity operations and incident response activities. It involves analyzing real-time or near-real-time threat data, such as IOCs, malware signatures, and network traffic patterns, to detect and respond to active threats in the organization's environment.
+
+# Threat Modelling
+It is a systematized approach to assess the risk/security of an organization.
+- Know thy enemy: What are the common/most likely attack methods
+- Know thyself: Where are we vulnerable
+
+## 5 steps of threat modelling
+1. Identify security objectives
+   - What needs to be secured?
+   - Any regulatory or policy compliance requirements?
+2. Application overview
+- Identify:
+   - Roles
+   - Who will be using this?
+- Usage scenarios
+   - How will this be used normally?
+   - How could this be misused?
+- Technologies
+   - OS
+   - Supporting Apps and services
+   - Network technologies
+- Security mechanisms
+   - Authentication
+   - Authorization
+   - Input validation
+   - Encryption
+3. Decompose the application
+- Diagrams help here
+   - https://threatdragon.com
+   - https://microsoft.com/en-us/download/details.aspx?id=49168
+![image](https://github.com/Darwish-md/CEH/assets/72353586/293476c5-e420-436b-8a47-c78e62c2732f)
+- Identify
+   - Trust boundaries
+   - Data flows
+   - Entry points
+   - Exit points
+4. Identify threats
+5. Identify Vulnerabilities
+
+## Standard models
+To use as a guide while developing a threat model: 
+
+### STRIDE: 
+STRIDE is a threat modeling framework that helps identify and classify different types of security threats. It stands for:
+- Spoofing: Falsifying identity or credentials.
+- Tampering: Unauthorized modification of data or systems.
+- Repudiation: Denying responsibility or involvement in actions.
+- Information disclosure: Unauthorized access to sensitive information.
+- Denial of Service (DoS): Disrupting or degrading system availability.
+- Elevation of Privilege: Gaining unauthorized access to higher levels of privilege or control.
+
+### PASTA: 
+PASTA (Process for Attack Simulation and Threat Analysis) is a threat modeling methodology that guides organizations through the process of identifying, analyzing, and prioritizing security threats. It involves six stages:
+- Planning: Define the scope, objectives, and participants of the threat modeling exercise.
+- Application Decomposition: Break down the application into smaller components and identify assets, entry points, and trust boundaries.
+- Threat Analysis: Identify potential threats, vulnerabilities, and attack vectors associated with each component.
+- Risk Ranking: Assess the likelihood and impact of each threat and prioritize them based on risk.
+- Mitigation Planning: Develop and prioritize mitigation strategies to address identified threats.
+- Reporting: Document the results of the threat modeling exercise and communicate findings to stakeholders.
+
+### DREAD: 
+DREAD is a risk assessment model used to evaluate and prioritize security risks associated with software vulnerabilities. It consists of five factors:
+- Damage potential: The potential impact or harm caused by the exploitation of the vulnerability.
+- Reproducibility: The ease with which the vulnerability can be exploited or reproduced.
+- Exploitability: The likelihood that an attacker could successfully exploit the vulnerability.
+- Affected users: The number of users or systems affected by the vulnerability.
+- Discoverability: The ease with which the vulnerability can be discovered or detected.
+
