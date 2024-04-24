@@ -186,7 +186,7 @@ DREAD is a risk assessment model used to evaluate and prioritize security risks 
   - **Infrastructure**
     + Any physical and/or logical communication structures used to attack the
       Victim and effect the Victim
-    + <u>Type 1</u>
+    + Type 1
       - Fully owned and controlled by the Adversary and used to carry out attack
     + <u>Type 2</u>
       - Infrastructure owned by a 3rd-party, but used by Adversary to attack
