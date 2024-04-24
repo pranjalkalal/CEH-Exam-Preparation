@@ -156,3 +156,4 @@ DREAD is a risk assessment model used to evaluate and prioritize security risks 
 - Affected users: The number of users or systems affected by the vulnerability.
 - Discoverability: The ease with which the vulnerability can be discovered or detected.
 
+# CEH Hacking Methodolgy
