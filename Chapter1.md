@@ -44,3 +44,47 @@ Stages:
 6. Command and Control (C2): The attacker establishes a connection to the compromised system, allowing them to send commands and receive data. This stage enables remote control and coordination of the compromised devices.
 
 7. Actions on Objectives: The attackers carry out their ultimate goals, which could involve data theft, financial fraud, disrupting operations, or any other malicious activities as per their objectives.
+
+# TTPs
+TTPs stand for Tactics, Techniques, and Procedures. They are the methods and approaches used by attackers to achieve their objectives during cyberattacks. 
+
+- Tactics describe the overarching goals or objectives of an attack. (disruption of service)
+- Techniques are the specific methods or actions used to achieve those goals (Denial of service attack)
+- Procedures are the step-by-step instructions followed to execute the techniques effectively.
+
+TTPs help security professionals understand and respond to cyber threats by providing insights into how attackers operate and what defensive measures can be taken to mitigate risks.
+
+# Common Adversarial Behaviours
+## Web Shell
+A web shell is a malicious script or program that attackers upload to a compromised web server to gain remote access and control. It allows attackers to execute commands, upload or download files, and perform other malicious activities on the server. Web shells are commonly used in website defacements, data breaches, and other cyberattacks.
+
+## DNS Tunneling
+DNS tunneling is a technique used by attackers to bypass network security controls and exfiltrate data from a target network. It involves embedding data within DNS queries or responses, which are then transmitted over the DNS protocol. By encoding data in DNS traffic, attackers can evade traditional security measures that may not inspect DNS traffic thoroughly.
+
+## Data Staging
+
+## Internal Recon
+
+# Threat Hunting
+Threat hunting is the proactive process of searching for signs of malicious activity or security threats within an organization's network, systems, or data. It involves systematically analyzing and investigating data, logs, and other sources of information to identify potential security incidents or indicators of compromise that may have evaded traditional security controls. The goal of threat hunting is to detect and respond to threats before they can cause damage or disruption, thereby enhancing the organization's overall cybersecurity posture.
+
+## Indicators of Compromise
+1. Atomic: These could include things like specific file hashes, IP addresses, domain names, or registry keys associated with known malware or suspicious activity.
+   
+2. Computed: These could include things like correlating multiple events over time, identifying unusual network traffic patterns, or detecting anomalies in user behavior. Computed indicators often require more advanced analysis and may involve aggregating, correlating, or applying statistical techniques to large volumes of data.
+  > For example, if a security analyst notices a spike in failed login attempts across multiple user accounts from various IP addresses within a 10-minute window, this could indicate a brute-force password attack.
+
+3. Behavioral: Behavioral indicators focus on identifying patterns of activity or behavior that deviate from normal based on heuristics or machine learning algorithms. These could include things like unauthorized access attempts, unusual file access patterns, or abnormal network traffic.
+   > For example, if a user account that typically accesses only a specific set of files suddenly starts accessing sensitive or confidential files outside of their normal behavior, this could indicate potential data exfiltration or insider threat activity.
+
+# Risk & Risk Managament
+***Risk*** refers to the potential for loss, harm, or damage resulting from uncertainties.
+
+***Risk management*** is the process of identifying, assessing, prioritizing, and mitigating risks to minimize their impact.
+
+# Cyber Threat Intel
+Cyber threat intelligence (CTI) involves collecting, analyzing, and disseminating information about cybersecurity threats to help organizations identify, understand, and mitigate potential risks. It provides insights into the tactics, techniques, and procedures (TTPs) used by threat actors, as well as information about vulnerabilities, indicators of compromise (IOCs), and emerging threats.
+
+1. ****Strategic CTI*** focuses on providing high-level insights and *long-term* planning to support strategic decision-making within an organization. It typically involves analyzing trends, threat actors' motivations and capabilities, geopolitical factors, and industry-specific risks to inform strategic planning, resource allocation, and investment in cybersecurity measures.
+
+2. ***Operational CTI*** focuses on providing actionable intelligence to support *day-to-day* cybersecurity operations and incident response activities. It involves analyzing real-time or near-real-time threat data, such as IOCs, malware signatures, and network traffic patterns, to detect and respond to active threats in the organization's environment.
