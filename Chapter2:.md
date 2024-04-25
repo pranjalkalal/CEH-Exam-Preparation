@@ -17,7 +17,7 @@ Shodan and Censys are search engines that specialize in scanning and indexing in
 
 > "The most fundamental difference is that Shodan crawls the Internet whereas Google crawls the World Wide Web. However, the devices powering the World Wide Web only make up a tiny fraction of what's actually connected to the Internet. Shodan's goal is to provide a complete picture of the Internet."
 
-# Subdomains
+# Sub-Domain Enumeration
 We can use 3 methods to find the subdomains:
 1. using tool like with netcraft.
 2. Searching through web page source code on the domain name.
