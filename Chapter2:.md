@@ -91,6 +91,7 @@ We can use `dig axfr @nsztm1.digi.ninja zonetransfer.me` to perform zone transfe
 ## Spoofing vs Masquerading
 - Spoofing: Spoofing involves falsifying information in a way that makes it appear to come from a different source or origin than it actually does. This can include spoofing IP addresses, email addresses, MAC addresses, or other identifiers. For example:
   > IP spoofing involves altering the source IP address of a packet to make it appear to come from a different source.
+  
   > ARP spoofing, also known as ARP poisoning or ARP cache poisoning, is a technique used to intercept, modify, or redirect network traffic on a local area network (LAN). It involves sending falsified Address Resolution Protocol (ARP) messages to associate the attacker's MAC address with the IP address of a legitimate network device. This allows the attacker to intercept traffic intended for the targeted device, perform man-in-the-middle attacks, or conduct network reconnaissance.
   
 - Masquerading: Masquerading, also known as impersonation, involves assuming the identity of another entity or system in order to gain unauthorized access or privileges. This can include impersonating a legitimate user, device, or service to bypass authentication mechanisms or gain access to sensitive information. For example, an attacker might masquerade as a trusted employee to gain access to a secure facility or network.
