@@ -157,11 +157,14 @@ DREAD is a risk assessment model used to evaluate and prioritize security risks 
 - Discoverability: The ease with which the vulnerability can be discovered or detected.
 
 # CEH Hacking Methodolgy
+https://www.eccouncil.org/cybersecurity-exchange/ethical-hacking/what-is-ethical-hacking/
 
 # Diamond Model of Intrusion Analysis
+The Diamond Model of Intrusion Analysis is a framework used to understand and analyze cyber threats. The model emphasizes the interactions between these elements and how they contribute to cyber attacks. It helps analysts identify TTPs used by adversaries, assess their capabilities and infrastructure, and understand their motivations and objectives.
 
 ![image](https://github.com/Darwish-md/CEH/assets/72353586/4782e1b5-e874-48ac-a569-8edba69389fc)
 
+## Core-Features
   - **Adversary**
     + The threat actor and/or group that is responsible for utilizing a Capability
       against the Victim to achieve their goals and intents.
@@ -188,10 +191,32 @@ DREAD is a risk assessment model used to evaluate and prioritize security risks 
       Victim and effect the Victim
     + Type 1
       - Fully owned and controlled by the Adversary and used to carry out attack
-    + <u>Type 2</u>
+    + Type 2
       - Infrastructure owned by a 3rd-party, but used by Adversary to attack
 	+ Bots, Zombies, compromised accounts, etc
-    + <u>Service Providers</u>
+    + Service Providers
       - Any organization that provides the Attacker with services
 	+ Wittingly or Unwittingly
         + ISPs, Email providers, DNS, Cloud, etc
+
+## Meta-Features
+  - Timestamp
+    + Date/Time an event occurred
+  - Phase
+    + Which step, or "Phase" of hacking
+      - Think Cyber Kill-Chain or CEH Hacking Methodology
+  - Result
+    + What did the Adversary accomplish and how does it affect the Victim
+      - Which of the CIA were compromised?
+      - "Post-Conditions"
+  - Direction
+    + For example, if we pointing to c2 server then direction would be victim to infrastructure to adversary.
+  - Methodology
+    + Labling of the general "class of activity"
+      - e.g. Phishing Attack
+  - Resources
+    + The resrouces required for the event to occur
+      - Software
+      - Hardware
+      - Funds
+      - Access (how does the Adversary make actual contact with Victim?)
