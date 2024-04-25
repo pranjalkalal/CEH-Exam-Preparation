@@ -29,9 +29,9 @@ We can use 3 methods to find the subdomains:
 Ingress and egress filtering are two complementary security measures used to control network traffic entering and exiting an organization's network based on specified criteria, such as IP addresses, port numbers, protocols, and application-layer information. Here's a brief explanation of each:
 
 - Ingress Filtering:
- + Ingress filtering is the process of inspecting and controlling incoming network traffic at the perimeter of a network.
- + The goal of ingress filtering is to prevent unauthorized or malicious traffic from entering the organization's network, thereby protecting against external threats such as denial-of-service (DoS) attacks, malware, and unauthorized access attempts.
+   + Ingress filtering is the process of inspecting and controlling incoming network traffic at the perimeter of a network.
+   + The goal of ingress filtering is to prevent unauthorized or malicious traffic from entering the organization's network, thereby protecting against external threats such as denial-of-service (DoS) attacks, malware, and unauthorized access attempts.
 
 - Egress Filtering:
- + Egress filtering is the process of inspecting and controlling outgoing network traffic leaving an organization's network.
- + The goal of egress filtering is to enforce security policies and prevent sensitive or unauthorized data from leaving the organization's network, as well as to detect and prevent outbound communication attempts by malware or compromised systems.
+  + Egress filtering is the process of inspecting and controlling outgoing network traffic leaving an organization's network.
+  + The goal of egress filtering is to enforce security policies and prevent sensitive or unauthorized data from leaving the organization's network, as well as to detect and prevent outbound communication attempts by malware or compromised systems.
