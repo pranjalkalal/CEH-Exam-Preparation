@@ -89,6 +89,8 @@ Zone transfer is a process in the Domain Name System (DNS) where a secondary DNS
 We can use `dig axfr @nsztm1.digi.ninja zonetransfer.me` to perform zone transfer. The command is attempting to perform a DNS zone transfer for the `zonetransfer.me` domain from the primary DNS server `nsztm1.digi.ninja` using the AXFR query type.
 
 ## Spoofing vs Masquerading
+It is kinda overlapping, I agree.
+
 - Spoofing: Spoofing involves falsifying information in a way that makes it appear to come from a different source or origin than it actually does. This can include spoofing IP addresses, email addresses, MAC addresses, or other identifiers. For example:
   > IP spoofing involves altering the source IP address of a packet to make it appear to come from a different source.
   
