@@ -14,8 +14,8 @@ Tools to use: nmap, hping3, masscan, metasploit
 
 # Scans Examples/Types
 > Just a little note: we will encounter two scenarios when scanning ports:
-> - if port is open then we receive response and we know it's open, or if closed then we don't and we are unsure if it's closed or filtered by firewall. (as in TCP Connect Scans).
-> - if port is closed then we receive response like an error or RST and we know it's closed, or if port is open then we don't receive response and we are unsure if it's open or filtered by firewall (as in inverse TCP scans and UDP scan).
+     - if port is open then we receive response and we know it's open, or if closed then we don't and we are unsure if it's closed or filtered by firewall. (as in TCP Connect Scans).
+     - if port is closed then we receive response like an error or RST and we know it's closed, or if port is open then we don't receive response and we are unsure if it's open or filtered by firewall (as in inverse TCP scans and UDP scan).
 
 ## TCP Connect Scans
 TCP connect scan is a port scanning technique that establishes a full TCP connection with the target system to determine the state of TCP ports. It initiates a TCP handshake by sending a SYN packet to the target port and analyzes the responses received during the handshake process to determine if the port is open, closed, or filtered:
