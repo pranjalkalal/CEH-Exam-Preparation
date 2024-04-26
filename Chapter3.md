@@ -14,8 +14,8 @@ Tools to use: nmap, hping3, masscan, metasploit
 
 # Scans Examples/Types
 > Just a little note: we will encounter two scenarios when scanning ports:
- - if port is open then we receive response and we know it's open, or if closed then we don't and we are unsure if it's closed or filtered by firewall. (as in TCP Connect Scans).
- - if port is closed then we receive response like an error or RST and we know it's closed, or if port is open then we don't receive response and we are unsure if it's open or filtered by firewall (as in inverse TCP scans and UDP scan).
+> - if port is open then we receive response and we know it's open, or if closed then we don't and we are unsure if it's closed or filtered by firewall. (as in TCP Connect Scans).
+> - if port is closed then we receive response like an error or RST and we know it's closed, or if port is open then we don't receive response and we are unsure if it's open or filtered by firewall (as in inverse TCP scans and UDP scan).
 
 ## TCP Connect Scans
 TCP connect scan is a port scanning technique that establishes a full TCP connection with the target system to determine the state of TCP ports. It initiates a TCP handshake by sending a SYN packet to the target port and analyzes the responses received during the handshake process to determine if the port is open, closed, or filtered:
@@ -91,4 +91,25 @@ You want to check if a server at IP address 192.168.1.100 has any open ports, bu
 ### ACK scans
 
 ## UDP Scan
+UDP scans are used to identify open UDP ports on a target system. Since UDP is a connectionless protocol and no need to establish a connection first, so:
+- when sending a packet to an open port, we don't get response.
+- However if a port is closed, then we receive an ICMP error that the port is unreachable.
+  
+> `nmap -sU target_IP`
 
+> `hping3 -2 -p <port> target_IP`
+
+## SCTP INIT/Cookie-Echo Scans
+SCTP (Stream Control Transmission Protocol) is a marry of TCP for accuracy and UDP for speed. 
+
+### SCTP INIT Scan
+- ***How it Works***: This scan sends an SCTP INIT chunk to the target port:
+     + If the port is open, the target system responds with an SCTP INIT-ACK chunk.
+     + If the port is closed, the target system responds with an SCTP ABORT.
+- ***Characteristics***:
+     + Provides information about open SCTP ports on the target system.
+     + It's stealthier than other scanning techniques as it doesn't complete the full SCTP handshake.
+### SCTP Cookie-Echo Scan
+- ***How it Works***: This scan sends an SCTP COOKIE_ECHO chunk to the target port:
+     + if the port is open, then we receive no response at all.
+     + If the port is closed, the target system responds with an SCTP ABORT.
