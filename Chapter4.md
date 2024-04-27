@@ -50,7 +50,7 @@ Simple Network Management Protocol (SNMP) is a widely used network management pr
 - SNMP agents respond to requests from SNMP managers and may also send unsolicited notifications (traps) to SNMP managers based on predefined events.
 
 ## Enumeration Tools 
-> Note: we query the SNMP-enabled devices (Agents).
+> Note: we query the SNMP-enabled devices (Agents). </br>
 > community_strings are some sort of authentication between snmp clients and servers.
 
 1. onesixtyone:
@@ -67,3 +67,38 @@ Simple Network Management Protocol (SNMP) is a widely used network management pr
 - Usage: `snmpwalk -v 2c -c community_string target_IP`
 
 # LDAP
+LDAP (Lightweight Directory Access Protocol) is a network protocol used to store and retrieve information from a directory service. It's often used for managing users, groups, and other network resources in a centralized way. LDAP directories are organized in a hierarchical structure and can store various types of information about network entities. In simple terms, it is like a phonebook. 
+
+AD utilizes LDAP to provide access to directory information, perform authentication, and support directory-based operations.
+
+***Features of LDAP***:
+1. Directory Services: LDAP provides a centralized directory service for storing and managing information about network resources.
+2. Authentication: LDAP supports user authentication, allowing users to access network resources using a single set of credentials stored in the LDAP directory.
+3. Authorization: LDAP directories can store access control lists (ACLs) and permissions to control access to resources based on user roles and groups.
+4. Replication: LDAP supports replication, allowing directory information to be replicated across multiple LDAP servers for redundancy and scalability.
+## LDAP Enumeration
+1. ldapsearch (Command-line tool):
+- A command-line utility for querying LDAP directories and retrieving information such as user accounts, groups, organizational units, and attributes.
+- Usage: `ldapsearch -x -H ldap://ldap_server -b base_dn -D bind_dn -W`
+2. LDAP Browser/Editor (Graphical tool):
+- Graphical tools such as Apache Directory Studio, JXplorer, and Softerra LDAP Browser provide a user-friendly interface for browsing and querying LDAP directories.
+3. enum4linux:
+- While primarily used for SMB enumeration, enum4linux also includes functionality for querying LDAP directories. It can be used to extract information about users, groups, and other objects from LDAP directories during enumeration.
+- Usage: `enum4linux -U -G -M -l -d target_IP`
+
+# NTP
+NTP (Network Time Protocol) is a networking protocol used to synchronize the clocks of computers and other networked devices to a common time reference. It enables accurate timekeeping and ensures that all devices within a network have synchronized timestamps for logging, authentication, and other time-sensitive operations. NTP operates over UDP and relies on hierarchical servers called NTP servers to distribute time information across the network.
+
+## NTP Enumeration
+1. ntpq (NTP Query Program):
+- ntpq is another command-line utility for querying and monitoring NTP servers. It provides information about server status, peer associations, and synchronization statistics.
+- Usage: `ntpq -p target_IP`
+2. Nmap:
+- Nmap includes NSE (Nmap Scripting Engine) scripts for querying NTP servers and enumerating information such as server status, version information, and monlist entries.
+- Usage: `nmap -p 123 --script ntp-info target_IP`
+3. ntpdate:
+- ntpdate is a command-line utility used to set the system's time from an NTP server. While primarily used for time synchronization, it can also be used for basic NTP enumeration by querying NTP servers for time information.
+- Usage: `ntpdate -q target_IP`
+4. ntptrace:
+- ntptrace is a command-line utility that traces the path that an NTP packet takes from the local host to a remote NTP server.
+- Usage: `ntptrace target_IP`
