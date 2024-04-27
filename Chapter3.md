@@ -174,7 +174,7 @@ Here are some techniques to optimize scans in Nmap:
 3. Source IP Spoofing:
 - Technique: Spoofing the source IP address to disguise the origin of the scan traffic and bypass firewall rules.
 - Example: Use Nmap's -S option to specify a spoofed IP address: `nmap -S spoofed_IP target_IP`
-       > For this one especially, when spoofing the IP then the response will be sent to this IP which means it is not that useful (later to see what is the point then!).
+  > For this one especially, when spoofing the IP then the response will be sent to this IP which means it is not that useful (later to see what is the point then!).
 4. Decoy Scanning:
 - Technique: Sending scan packets from multiple decoy IP addresses to confuse IDS and conceal the true source of the scan.
 - Example: Use Nmap's -D option to specify decoy IP addresses: `nmap -D decoy_IPs target_IP`
@@ -195,6 +195,6 @@ Technique: Leveraging stealthy scanning techniques like SYN scan (-sS) to minimi
 10. SSRF (Server-Side Request Forgery) Attacks:
 - Technique: Exploiting SSRF vulnerabilities to force the target server to make requests on behalf of the attacker, potentially bypassing firewall restrictions.
 - Example: Use tools like Burp Suite or ZAP to craft HTTP requests with manipulated parameters to exploit SSRF vulnerabilities.
-4. Proxy and Anonymizer:
+11. Proxy and Anonymizer:
 - Technique: Routing scan traffic through proxy servers or anonymization services like TOR OS/browsers (Tails, TOR, Whonix) to hide the true source of the scan and bypass firewall rules.
 - Example: Use tools like ProxyChains to route Nmap scan traffic through proxy servers: `proxychains nmap target_IP`
