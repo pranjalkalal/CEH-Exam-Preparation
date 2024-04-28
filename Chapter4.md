@@ -102,3 +102,27 @@ NTP (Network Time Protocol) is a networking protocol used to synchronize the clo
 4. ntptrace:
 - ntptrace is a command-line utility that traces the path that an NTP packet takes from the local host to a remote NTP server.
 - Usage: `ntptrace target_IP`
+
+# NFS
+NFS (Network File System) is a distributed file system protocol used for sharing files and directories across a network. It allows clients to access files on remote servers as if they were stored locally.
+
+The server running the NFS service acts as the central point for managing shared files and directories. Clients connect to this server over the network to access the shared resources.
+
+## NFS Enumeration
+- we can use tools like rpcscan, rpcinfo, and showmount.
+- we can use `showmount -e [IP]` to list the NFS shares.
+- Now we know a a sharename on the server, we follow these steps to get it on our machine:
+  1. we create a directory for example mkdir /tmp/mount to mount the share to.
+  2. use the command `sudo mount -t nfs <IP>:<sharename> <Directory to mount to: /tmp/mount/> -nolock`.
+
+# SMTP
+SMTP (Simple Mail Transfer Protocol) is a standard protocol used for sending and receiving email messages over the Internet.
+
+## SMTP Enumeration
+The SMTP service has two internal commands that allow the enumeration of users:
+  - VRFY (confirming the names of valid users) and
+  - EXPN (which reveals the actual address of user’s aliases and lists of e-mail (mailing lists).
+
+Using these SMTP commands, we can reveal a list of valid users. We can do this manually, over a telnet connection- however Metasploit provides a module called "smtp_enum". Using the module is simple, we provide a list of usernames and the host IP and it returns the valid usernames found. Another tool is "smtp-user-enum" and can be used as in the example `smtp-user-enum -M VRFY -U {users_file} -t {target_IP}`. And of course, nmap, using the script `smtp-enum-users`.
+
+We can then bruteforcing these usernames with Hydra for example to crack the password.
