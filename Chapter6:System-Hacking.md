@@ -52,14 +52,33 @@
 - Mimikatz: Used for Pass the Hash and extracting plaintext passwords from memory.
 - Impacket: A collection of Python classes for working with network protocols, used for Pass the Hash and NTLM authentication.
 - Metasploit: A penetration testing framework that includes modules for various attacks, including Pass the Hash and LLMNR poisoning.
-
+- fgdump, PWDump
+   
 ## Password Cracking Tools:
 - Hydra: A password-cracking tool used for brute-force attacks against various network services, such as SSH, FTP, HTTP, etc.
 - Hashcat: A powerful password-cracking tool that supports multiple hash algorithms and attack modes, including brute-force, dictionary, and mask attacks.
 - John the Ripper: Another popular password-cracking tool that supports various hash formats and attack modes, including dictionary and brute-force attacks.
 - Lophtrack
-
+- 
 ## Rainbow Tables:
 - Rainbow tables are precomputed tables used for reversing cryptographic hash functions, typically for password cracking.
 - They contain sets of plaintext passwords and their corresponding hash values.
 - Rainbow tables allow attackers to quickly look up a hash and find the corresponding plaintext password, significantly speeding up the password-cracking process compared to brute-force attacks.
+
+## Shadow file
+The `/etc/shadow` file is a critical component of Unix-based operating systems, including Linux. It stores encrypted password information for user accounts on the system. Each line in the /etc/shadow file represents a user account and contains several fields separated by colons (:).
+
+## Password Attacks Cracking Enhancement Techniques
+1. The "Prince" approach in password cracking involves using Markov chains to generate password guesses more efficiently. The Prince approach aims to improve this process by analyzing patterns in existing passwords and generating likely candidates based on those patterns.
+2. The combinator is a technique where we combine more than a dictionary together. It is recommended to remove the duplicates after combining.
+3. Toggle case is used to try different case characters.
+
+# Buffer Overflow
+If we have a program which has a buffer overflow issue, it means it doesn't handle the extra data correctly which then can cause it to crash OR we can use the vulnerability as: if we know the data sent overflows in a register for example ESB and I know when it flows (how many bytes) then I can control what is sent which can be a reverse shell code (by msfvenom tool for example).
+
+Countermeasures:
+- ASLR Address Space Layout Randomization.
+- Data Execution Prevention (DEP): DEP marks certain areas of memory as non-executable, preventing the execution of code stored in those regions.
+- Control Flow Integrity (CFI): CFI ensures that the control flow of a program follows a predetermined set of rules, preventing attackers from hijacking program execution through buffer overflow exploits.
+
+# Privilege Escalation
