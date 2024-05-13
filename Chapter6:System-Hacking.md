@@ -82,3 +82,58 @@ Countermeasures:
 - Control Flow Integrity (CFI): CFI ensures that the control flow of a program follows a predetermined set of rules, preventing attackers from hijacking program execution through buffer overflow exploits.
 
 # Privilege Escalation
+what is panther and sysprep under system32 folder and what is unattended xml. 
+
+Privilege escalation refers to the process of gaining higher levels of access or privileges on a system or network than what was initially granted to a user or process. It's a common goal for attackers who have gained initial access to a system with limited privileges. There are two types:
+
+1. Horizontal Privilege Escalation:
+  - In horizontal privilege escalation, the attacker gains access to another account or process with the same level of privileges as their current account.
+  - This typically involves impersonating another user or process that has similar access rights.
+2. Vertical Privilege Escalation:
+  - In vertical privilege escalation, the attacker gains access to higher levels of privileges than their current account or process.
+  - This can involve escalating privileges from a low-privileged user account to an administrator or root-level account.
+
+## How?
+1. DLL Hijacking: Attackers exploit vulnerable applications by replacing legitimate DLL files with malicious ones.
+
+2. Unquoted Services Path: Improperly configured service paths can allow attackers to execute malicious code with elevated privileges.
+
+3. Scheduled Tasks: Attackers can abuse scheduled tasks to execute malicious code at specified times with elevated privileges.
+
+4. Patching: Failure to apply security patches leaves systems vulnerable to known exploits that can lead to privilege escalation.
+
+5. Misconfiguration: System misconfigurations, such as incorrect file permissions, can create opportunities for attackers to escalate privileges.
+
+#### what is "unattended XML"?
+An unattended XML file, commonly referred to as an "unattended answer file," is a configuration file used during Windows installation to automate the setup process. It contains predefined settings and configurations that instruct the Windows Setup process how to proceed without requiring user intervention. These settings can include regional and language options, disk partitioning, product key input, user account creation, network configuration, and more.
+
+Which can be found under Panther and sysprep folders in system32 directory, this file has a lot of information useful to gain higher privileges.
+
+# Maintaining Access (Persistence)
+1. Backdoors: Attackers may install backdoor programs or modify existing system components to create secret entry points into the compromised system. These backdoors can provide remote access to the system, allowing attackers to return and regain control even if their initial access is discovered and removed.
+
+2. Rootkits: Rootkits are malicious software designed to hide the presence of other malicious programs or activities on a system. They operate at a deep level within the operating system, making them difficult to detect and remove. Rootkits can be used to maintain access by ensuring that the attacker's tools and processes remain hidden from system administrators and security software.
+
+3. Scheduled Tasks and Cron Jobs: Attackers may create scheduled tasks or cron jobs to execute their malicious code at predefined intervals. By scheduling tasks to run periodically, attackers can maintain access to the compromised system without needing to maintain a constant presence.
+
+4. Persistence Mechanisms: Attackers can leverage various persistence mechanisms built into operating systems to ensure their malicious code runs automatically every time the system boots or a user logs in. Examples include modifying startup scripts, registry keys, or system services.
+
+### Rootkits in more details
+Rootkits are malicious software designed to conceal the presence of other malicious programs or activities on a compromised system. There are several types:
+
+- Kernel-Level Rootkits: Operate at the OS kernel level, replacing or modifying core OS functions.
+- User-Level Rootkits: Exploit vulnerabilities in user-space applications to gain elevated privileges.
+- Bootkits: Infect the boot process (e.g., MBR), controlling the system from startup.
+- Hardware/Firmware Rootkits: Infect system hardware or firmware, controlling the system at a fundamental level.
+- Memory Rootkits: Reside entirely in system memory, injecting malicious code into processes.
+
+# Steganography
+Steganography is the practice of concealing messages or information within other non-secret data or media in a way that the existence of the hidden information is not readily apparent. 
+
+There are tools which can be used for that like:
+- stegsnow: `stegsnow -p password cover_text.txt hidden_message.txt > output.txt`
+- steghide: `steghide embed -ef hidden_file.txt -cf cover_image.jpg -p password`
+
+And there are tools which are used to analyze and extract hidden messages like zsteg.
+
+# Covering tracks
