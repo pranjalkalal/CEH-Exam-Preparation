@@ -166,3 +166,33 @@ A golden ticket allows to authenticate to any service with one single ticket.
 1. Firstly we need to find the user NTLM hash: `sekurlsa::logonpasswords`.
 2. Then we need to execute this command: `sekurlsa::pth /user:Admisitrator /domain:example.com /ntlm:{user's NTLm}`.
 3. Mimikatz opens a prompt then with user's privileges.
+
+# Pivoting/Relaying
+### Pivoting:
+Pivoting involves using a compromised system, often referred to as a "pivot point" or "pivot host," to gain access to other systems or networks that are not directly accessible from the attacker's initial entry point. The pivot host serves as a bridge or intermediary for the attacker to launch further attacks against additional targets within the network.
+
+Common techniques used in pivoting include:
+
+- **Port Forwarding**: Setting up port forwarding or port redirection on the pivot host to relay traffic between the attacker and other systems within the network.
+- **Proxying**: Configuring the pivot host to act as a proxy server, allowing the attacker to route traffic through it to reach other systems or services within the network.
+- **Tunneling**: Establishing encrypted tunnels, such as SSH tunnels or VPN connections, from the pivot host to other systems or networks, providing a secure communication channel for the attacker.
+
+### Relaying:
+Relaying, also known as "relay attacks" or "credential relaying," involves intercepting authentication requests between two systems and relaying them to gain unauthorized access to resources or escalate privileges.
+
+Common types of relay attacks include:
+
+- **NTLM Relay**: Intercepting NTLM (NT LAN Manager) authentication requests between a client and a server and relaying them to gain access to resources on behalf of the client. This is commonly used in attacks such as SMB relay attacks.
+- **Kerberos Relay**: Intercepting Kerberos authentication tickets and relaying them to gain access to systems or services that trust the compromised authentication.
+- **HTTP/HTTPS Relay**: Intercepting HTTP or HTTPS traffic and relaying it to exploit vulnerabilities or gain access to sensitive information.
+
+Relaying attacks exploit weaknesses in authentication protocols and trust relationships between systems to gain unauthorized access or escalate privileges within a network.
+
+### what is proxychains?
+ProxyChains is a tool used to force any TCP connection to follow through proxy servers or chains of proxies. It's typically used for anonymizing the origin of network traffic and bypassing network restrictions.
+
+How it works: ProxyChains intercepts network connections initiated by applications and redirects them through a series of proxy servers defined in its configuration file. Each proxy server in the chain relays the connection to the next until it reaches the final destination.
+
+Configuration: ProxyChains is configured through its configuration file (/etc/proxychains.conf on Linux). Users specify proxy servers, their ports, and optionally, the proxy type (e.g., SOCKS4, SOCKS5, HTTP). Additionally, users can specify rules for handling DNS requests.
+
+Usage: Once configured, users simply prepend proxychains to their command-line applications to force them to use the configured proxy servers. For example: `proxychains curl example.com`.
