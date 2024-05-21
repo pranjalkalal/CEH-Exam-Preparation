@@ -170,14 +170,13 @@ DORA process refers to the 4 step communication for a device to get IP assigned 
   - Protects against man-in-the-middle attacks.
   - Ensures the integrity of ARP traffic on the network.
 
-#### 11. Trunk Auto Negotiation
+#### 11. Disabling Trunk Auto Negotiation
 - **Definition**: A feature that allows network devices to automatically negotiate trunking parameters such as VLANs to be carried over a trunk link.
 - **Function**:
   - Uses protocols like DTP (Dynamic Trunking Protocol) to dynamically configure trunk links.
   - Negotiates trunk mode (on, off, auto, desirable).
-- **Benefits**:
-  - Simplifies VLAN management by automating trunk configuration.
-  - Reduces the likelihood of configuration errors.
+- **Why Disable?**:
+  - Trunk auto negotiations are risky because they can inadvertently create unauthorized trunk links, potentially allowing VLAN hopping attacks. It's advisable to disable auto negotiations and manually configure trunk links to ensure only intended VLANs are allowed.
 
 #### 12. BPDU Guard
 - **Definition**: A security feature that protects the Spanning Tree Protocol (STP) by disabling ports that receive unexpected BPDUs (Bridge Protocol Data Units).
