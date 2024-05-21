@@ -138,4 +138,18 @@ hping3 --flood --rand-source -P -p 3389 TARGET_IP
 # Botnets
 A botnet is a network of compromised computers or "bots" that are controlled by a central command-and-control (C&C) server operated by an attacker or botmaster. These bots are typically infected with malware that allows the attacker to remotely control them without the knowledge of their owners. Botnets are commonly used for various malicious activities, including distributed denial-of-service (DDoS) attacks, spam email dissemination, information theft, and spreading further malware infections.
 
-active profiling, sequential change point detection (cumulative sum algorithm), wevlet signal based analysis. mitigation techniques like rate limiting, black and sink holding
+# Countermeasures for DoS Attacks
+**Active Profiling:**
+Active profiling involves continuously monitoring network traffic patterns and system behavior to identify anomalies indicative of a potential DoS attack. By establishing baseline behavior profiles and comparing them in real-time, active profiling can help detect deviations that may signal an ongoing attack.
+
+**Sequential Change Point Detection (Cumulative Sum Algorithm):**
+Sequential change point detection algorithms, such as the Cumulative Sum (CUSUM) algorithm, analyze incoming data streams to detect sudden changes or shifts in patterns. These algorithms are effective in identifying anomalies in network traffic that could indicate the onset of a DoS attack.
+
+**Wavelet Signal-Based Analysis:**
+Wavelet signal-based analysis involves using wavelet transformations to analyze network traffic and identify patterns associated with DoS attacks. By decomposing signals into different frequency components, wavelet analysis can detect subtle changes in traffic patterns that may indicate an attack.
+
+**Mitigation Techniques:**
+- **Rate Limiting:** Implementing rate-limiting measures can help mitigate the impact of DoS attacks by limiting the rate of incoming traffic to a manageable level, preventing network resources from being overwhelmed.
+- **Black and Sinkholing:** Blackholing involves redirecting malicious traffic to a designated sinkhole or null route, effectively isolating it from the rest of the network and minimizing its impact on legitimate traffic.
+- **Deflections:** Deflection techniques redirect incoming attack traffic away from the target server or network, mitigating the impact of the attack while allowing legitimate traffic to pass through unaffected.
+- **Hardware Enhancements:** Hardware-based mitigation techniques, such as deploying specialized hardware appliances or employing dedicated hardware components with built-in DoS protection mechanisms, can provide robust defense against DoS.
