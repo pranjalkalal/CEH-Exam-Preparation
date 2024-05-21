@@ -134,3 +134,8 @@ hping3 --flood --rand-source -P -p 3389 TARGET_IP
   - **Partial HTTP Requests**: Slowloris sends partial HTTP requests to the target web server and continues to send headers periodically to keep the connections open but incomplete.
   - **Resource Exhaustion**: By keeping many connections open without completing them, Slowloris exhausts the server's resources, leading to denial of service for legitimate users.
 - Can be done with slowloris module in Metasploit.
+
+# Botnets
+A botnet is a network of compromised computers or "bots" that are controlled by a central command-and-control (C&C) server operated by an attacker or botmaster. These bots are typically infected with malware that allows the attacker to remotely control them without the knowledge of their owners. Botnets are commonly used for various malicious activities, including distributed denial-of-service (DDoS) attacks, spam email dissemination, information theft, and spreading further malware infections.
+
+active profiling, sequential change point detection (cumulative sum algorithm), wevlet signal based analysis. mitigation techniques like rate limiting, black and sink holding
