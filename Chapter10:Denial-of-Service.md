@@ -72,3 +72,50 @@
 - **Mechanism**:
   - **Partial HTTP Requests**: Slowloris sends partial HTTP requests to the target web server and continues to send headers periodically to keep the connections open but incomplete.
   - **Resource Exhaustion**: By keeping many connections open without completing them, Slowloris exhausts the server's resources, leading to denial of service for legitimate users.
+
+# Now let's dive in more details
+
+## 1. Volumetric Attack
+
+### UDP Flooding
+**Description:**
+UDP (User Datagram Protocol) flooding is a type of DoS attack where an attacker inundates a target server with a high volume of UDP packets. Since UDP is connectionless, the server must process each packet individually, potentially exhausting its resources.
+
+**Example:**
+Using `hping3` to execute a UDP flood attack: `hping3 --udp -p 80 -i u1 192.168.1.1`
+
+This command sends UDP packets to port 80 of the target IP address (192.168.1.1) at a rate of one packet per microsecond.
+
+### ICMP Flooding
+**Description:**
+ICMP (Internet Control Message Protocol) flooding, or ping flooding, overwhelms a target system with ICMP Echo Request packets. The target's responses to these requests can saturate its network bandwidth and processing capabilities.
+
+**Example:**
+Using `hping3` for an ICMP flood attack: `hping3 --icmp -i u1 192.168.1.1`
+
+This command sends ICMP Echo Request packets to the target IP address (192.168.1.1) at a rapid rate.
+
+### Smurf vs Fraggle Attacks
+**Description:**
+Smurf attacks involve spoofing the victim's IP address and sending ICMP Echo Request packets to broadcast addresses, causing amplification. Fraggle attacks are similar but use UDP instead of ICMP, targeting network services like echo (port 7) or chargen (port 19).
+
+So in brief, the ICMP Echo Request packets broadcasted will appear to originate from the spoofed IP causing all devices on the network to respond to the victim. As a result, the victim's system gets overwhelmed with ICMP Echo Reply packets, leading to a denial-of-service condition.
+
+**Example Smurf Attack:**
+Using `hping3` to simulate a Smurf attack: `hping3 --icmp -a 192.168.1.1 --broadcast 192.168.1.255`
+
+This command sends ICMP packets with a spoofed source IP (192.168.1.1) to the broadcast address of the network.
+
+**Example Fraggle Attack:**
+Using `hping3` to execute a Fraggle attack: `hping3 --udp -a 192.168.1.1 --broadcast -p 7 192.168.1.255`
+
+This command sends UDP packets with a spoofed source IP (192.168.1.1) to the broadcast address, targeting port 7 (echo) of devices on the network.
+
+### Pulse Wave Attack
+**Description:**
+A Pulse Wave attack involves sending short bursts or pulses of high traffic at regular intervals to overwhelm a target's defenses. This type of attack aims to bypass traditional DDoS defenses by rapidly fluctuating the intensity of the attack.
+
+**Example:**
+While not directly supported by `hping3`, a Pulse Wave attack could involve sending bursts of packets at intervals: `hping3 --flood -p 80 192.168.1.1 -i u100`
+
+## 2. 
