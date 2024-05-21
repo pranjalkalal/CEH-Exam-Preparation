@@ -152,7 +152,7 @@ DORA process refers to the 4 step communication for a device to get IP assigned 
 - **Hidden SSIDs**: Hide SSIDs to reduce visibility to unauthorized users.
 - **MAC Filtering**: Use MAC address filtering to control which devices can connect to the wireless network.
 
-### Port-Based NAC (Network Access Control)
+#### 9. Port-Based NAC (Network Access Control)
 - **Definition**: Controls access to a network based on the security policies assigned to each port on a switch.
 - **Function**: Requires devices to authenticate before granting network access.
 - **Benefits**:
@@ -160,7 +160,7 @@ DORA process refers to the 4 step communication for a device to get IP assigned 
   - Can enforce different levels of access based on user roles or device types.
 - **Example**: IEEE 802.1X is a standard for port-based NAC, providing authenticated access to network resources.
 
-### Dynamic ARP Inspection (DAI)
+#### 10. Dynamic ARP Inspection (DAI)
 - **Definition**: A security feature that validates ARP packets in a network to prevent ARP spoofing and ARP poisoning attacks.
 - **Function**:
   - Inspects ARP requests and responses.
@@ -170,7 +170,7 @@ DORA process refers to the 4 step communication for a device to get IP assigned 
   - Protects against man-in-the-middle attacks.
   - Ensures the integrity of ARP traffic on the network.
 
-### Trunk Auto Negotiation
+#### 11. Trunk Auto Negotiation
 - **Definition**: A feature that allows network devices to automatically negotiate trunking parameters such as VLANs to be carried over a trunk link.
 - **Function**:
   - Uses protocols like DTP (Dynamic Trunking Protocol) to dynamically configure trunk links.
@@ -179,7 +179,7 @@ DORA process refers to the 4 step communication for a device to get IP assigned 
   - Simplifies VLAN management by automating trunk configuration.
   - Reduces the likelihood of configuration errors.
 
-### BPDU Guard
+#### 12. BPDU Guard
 - **Definition**: A security feature that protects the Spanning Tree Protocol (STP) by disabling ports that receive unexpected BPDUs (Bridge Protocol Data Units).
 - **Function**:
   - Monitors network ports for incoming BPDUs.
@@ -188,7 +188,7 @@ DORA process refers to the 4 step communication for a device to get IP assigned 
   - Prevents rogue switches from affecting the network topology.
   - Enhances the stability and security of the STP domain.
 
-### DNSSEC (Domain Name System Security Extensions)
+#### 13. DNSSEC (Domain Name System Security Extensions)
 - **Definition**: A suite of extensions that add security to the DNS protocol by enabling DNS responses to be verified.
 - **Function**:
   - Uses digital signatures to ensure the authenticity and integrity of DNS data.
