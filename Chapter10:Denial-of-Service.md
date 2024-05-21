@@ -49,29 +49,12 @@
 - **Impact**: Overwhelms the target with a large volume of DNS response traffic, causing a denial of service.
 - Example using hping3:  `hping3 --flood --spoof {target's IP} --udp -p 53 {DNS server}`.
 
-### TCP Fragmentation Attack
-- **Definition**: Exploits IP fragmentation to overwhelm a target.
-- **Example**: Teardrop Attack.
-
-***Teardrop Attack***:
-- **Definition**: A type of DoS attack that involves sending fragmented packets to a target.
-- **Mechanism**:
-  - **Fragmented Packets**: The attacker sends malformed IP fragments that cannot be reassembled properly.
-  - **Reassembly Issue**: The target system attempts to reassemble the fragments, but the offset values are incorrect, causing the system to crash or become unstable.
-- **Impact**: Causes crashes or reboots in vulnerable operating systems due to the inability to handle malformed fragments.
-
 ### Ping of Death
 - **Definition**: A type of DoS attack that involves sending oversized ICMP packets to a target.
 - **Mechanism**:
   - **Oversized Packets**: The attacker sends an ICMP echo request (ping) packet that exceeds the maximum allowable size of 65,535 bytes.
   - **Buffer Overflow**: The target system cannot handle the oversized packet, leading to a buffer overflow.
 - **Impact**: Causes crashes, reboots, or instability in the target system due to the inability to process the oversized packets.
-
-### Slowloris
-- **Definition**: Slowloris is a type of denial-of-service (DoS) attack tool that targets web servers by opening multiple connections and keeping them open for as long as possible.
-- **Mechanism**:
-  - **Partial HTTP Requests**: Slowloris sends partial HTTP requests to the target web server and continues to send headers periodically to keep the connections open but incomplete.
-  - **Resource Exhaustion**: By keeping many connections open without completing them, Slowloris exhausts the server's resources, leading to denial of service for legitimate users.
 
 # Now let's dive in more details
 
@@ -118,4 +101,36 @@ A Pulse Wave attack involves sending short bursts or pulses of high traffic at r
 **Example:**
 While not directly supported by `hping3`, a Pulse Wave attack could involve sending bursts of packets at intervals: `hping3 --flood -p 80 192.168.1.1 -i u100`
 
-## 2. 
+## 2. Protocol Attacks
+
+### SYN, PUSH, ACK Flood
+***Description:***
+SYN, PUSH, and ACK floods are types of TCP flood attacks that exploit the TCP handshake process. In a SYN flood, the attacker sends a large number of TCP SYN packets to the target, exhausting its resources by forcing it to allocate resources for half-open connections. PUSH and ACK floods involve sending excessive TCP packets with the PSH and ACK flags set, respectively, to consume target resources and degrade performance.
+
+***Example:*** In this example we are denying RDP service on that TARGET_IP server.
+```
+hping3 --flood --rand-source -S -p 3389 TARGET_IP
+hping3 --flood --rand-source -A -p 3389 TARGET_IP
+hping3 --flood --rand-source -P -p 3389 TARGET_IP
+```
+
+### TCP Fragmentation Attack
+- **Definition**: Exploits IP fragmentation to overwhelm a target.
+- **Example**: Teardrop Attack.
+
+***Teardrop Attack***:
+- **Definition**: A type of DoS attack that involves sending fragmented packets to a target.
+- **Mechanism**:
+  - **Fragmented Packets**: The attacker sends malformed IP fragments that cannot be reassembled properly.
+  - **Reassembly Issue**: The target system attempts to reassemble the fragments, but the offset values are incorrect, causing the system to crash or become unstable.
+- **Impact**: Causes crashes or reboots in vulnerable operating systems due to the inability to handle malformed fragments.
+- **Example**: `hping3 --flood --frag --flood -d 2000 TARGET_IP`.
+
+## 3. Application Layer Attacks
+
+### Slowloris
+- **Definition**: Slowloris is a type of denial-of-service (DoS) attack tool that targets web servers by opening multiple connections and keeping them open for as long as possible.
+- **Mechanism**:
+  - **Partial HTTP Requests**: Slowloris sends partial HTTP requests to the target web server and continues to send headers periodically to keep the connections open but incomplete.
+  - **Resource Exhaustion**: By keeping many connections open without completing them, Slowloris exhausts the server's resources, leading to denial of service for legitimate users.
+- Can be done with slowloris module in Metasploit.
