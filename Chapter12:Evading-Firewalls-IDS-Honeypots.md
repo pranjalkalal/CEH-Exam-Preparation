@@ -4,7 +4,7 @@
 - **Transport Layer (Layer 4):** Filters traffic based on TCP/UDP port numbers and connection states. Used in stateful firewalls.
 - **Application Layer (Layer 7):** Inspects the contents of packets for specific applications (e.g., HTTP, FTP). Used in application firewalls and web application firewalls (WAFs).
 
-## Evading Firewalls
+### Evading Firewalls
 **Firewalking:**
 Firewalking is a technique used to determine the rules of a firewall by sending packets with varying TTL values and analyzing the responses. It helps attackers map the firewall rules and identify open ports.
 
