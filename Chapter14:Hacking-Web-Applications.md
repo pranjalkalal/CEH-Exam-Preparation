@@ -164,3 +164,51 @@
   2. **Clone Login Page:** Using SE Toolkit to create a fake login page that mimics the real one.
   3. **Set Up Redirect:** Direct the phishing link to the fake login page.
   4. **Capture Credentials:** When users enter their credentials, they are logged, demonstrating how easily information can be stolen.
+
+## Introduction to XSS and CSRF
+
+### Cross-Site Scripting (XSS)
+XSS is a vulnerability where an attacker can inject malicious scripts into web pages viewed by other users. These scripts are typically written in JavaScript and can execute arbitrary code in the victim's browser, stealing data or performing actions on their behalf.
+
+#### Types of XSS
+1. **Reflected XSS**
+   - Occurs when user input is immediately returned by a web application without proper sanitization.
+   - Example: Searching for a term on a website that displays the search term back to you without encoding.
+   
+2. **Stored (Persistent) XSS**
+   - Occurs when user input is stored on the server and then displayed on web pages.
+   - Example: Comment sections on blogs where malicious scripts are stored in the database and executed every time the comment is viewed.
+
+3. **DOM-based XSS**
+   - Occurs when the vulnerability exists in the client-side code rather than the server-side code.
+   - Example: Manipulating the DOM environment in the browser to execute malicious scripts.
+
+#### Testing for XSS
+To test for XSS, you can inject a simple JavaScript alert script into inputs to see if it gets executed:
+
+```html
+<script>alert('XSS');</script>
+```
+
+Using tools like Burp Suite or automated scripts can help in identifying such vulnerabilities more efficiently.
+
+### Cross-Site Request Forgery (CSRF)
+CSRF exploits the trust that a web application has in the user. It tricks the user into performing actions on behalf of the attacker, often without the user's knowledge.
+
+#### How CSRF Works
+- **Trust Relationship**: The user is authenticated on a site (e.g., logged into their bank).
+- **Malicious Request**: The attacker crafts a request to perform a sensitive action (e.g., transferring money) and embeds it in a malicious link or script.
+- **Execution**: The user unknowingly triggers the action by visiting a malicious website or clicking a link, which uses their credentials to perform the action.
+
+### Combining XSS and CSRF
+An attacker can leverage XSS to inject a CSRF attack, combining the power of both vulnerabilities. Here’s an example scenario:
+
+1. **Identify CSRF Vulnerability**: Find a URL that performs a sensitive action, like transferring money, which includes the action and parameters in the URL.
+2. **Craft XSS Payload**: Use an XSS vulnerability to inject a script that automatically triggers the CSRF request.
+3. **Deliver Payload**: The payload can be delivered via a blog comment, social media post, or any other method where users will view the malicious content.
+
+```html
+<script>
+  new Image().src = "http://victim.com/transfer?amount=100&account=attacker_account";
+</script>
+```
