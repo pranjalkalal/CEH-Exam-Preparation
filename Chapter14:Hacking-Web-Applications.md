@@ -14,17 +14,7 @@
 - **Security:** Relies on HTTP-based security, like HTTPS.
 - **Statefulness:** Stateless operations.
 - **Example:** Used in web applications, mobile apps, and IoT services for its simplicity and performance.
-
-### Common Security Risks Associated with Web Apps
-- **SQL Injection:** Injecting malicious SQL queries to manipulate databases.
-- **Cross-Site Scripting (XSS):** Injecting malicious scripts into web pages.
-- **Cross-Site Request Forgery (CSRF):** Forcing users to perform unwanted actions.
-- **Insecure Direct Object References (IDOR):** Accessing unauthorized objects.
-- **Security Misconfigurations:** Poorly configured security settings.
-- **Sensitive Data Exposure:** Inadequate protection of sensitive information.
-- **Broken Authentication and Session Management:** Weak authentication mechanisms.
-- **Using Components with Known Vulnerabilities:** Using outdated or vulnerable third-party components.
-
+  
 ### Web App Security Defense
 **Security Testing:**
 - **SAST (Static Application Security Testing):**
@@ -71,3 +61,35 @@
 **RASP (Runtime Application Self-Protection):**
 - **Description:** Security technology that runs within the application to detect and prevent attacks in real-time.
 - **Example:** Identifying and blocking an attack by analyzing application behavior during runtime.
+
+### OWASP Top 10 for 2021 - Summary
+1. **Broken Access Control (A01)**:
+   - This category focuses on flaws related to inadequate enforcement of access controls, such as improper authorization mechanisms, missing authentication, or failure to restrict users' access to certain functionalities or resources.
+
+2. **Cryptographic Failures (A02)**:
+   - Cryptographic failures refer to vulnerabilities related to the incorrect implementation or misuse of cryptographic techniques, such as encryption, hashing, or key management. These failures can lead to sensitive data exposure or compromise of system integrity.
+
+3. **Injection (A03)**:
+   - Injection vulnerabilities occur when untrusted data is sent to an interpreter as part of a command or query, leading to the execution of unintended commands or unauthorized access to data. This category includes common injection attacks such as SQL injection, NoSQL injection, and command injection.
+
+4. **Insecure Design (A04)**:
+   - Insecure design vulnerabilities stem from flaws in the architectural or design aspects of a system, such as inadequate threat modeling, insecure design patterns, or failure to follow secure coding principles. These vulnerabilities can lead to systemic weaknesses that are difficult to address without fundamental design changes.
+
+5. **Security Misconfiguration (A05)**:
+   - Security misconfiguration vulnerabilities occur when security settings are not properly configured, such as default passwords, unnecessary features enabled, or excessive permissions granted. These misconfigurations can expose systems to unauthorized access, data leaks, or other security risks.
+
+6. **Vulnerable and Outdated Components (A06)**:
+   - This category addresses risks associated with the use of outdated or vulnerable software components, such as libraries, frameworks, or third-party dependencies. Failure to update or patch these components can expose applications to known exploits and security vulnerabilities.
+
+7. **Identification and Authentication Failures (A07)**:
+   - Identification and authentication failures occur when authentication mechanisms are improperly implemented or authentication credentials are not adequately protected. These failures can lead to unauthorized access, account takeover, or other security breaches.
+
+8. **Software and Data Integrity Failures (A08)**:
+   - This category focuses on vulnerabilities related to assumptions made about software updates, critical data, or CI/CD pipelines without verifying integrity. These failures can lead to unauthorized modifications to software or data, compromising system integrity and security.
+
+9. **Security Logging and Monitoring Failures (A09)**:
+   - Security logging and monitoring failures occur when applications fail to generate adequate logs or monitoring alerts, hindering detection and response to security incidents. These failures can impact visibility, incident alerting, and forensic analysis, making it difficult to detect and mitigate security threats.
+
+10. **Server-Side Request Forgery (A10)**:
+    - Server-side request forgery vulnerabilities occur when attackers can manipulate server-side requests to access internal resources or perform unauthorized actions on behalf of the server. These vulnerabilities can lead to data leaks, unauthorized access, or server-side attacks.
+
