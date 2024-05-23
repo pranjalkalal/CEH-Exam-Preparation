@@ -1,4 +1,4 @@
-### SOAP vs REST
+## SOAP vs REST
 **SOAP (Simple Object Access Protocol):**
 - **Protocol:** A protocol for exchanging structured information in web services.
 - **Complexity:** More complex, with strict standards.
@@ -15,7 +15,7 @@
 - **Statefulness:** Stateless operations.
 - **Example:** Used in web applications, mobile apps, and IoT services for its simplicity and performance.
   
-### Web App Security Defense
+## Web App Security Defense
 **Security Testing:**
 - **SAST (Static Application Security Testing):**
   - **Description:** Analyzes source code for vulnerabilities without executing programs.
@@ -62,7 +62,7 @@
 - **Description:** Security technology that runs within the application to detect and prevent attacks in real-time.
 - **Example:** Identifying and blocking an attack by analyzing application behavior during runtime.
 
-### OWASP Top 10 for 2021 - Summary
+## OWASP Top 10 for 2021 - Summary
 1. **Broken Access Control (A01)**:
    - This category focuses on flaws related to inadequate enforcement of access controls, such as improper authorization mechanisms, missing authentication, or failure to restrict users' access to certain functionalities or resources.
 
@@ -93,3 +93,74 @@
 10. **Server-Side Request Forgery (A10)**:
     - Server-side request forgery vulnerabilities occur when attackers can manipulate server-side requests to access internal resources or perform unauthorized actions on behalf of the server. These vulnerabilities can lead to data leaks, unauthorized access, or server-side attacks.
 
+## Key Steps in Web App Hacking
+1. **Reconnaissance and Footprinting**:
+   - Understand the application and its environment.
+   - Gather information about the target's organization, technology stack, and potential vulnerabilities.
+
+2. **Enumeration**:
+   - Identify IP addresses, DNS information, subdomains, virtual hosts, firewalls, WAFs, proxies, rate limiting, etc.
+   - Discover software versions, open ports, files, directories, and hidden content.
+
+3. **Vulnerability Assessment**:
+   - Use automated tools and manual testing to find vulnerabilities.
+   - Identify potential exploits by mapping out discovered vulnerabilities.
+
+4. **Exploitation**:
+   - Attack identified vulnerabilities to gain unauthorized access or escalate privileges.
+   - Perform various types of attacks such as injection attacks, authentication bypasses, logic flaws, CSRF, XSS, and more.
+
+### Tools in Web Apps Hacking
+1. **Nikto**: A web server scanner that checks for over 6700 potentially dangerous files/programs, outdated versions, and server misconfigurations.
+
+2. **Skipfish**: An active web application security reconnaissance tool that prepares an interactive site map for the targeted site by carrying out recursive crawl and dictionary-based probes.
+
+3. **Wapiti**: A web application vulnerability scanner that checks for SQL injections, XSS, and other common vulnerabilities by crawling the web pages of the deployed application.
+
+4. **OWASP ZAP (Zed Attack Proxy)**: An open-source web application security scanner that helps find security vulnerabilities in web applications during development and testing.
+
+5. **Burp Suite**: A comprehensive platform for web application security testing that includes tools for crawling, scanning, and exploiting vulnerabilities. It is widely used by security professionals for penetration testing.
+
+6. **SQLmap**: An open-source tool that automates the process of detecting and exploiting SQL injection flaws and taking over database servers.
+
+7. **Comix**: A command injection vulnerability tool that helps in finding and exploiting command injection bugs in web applications.
+
+8. **WFuzz**: A web application security fuzzer that allows users to perform brute force attacks on various parameters such as forms, headers, cookies, and URLs to find vulnerabilities.
+
+9. **WPScan**: A black-box WordPress vulnerability scanner that can detect security issues in WordPress installations, including plugins, themes, and core files.
+
+10. **JoomScan**: A Joomla vulnerability scanner that helps in identifying vulnerabilities in Joomla CMS, including outdated versions, vulnerable extensions, and misconfigurations.
+
+11. **Drupal Security Scanner**: Tools like Drupwn, which scan for vulnerabilities in Drupal CMS installations, identifying security issues in modules and core components.
+
+12. **Searchsploit**: A command-line tool for searching the Exploit DB database, enabling quick searches for exploits and vulnerabilities based on various parameters.
+
+13. **Acunetix**: A commercial web application security scanner that automatically tests for vulnerabilities such as SQL injection, XSS, and others. It includes advanced scanning capabilities and reporting features.
+
+14. **Volners**: A comprehensive security vulnerability database that aggregates data from multiple sources, providing detailed information about known vulnerabilities and exploits.
+
+
+## Unvalidated Forwards/Redirects
+- **Unvalidated Redirect:** Redirecting users to different websites without validating the target URL.
+- **Unvalidated Forward:** Similar to redirects but often used within applications, potentially granting access to restricted areas.
+
+### Explanation and Risks
+- **Unvalidated Redirects:**
+  - Commonly seen when a link redirects you to a different site.
+  - Attackers exploit these to create phishing sites that appear legitimate.
+  - Users may not notice the change in URL, leading to credential theft or malware downloads.
+  
+- **Unvalidated Forwards:**
+  - May grant access to restricted pages, such as admin portals.
+  - Harder to demonstrate as they require specific vulnerable systems.
+
+### Practical Demonstration
+- **Tools Used:**
+  - **BWAP (Buggy Web Application):** Used to demonstrate the attack.
+  - **Social Engineering Toolkit (SE Toolkit):** For cloning the login page.
+
+- **Steps:**
+  1. **Create a Phishing Email:** Informing users of a fake data breach and asking them to log in.
+  2. **Clone Login Page:** Using SE Toolkit to create a fake login page that mimics the real one.
+  3. **Set Up Redirect:** Direct the phishing link to the fake login page.
+  4. **Capture Credentials:** When users enter their credentials, they are logged, demonstrating how easily information can be stolen.
