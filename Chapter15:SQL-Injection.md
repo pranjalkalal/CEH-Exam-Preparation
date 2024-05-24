@@ -64,3 +64,31 @@
    - Breaking keywords into parts using concatenation (e.g., `S+E+L+E+C+T`).
 6. **Uncommon Queries**:
    - Using less common but logically equivalent queries (e.g., `dog=dog` instead of `1=1`).
+
+## Blind-Based SQL Injection
+**Importance**
+Understanding how to handle situations when you can't see immediate feedback from SQL injections.
+
+**Understanding Blind SQL Injection**
+- Sometimes, an attack's success is not immediately visible.
+- Blind SQL injections are used when there's no direct indication of success or failure.
+- Different from error-based injections where you get direct feedback.
+
+**Types of Blind SQL Injection Techniques**
+1. **Boolean-Based Blind SQL Injection**
+   - Relies on the application returning different results for TRUE and FALSE queries.
+   - Example: Checking for the existence of data based on conditional statements (`OR 1=1` for TRUE, `OR 1=2` for FALSE).
+   - Observing the response helps determine if the injection was successful.
+
+2. **Time-Based Blind SQL Injection**
+   - Involves injecting SQL commands that cause the database to delay its response.
+   - Example: Using the `SLEEP` function to introduce a delay.
+   - The time delay indicates whether the injection was successful.
+
+**Practical Demonstration**
+- Boolean-Based Example:
+  - Inject `OR 1=1--` and observe the application returning results.
+  - Inject `OR 1=2--` and observe no results.
+- Time-Based Example:
+  - Inject `SLEEP(5)--` and observe a 5-second delay in response.
+  - Using different sleep times to test the success of injections.
