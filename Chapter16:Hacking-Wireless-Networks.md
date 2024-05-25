@@ -177,3 +177,21 @@ WPA cracking aims to capture a WPA handshake and then crack the passphrase. The 
    `sudo airodump-ng -c <channel> --bssid <BSSID> -w capture wlan0mon`
 2. Once the handshake is captured, attempt to crack the WPA password using `aircrack-ng`:
    `sudo aircrack-ng -a2 -b <BSSID> -w /path/to/wordlist capture.cap`
+
+# Wireless Security Controls:
+
+## Configuring Access Points:
+- **Changing Defaults:** Changing default settings, such as SSID, router name, and administrative passwords, is crucial to prevent attackers from exploiting known vulnerabilities associated with default configurations.
+- **Password Strength:** Creating strong passwords or passphrases for both administrative access and wireless security is recommended. Complex passwords with a mix of letters, numbers, and symbols are advised.
+- **Encryption:** Enabling robust encryption protocols like WPA2Personal for wireless networks ensures data confidentiality and integrity.
+- **SSID Broadcasting:** Disabling SSID broadcasting hides the network from casual observers, adding a layer of obscurity, although it's not a foolproof security measure.
+
+## Additional Security Measures:
+- **Remote Management:** Disabling remote management prevents unauthorized access to the AP's administrative interface over the internet, reducing the attack surface.
+- **Physical Security:** Protecting physical access to APs and devices is essential to prevent theft or tampering, particularly in IoT environments.
+- **Scheduled Audits:** Conducting periodic audits, including Wi-Fi surveys and packet captures, helps verify the effectiveness of security measures and identify potential vulnerabilities or anomalies.
+
+## Advanced Security Solutions:
+- **VPN:** Virtual Private Networks provide secure remote access to networks, enhancing privacy and confidentiality.
+- **Network Access Control (NAC) and Protection (NAP):** Implementing NAC or NAP solutions, such as PacketFence, enforces policies to ensure only authorized devices connect to the network.
+- **Firewalls, IDS, IPS:** Deploying firewalls and intrusion detection/prevention systems adds an additional layer of defense against malicious activities.
