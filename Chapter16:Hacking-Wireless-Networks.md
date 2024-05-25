@@ -109,3 +109,71 @@
 - **Definition:** Changing the MAC address of a device to bypass MAC filtering.
 - **Method:** Attackers sniff for allowed MAC addresses and change their device’s MAC address to match.
 - **Impact:** Grants unauthorized access to the network by appearing as a trusted device.
+
+# Wireless Hacking Tools
+
+## Wi-Fi Discovery Tools
+1. **Insider (SSID-er)**
+   - Displays statistics about wireless networks.
+   - Shows SSIDs, BSSIDs, signal strengths, and channels.
+   - Helps identify less congested channels for setting up wireless networks.
+
+2. **NetSurveyor**
+   - Provides information on SSIDs, BSSIDs, channels, and signal strengths.
+   - Indicates encryption types and beacon strength.
+
+3. **Mobile Tools**
+   - **Fing**: Popular network analysis tool for mobile devices.
+   - **Network Analyzer**: Another tool for discovering and analyzing wireless networks on mobile.
+
+## GPS Mapping Tools
+1. **Wiggle (wigle.net)**
+   - Displays a map of detected wireless networks.
+   - Provides detailed information about the physical locations of networks.
+
+2. **Wi-Fi Map (wifimap.io)**
+   - Shows wireless networks along with passwords if available.
+   - Useful for mapping and locating specific networks.
+
+## Traffic Analysis Tools
+- **Wireshark**
+  - Captures and analyzes network traffic.
+  - Useful for seeing unencrypted data transmitted over wireless networks.
+
+## Wireless Attack Tools
+1. **Aircrack-ng Suite**
+   - Comprehensive suite of tools for wireless network security testing.
+   - Includes tools like Airbase-ng, Aircrack-ng, Airdecap-ng, and others.
+
+2. **Fern Wi-Fi Cracker**
+   - GUI-based tool for wireless security auditing.
+   - Automates the process of network discovery and attacking.
+
+3. **WiFite**
+   - Automates wireless auditing and penetration testing.
+   - Scans for networks and attempts to crack WEP/WPA keys.
+
+# Actual Wireless Hacking
+
+**MAC Spoofing:**
+MAC spoofing is a technique used to impersonate a trusted device on a network by spoofing its MAC address. The process is as follows:
+1. Enable monitor mode on the wireless interface: 
+   `sudo airmon-ng start wlan0`
+2. Begin capturing packets to find the SSIDs available:
+   `sudo airodump-ng wlan0mon`
+3. Once we have the BSSID of the AP, filter the captured packets to focus on a specific channel and BSSID (AP's MAC address) to identify allowed devices' MAC addresses:
+   `sudo airodump-ng -c <channel> --bssid <BSSID> -w output wlan0mon`
+4. Use `MAC Changer` to spoof the MAC address and connect to the AP bypassing the mac filtering.
+
+**Deauthentication Attacks:**
+Deauthentication attacks disrupt the connection between a client and an access point by sending deauthentication frames. The procedure involves:
+1. Use `aireplay-ng` to send deauthentication packets to the target client: (we need to follow the first 3 steps again to get client mac address)
+   `sudo aireplay-ng --deauth 25 -a <AP-BSSID> -c <Client-MAC> wlan0mon`
+
+**WPA Cracking:**
+WPA cracking aims to capture a WPA handshake and then crack the passphrase. The hosts outlined the steps as follows:
+1. If necessary, use `Aireplay-ng` to force a handshake by deauthenticating clients.
+1. Capture the WPA handshake by sniffing network traffic on a specific channel and BSSID:
+   `sudo airodump-ng -c <channel> --bssid <BSSID> -w capture wlan0mon`
+2. Once the handshake is captured, attempt to crack the WPA password using `aircrack-ng`:
+   `sudo aircrack-ng -a2 -b <BSSID> -w /path/to/wordlist capture.cap`
