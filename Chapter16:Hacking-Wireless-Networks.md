@@ -65,3 +65,47 @@
    - 48-bit IV, AES CCMP, 128-bit encryption, secure but crackable.
 4. **WPA3:**
    - AES-GCMP-256, 192-bit encryption, personal and enterprise modes, currently robust.
+
+# Common Wireless Attacks
+
+## Authentication Attacks
+- **Definition:** Attacks aimed at the authentication mechanisms of a wireless network.
+- **Method:** Typically involve brute-forcing the pre-shared key (PSK) or password.
+- **Impact:** Allows attackers to gain unauthorized access by repeatedly attempting to guess the correct authentication credentials.
+
+## Rogue Access Points
+- **Definition:** Unauthorized access points installed within a network.
+- **Purpose:** Provides attackers with backdoor access to the internal network.
+- **Example:** An employee might install an access point for convenience, inadvertently creating a security vulnerability.
+
+## Evil Twin Attack
+- **Definition:** An attack where a malicious access point is set up to mimic a legitimate one.
+- **Method:** Attackers use the same SSID as the legitimate network to trick users into connecting.
+- **Impact:** Users unknowingly connect to the attacker’s access point, exposing their data to interception.
+
+## Honeypot AP
+- **Definition:** An access point set up to lure attackers.
+- **Purpose:** Attracts and traps attackers by posing as a legitimate, trusted network.
+- **Impact:** Helps to identify and analyze malicious activities.
+
+## Soft AP (Software Access Point)
+- **Definition:** An access point created through software rather than hardware.
+- **Method:** Malware turns a compromised device into an access point.
+- **Impact:** Allows attackers to connect to the infected device and access internal network resources.
+
+## Denial of Service (DoS) Attacks
+- **Definition:** Attacks aimed at disrupting the availability of the wireless network.
+- **Methods:**
+  - **Deauthentication Attacks:** Sending deauthentication frames to disconnect users repeatedly.
+  - **Disassociation Attacks:** Sending disassociation frames to force users to disconnect.
+  - **Jamming:** Emitting signals that interfere with the wireless communication.
+
+## Crack (Key Reinstallation Attack)
+- **Definition:** An attack on WPA and WPA2 protocols.
+- **Method:** Blocking message 3 of the four-way handshake, causing the access point to resend it with the same nonce.
+- **Impact:** Allows attackers to decipher the encryption keys by exploiting the reuse of nonces.
+
+## MAC Spoofing
+- **Definition:** Changing the MAC address of a device to bypass MAC filtering.
+- **Method:** Attackers sniff for allowed MAC addresses and change their device’s MAC address to match.
+- **Impact:** Grants unauthorized access to the network by appearing as a trusted device.
