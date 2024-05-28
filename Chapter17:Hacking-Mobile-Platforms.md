@@ -59,3 +59,62 @@
    - Understand the security risks associated with rooting.
    - Be cautious with third-party app installations.
    - Stay informed about security best practices for Android devices.
+
+# IOS Basics and Security
+
+### iOS Security Features
+- **Secure Boot**: Ensures that only trusted software runs during startup.
+- **Face ID and Touch ID**: Biometric authentication methods.
+- **Passcodes**: An additional layer of security.
+- **Code Signing**: Apps must be reviewed and signed by Apple before release.
+- **Sandboxing**: Apps run in isolated environments, preventing them from accessing unauthorized data.
+
+### Jailbreaking iOS
+- **Definition**: Removing restrictions imposed by iOS, allowing full access to the system.
+- **Pros**:
+  - Install unsigned apps.
+  - Customize the device beyond Apple's limitations.
+- **Cons**:
+  - Security vulnerabilities.
+  - Risk of malware.
+  - Potential to void the device warranty.
+
+### Types of Jailbreaking
+- **Tethered**: Requires connection to a computer to boot the device.
+- **Semi-Tethered**: Boots normally, but must be tethered for jailbroken functionality.
+- **Untethered**: Remains jailbroken after reboot without needing a computer.
+- **Semi-Untethered**: Requires an app to apply the jailbreak after reboot.
+
+### iOS Hacking Tools
+- **Network Analyzer Pro**: For information gathering.
+- **Trustjacking**: Exploiting the trusted device feature to access the device remotely.
+- **Malware Examples**: Pegasus, developed by the NSO Group, used for espionage.
+
+# Mobile Device Management
+
+**MDM Overview**
+- MDM enables managers to manage various mobile devices (Android, iOS, Chrome OS, etc.).
+- Functions include authentication, remote locking/wiping, jailbreaking/root detection, policy enforcement, and inventory tracking.
+- Real-time monitoring and reporting capabilities.
+
+**MDM Solutions**
+- **ManageEngine Mobile Device Manager Plus**: Supports Android, iOS, iPad, tvOS, macOS, Windows, Chrome OS.
+- **IBM MaaS360**: Mobility as a Service (MaaS) solution with Watson, primarily cloud-based.
+
+**BYOD Concept**
+- BYOD allows employees to use personal devices for work, raising both productivity and flexibility.
+- Trade-offs include company control over personal devices and potential security risks.
+- Employee consent is crucial for policies involving company control.
+
+**BYOD Policies and Risks**
+- Companies must define and communicate policies clearly.
+- Risks include increased attack surfaces, data commingling, insecure device disposal, unsecured networks, and loss of control over user activities.
+
+**Security Guidelines for BYOD**
+- Use antivirus and anti-spyware software.
+- Minimize app installs on business devices.
+- Enable remote deletion or disposal of data.
+- Prohibit sideloading, jailbreaking, and rooting.
+- Enforce strong password policies.
+- Implement disk encryption.
+- Regularly update patches and software.
