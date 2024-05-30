@@ -140,7 +140,7 @@
 - **DDoS via Jamming**: Overwhelming IoT devices' communication channels.
 - **Sybil Attack**: Overloading systems with false identities, e.g., causing traffic jams via manipulated GPS data.
 
-# Operational Technology Basics
+# OT Overview
 
 **Operational Technology (OT)**: 
 - Technologies used in manufacturing, energy, and critical infrastructure.
