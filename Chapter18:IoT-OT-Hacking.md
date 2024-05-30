@@ -117,4 +117,95 @@
 - **Insecure Third-party Components:** Ensure third-party components are secure.
 - **Hardware Access Ports:** Secure physical ports like JTAGs and UARTs to prevent unauthorized access.
 
-# 
+# ## Internet of Things (IoT): Attacks, Tools, and Countermeasures
+
+### Standard IoT Threats
+- **SQL Injections**
+- **Denial of Service (DoS) Attacks**
+- **Man-in-the-Middle (MitM) Attacks**
+- **Remote Code/Command Execution**
+- **Command Injections**
+
+### Demonstration: Remote Code Execution
+1. **Setup**: A FOSCAM connected to a wireless router.
+2. **Access**: Brute force the password using tools like Burp Suite or OWASP ZAP.
+3. **Exploit**:
+   - Find vulnerabilities in the web application of the device.
+   - Use developer tools to inspect and manipulate the Document Object Model (DOM).
+   - Inject commands to enable telnet and gain root access.
+
+# IoT Attacks Tools
+
+## Hardware Tools
+- **JTagulator**: Used for identifying JTAG interface pins.
+- **UART TTL to USB Device**: Connects UART to USB, enabling device communication.
+- **Bus Pirate**: Interfaces with hardware devices for testing and debugging.
+- **SOIC Clip**: Connects to integrated circuits for direct interaction.
+- **CR232 to USB Adapter**: Interfaces with Serial Peripheral Interface (SPI) chips.
+
+## Software Tools
+- **Shodan**: Searches for internet-connected devices and identifies vulnerabilities.
+- **Censys and Thingful**: Similar to Shodan for identifying and analyzing IoT devices.
+- **Wireshark/TCPDump**: Network protocol analyzers for monitoring network traffic.
+- **Burp Suite/OWASP ZAP**: Web application security testing tools.
+- **GNU Radio/RTL-SDR**: Software and hardware for software-defined radio (SDR) applications.
+
+## Unique IoT Attacks
+- **HVAC Attacks**: Exploiting web-managed heating, ventilation, and air conditioning systems.
+- **Rolling Code Attacks**: Intercepting and predicting codes used in key fobs.
+- **Bluetooth Attacks**: Exploits like BlueBorne and Bluejacking.
+- **DDoS via Jamming**: Overwhelming IoT devices' communication channels.
+- **Sybil Attack**: Overloading systems with false identities, e.g., causing traffic jams via manipulated GPS data.
+
+# Operational Technology Basics
+
+**Operational Technology (OT)**: 
+- Technologies used in manufacturing, energy, and critical infrastructure.
+- Involves managing, monitoring, and controlling industrial systems and operations.
+- Companies like Siemens, Schneider Electric, and Allen Bradley are prominent OT manufacturers.
+
+**Key Components and Systems**:
+1. **ICS (Industrial Control Systems)**:
+   - Systems that control industrial processes.
+   - Example: Control systems in a power plant.
+
+2. **SCADA (Supervisory Control and Data Acquisition)**:
+   - Gathers and presents data to operators.
+   - Operators use this data to make decisions and control processes.
+
+3. **DCS (Distributed Control Systems)**:
+   - Focuses on automation and process control with minimal operator interaction.
+
+4. **PLCs (Programmable Logic Controllers)**:
+   - Physical devices that control machinery and processes.
+   - Example: A PLC could control a valve or a pump in a manufacturing process.
+
+5. **RTUs (Remote Terminal Units)**:
+   - Similar to PLCs but more robust and suitable for harsh environments.
+   - Often have better environmental tolerances and higher autonomy.
+
+6. **BPCS (Basic Process Control Systems)**:
+   - Ensures operator decisions are implemented in the physical processes.
+   - Receives information and makes sure actions are executed.
+
+7. **SIS (Safety Instrumented Systems)**:
+   - Ensures safety by automatically handling anomalies and emergencies.
+   - Example: Shutting off power to prevent explosions.
+
+8. **HMI (Human Machine Interface)**:
+   - Interface through which operators interact with OT devices.
+   - Often touchscreen-based for ease of use.
+
+9. **IED (Intelligent Electronic Devices)**:
+   - Devices that receive data and issue control commands.
+   - Example: Tripping a breaker during a voltage anomaly.
+
+10. **IIoT (Industrial Internet of Things)**:
+    - Integration of IT and OT.
+    - Connects traditional OT systems to IT networks for enhanced management.
+
+**Security Challenges**:
+- **Plain Text Protocols**: Many OT protocols are not encrypted.
+- **Complexity**: High complexity can make security management difficult.
+- **Proprietary and Legacy Technology**: Hard to secure due to outdated systems and proprietary designs.
+- **Convergence Issues**: Combining IT and OT brings IT security vulnerabilities into OT environments.
