@@ -117,23 +117,6 @@
 - **Insecure Third-party Components:** Ensure third-party components are secure.
 - **Hardware Access Ports:** Secure physical ports like JTAGs and UARTs to prevent unauthorized access.
 
-# ## Internet of Things (IoT): Attacks, Tools, and Countermeasures
-
-### Standard IoT Threats
-- **SQL Injections**
-- **Denial of Service (DoS) Attacks**
-- **Man-in-the-Middle (MitM) Attacks**
-- **Remote Code/Command Execution**
-- **Command Injections**
-
-### Demonstration: Remote Code Execution
-1. **Setup**: A FOSCAM connected to a wireless router.
-2. **Access**: Brute force the password using tools like Burp Suite or OWASP ZAP.
-3. **Exploit**:
-   - Find vulnerabilities in the web application of the device.
-   - Use developer tools to inspect and manipulate the Document Object Model (DOM).
-   - Inject commands to enable telnet and gain root access.
-
 # IoT Attacks Tools
 
 ## Hardware Tools
