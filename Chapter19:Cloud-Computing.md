@@ -123,3 +123,115 @@
 - **Container Breakout:** Prevent attackers from accessing the host system.
 - **Insecure Storage:** Securely store API keys, usernames, and passwords.
 - **Resource Exhaustion:** Prevent noisy neighbor attacks that exhaust system resources.
+
+# Hacking Cloud Services
+
+## Cloud Vulnerability Scans
+- **Definition**: Automated tools to discover vulnerabilities specifically in cloud environments.
+
+## Tools for Cloud Security Scanning
+1. **Trivy**
+   - Comprehensive security scanner for container images, Git repositories, virtual machine images, Kubernetes, and AWS.
+   - Detects CVEs, IAC issues, sensitive information leaks, and software license violations.
+
+2. **Clair**
+   - Open-source tool for static analysis of vulnerabilities in application containers (OCI and Docker).
+
+3. **DAGDA**
+   - Performs static analysis for known vulnerabilities, malware, and anomalous activities in Docker images/containers.
+
+4. **Twistlock**
+   - Cloud-native cybersecurity platform for full lifecycle security in containerized environments and cloud-native applications.
+
+5. **Sysdig**
+   - Focuses on Kubernetes security, enumerating key storage, API objects, configuration files, and open ports.
+
+## S3 Discovery and Enumeration
+- **Objective**: Identify open S3 buckets to uncover sensitive information (e.g., AWS keys, usernames, passwords).
+- **Common Tools**:
+   - **Grey Hat Warfare**: Web-based tool to search for publicly accessible S3 buckets.
+   - **S3 Scanner**: Command-line tool for scanning S3 buckets.
+   - **Bucket Kicker**: Script to identify and analyze open S3 buckets.
+
+## AWS Enumeration
+- **Purpose**: Identify misconfigurations and vulnerabilities in AWS roles, permissions, and services.
+- **Techniques**:
+   - **AWS CLI**: Command-line interface to query IAM roles, permissions, and access keys.
+   - **Pacu**: Framework for pentesting AWS environments, automating the discovery of misconfigurations.
+   - **Cloud Goat**: Tool to create an intentionally vulnerable AWS environment for testing.
+
+# Cloud Security Controls Overview
+
+## Introduction
+Cloud security controls are mechanisms put in place to secure cloud systems, ensuring they are protected from various threats. These controls can be standard (traditional) or cloud-specific.
+
+## Standard Security Controls
+These controls are not exclusive to cloud environments but are essential for securing any IT infrastructure.
+
+1. **Software Development Lifecycle (SDLC)**
+   - Ensure secure development practices to prevent vulnerabilities.
+   - Example: Preventing AWS credential leaks.
+
+2. **Patches and Updates**
+   - Regularly update and patch systems to close security gaps.
+   - Example: Keeping the operating system and applications updated.
+
+3. **Changing Defaults**
+   - Always change default settings, such as passwords, to prevent unauthorized access.
+
+4. **Firewalls, IDSs, IPSs, and WAFs**
+   - Implement these to monitor and block malicious activities.
+
+5. **Logging and Monitoring**
+   - Perform continuous logging and monitoring to detect and respond to anomalies.
+
+6. **Denial of Service (DoS) Protection**
+   - Use tools to mitigate DoS and Distributed DoS attacks.
+
+7. **Encryption**
+   - Encrypt data to protect it in transit and at rest.
+
+8. **Antivirus and Endpoint Protection**
+   - Use antivirus software and endpoint detection and response (EDR) solutions.
+
+## Cloud-Specific Security Controls
+These controls are tailored for cloud environments and address unique cloud security challenges.
+
+1. **S3 Bucket Policies**
+   - Configure permissions carefully to control access to S3 buckets.
+   - Example: AWS S3 policies to restrict or allow access.
+
+2. **Docker Security Practices**
+   - Use trusted Docker images and follow security best practices.
+   - Examples:
+     - Keep Docker updated.
+     - Limit container capabilities.
+     - Use static analysis tools like Trivy.
+
+3. **Kubernetes Security Practices**
+   - Apply security measures specific to Kubernetes environments.
+   - Examples:
+     - Restrict access to the Kubernetes API.
+     - Use namespaces and network policies.
+     - Regularly review and audit security settings.
+
+## Security Tools
+Several tools can help with assessing and improving cloud security.
+
+1. **Qualys**
+   - Provides a cloud platform for vulnerability scanning.
+
+2. **Prisma Cloud (Palo Alto Networks)**
+   - Offers comprehensive cloud-native application protection.
+
+3. **Aqua Security**
+   - Focuses on container security and cloud-native environments.
+
+4. **Tenable**
+   - Well-known for its vulnerability management solutions.
+
+5. **Kubebench (GitHub)**
+   - An open-source tool that checks Kubernetes deployments against CIS benchmarks.
+
+6. **Sumo Logic**
+   - Provides cloud-native SaaS analytics for security and observability.
