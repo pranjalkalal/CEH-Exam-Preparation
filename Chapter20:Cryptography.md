@@ -98,6 +98,7 @@ Digital signatures use a combination of encryption and hashing. They ensure that
 ### Homomorphic Encryption
 - Allows encrypted data to be processed without needing to decrypt it first, ensuring data remains secure even during processing.
 
+
 # Cryptography Tools
 
 ### Introduction to Cryptography Tools
@@ -125,3 +126,123 @@ Digital signatures use a combination of encryption and hashing. They ensure that
 - **GPG4Win**: A suite of tools for Windows, including Cleopatra for managing keys and GPGEX for encryption and decryption through the context menu.
 - **BC Text Encoder**: A simple tool for encoding and decoding text with a password or key, although its interface may not be very user-friendly.
 
+
+# Public Key Infrastructure (PKI)
+
+### Introduction to PKI
+- **Definition**: Public Key Infrastructure (PKI) involves generating, creating, distributing, managing, and revoking digital certificates.
+- **Components**: Includes public keys, certificates, and the management of these elements.
+
+### PKI Processes
+- **Certificate Authority (CA)**: Issues, validates, and revokes certificates.
+- **Registration Authority (RA)**: Pre-screens certificate requests and verifies requester identity before forwarding to the CA.
+- **Validation Authority (VA)**: Validates digital certificates and manages the Certification Revocation List (CRL).
+
+### Using PKI
+- **Generating Certificates**: The process involves the subject (user or organization) applying for a certificate, RA verifying the request, CA issuing the certificate, and VA validating it.
+- **Certificate Services**: Built into Windows Server, allowing for the management of certificates, including issuing, revoking, and handling certificate requests.
+
+### Practical Examples
+- **HTTPS Websites**: Use certificates to establish secure connections.
+- **VPN Connections**: Certificates can secure VPN tunnels using IPsec.
+- **User Authentication**: Systems like Windows Server and Active Directory use certificates for user and device authentication.
+
+### Certificate Management
+- **Windows Server Certificate Services**: Provides a management console to handle all certificate-related tasks, such as issuing, revoking, and managing certificate requests.
+- **Third-Party CA Services**: Organizations like VeriSign and DigiCert provide globally trusted certificates stored securely to prevent compromise.
+
+### Self-Signed Certificates
+- **Usage**: Suitable for internal organization use where the entities involved trust each other.
+- **Limitations**: Not ideal for public use as they are not recognized by external parties without explicit trust settings, potentially leading to security warnings.
+
+### Summary of Key Concepts
+- **Subject**: User or organization requesting a certificate.
+- **CA**: Issues and manages certificates.
+- **RA**: Verifies requester's identity before sending the request to the CA.
+- **VA**: Validates certificates and manages revocation lists.
+- **Self-Signed Certificates**: Used within trusted environments but not for public use.
+
+# Cryptanalysis
+**Cryptanalysis** is the study of cryptosystems to find exploitable weaknesses.
+
+## Methods of Cryptanalysis
+1. **Linear Method (Known Plain Text Attack)**:
+   - Requires both encrypted and plaintext data.
+   - Used to reverse engineer the decryption key.
+   - Guessing common words or phrases can help in finding the plaintext.
+
+2. **Differential Method (Chosen Plain Text Attack)**:
+   - Attacker defines the plaintext inputs and analyzes the results.
+   - Aimed at discovering the encryption key by chosen inputs and outputs.
+   - Similar to linear but more controlled since the plaintext is chosen.
+
+3. **Integral Method**:
+   - A specific type of differential attack.
+   - Works with larger inputs, often used in block ciphers.
+
+## Code Breaking Techniques
+1. **Brute Force Attack**:
+   - Systematically tries all possible keys until the correct one is found.
+   - Extremely time-consuming.
+
+2. **Frequency Analysis**:
+   - Analyzes the frequency of letters or groups of letters in the ciphertext.
+   - Used to break substitution ciphers by matching frequencies to known patterns.
+
+## Additional Attack Types
+1. **Man-in-the-Middle Attack**:
+   - The attacker intercepts and possibly alters the communication between two parties who believe they are directly communicating with each other.
+
+2. **Meet-in-the-Middle Attack**:
+   - Reduces the time to break ciphers using multiple keys.
+   - Involves known plaintext attacks from both sides of the encryption/decryption process.
+
+3. **Side Channel Attacks**:
+   - Exploits physical characteristics of the cryptosystem such as power usage, electromagnetic emissions, or audio emanations to gain information about the cryptosystem.
+
+4. **Hash Collisions**:
+   - Occur when two different inputs produce the same hash output.
+   - Dangerous because it can allow unauthorized access if a different input produces a matching hash.
+
+5. **Related Key Attacks**:
+   - Exploits relationships between keys to uncover the key or data.
+   - Common in older encryption methods like WEP where keys are reused.
+
+6. **Rubber Hose Attack**:
+   - A physical attack where secrets are extracted from a person through coercion or torture.
+
+## Tools for Cryptanalysis
+- **Crack Station**: An online tool for cracking hashed passwords.
+   - Supports various hash types including MD5, SHA-1, and others.
+
+
+# Crypto Attack Countermeasures
+
+## Secure Key Sharing
+- Protect private information by securely sharing keys to prevent unauthorized access.
+- Avoid common pitfalls like emailing keys, which can lead to compromise if intercepted.
+
+## Symmetric vs. Asymmetric Encryption
+- Symmetric algorithms are stronger but require secure key sharing.
+- Asymmetric algorithms offer easier key management but may lack robust encryption.
+- Combining both types of encryption enhances security.
+
+## Encryption Strength
+- Use encryption schemes with higher bit lengths for better security.
+- AES 256 and RSA are recommended due to their proven track record.
+
+## Avoiding Homegrown Encryption
+- Stick to established encryption methods like AES and RSA rather than creating custom systems.
+- Homegrown encryption lacks the vetting and community support of widely-used encryption standards.
+
+## Avoid Hard-Coded Credentials
+- Hard-coded keys pose a significant security risk, making it easy for attackers to reverse engineer and compromise systems.
+- Encrypt keys with passwords or passphrases to add an extra layer of security.
+
+## Intrusion Detection Systems (IDS)
+- IDS can monitor key exchanges and detect suspicious activities like man-in-the-middle attacks.
+- Ensure IDS systems are robust and properly vetted to avoid security vulnerabilities.
+
+## Key Stretching
+- Increase the length of keys to enhance security, similar to using longer passwords to resist brute-force attacks.
+- Key stretching techniques like PBKDF2 and bcrypt strengthen encryption by making it more difficult to crack.
