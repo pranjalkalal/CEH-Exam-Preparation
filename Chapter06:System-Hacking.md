@@ -59,7 +59,7 @@
 - Hashcat: A powerful password-cracking tool that supports multiple hash algorithms and attack modes, including brute-force, dictionary, and mask attacks.
 - John the Ripper: Another popular password-cracking tool that supports various hash formats and attack modes, including dictionary and brute-force attacks.
 - Lophtrack
-- 
+
 ## Rainbow Tables:
 - Rainbow tables are precomputed tables used for reversing cryptographic hash functions, typically for password cracking.
 - They contain sets of plaintext passwords and their corresponding hash values.
@@ -82,8 +82,6 @@ Countermeasures:
 - Control Flow Integrity (CFI): CFI ensures that the control flow of a program follows a predetermined set of rules, preventing attackers from hijacking program execution through buffer overflow exploits.
 
 # Privilege Escalation
-what is panther and sysprep under system32 folder and what is unattended xml. 
-
 Privilege escalation refers to the process of gaining higher levels of access or privileges on a system or network than what was initially granted to a user or process. It's a common goal for attackers who have gained initial access to a system with limited privileges. There are two types:
 
 1. Horizontal Privilege Escalation:
