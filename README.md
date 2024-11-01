@@ -1,4 +1,4 @@
-Welcome to the CEH Exam Preparation repository! This resource is designed to help you prepare for the Certified Ethical Hacker (CEH) exam efficiently and comprehensively. It compiles a wide array of notes, guides, and materials from both free and paid sources.
+Welcome to the CEH V12 Exam Preparation repository! This resource is designed to help you prepare for the Certified Ethical Hacker (CEH) exam efficiently and comprehensively. It compiles a wide array of notes, guides, and materials from both free and paid sources.
 📚 Contents
 
     Comprehensive Notes: Detailed notes covering all major CEH exam topics.
