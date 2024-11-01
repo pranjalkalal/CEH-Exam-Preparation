@@ -82,6 +82,9 @@ Threat hunting is the proactive process of searching for signs of malicious acti
 
 ***Risk management*** is the process of identifying, assessing, prioritizing, and mitigating risks to minimize their impact.
 
+![image](https://github.com/user-attachments/assets/31968061-ff00-4f52-b226-cc6d821a5aed)
+
+
 # Cyber Threat Intel
 Cyber threat intelligence (CTI) involves collecting, analyzing, and disseminating information about cybersecurity threats to help organizations identify, understand, and mitigate potential risks. It provides insights into the tactics, techniques, and procedures (TTPs) used by threat actors, as well as information about vulnerabilities, indicators of compromise (IOCs), and emerging threats.
 
