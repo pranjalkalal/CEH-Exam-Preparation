@@ -25,6 +25,38 @@ An insider attack occurs when a person with authorized access to an organization
 Also known as supply chain attacks, and it occurs when an attacker exploits vulnerabilities in a supplier's systems, software, or processes to gain unauthorized access to the target organization's network, data, or infrastructure. 
 > For example, the NotPetya malware, which originated from a compromised Ukrainian accounting software update, spread to thousands of systems worldwide, causing widespread disruption and financial losses.
 
+# Information Warfare and Related Strategies
+
+## 1. Psychological Warfare
+- Utilizes tactics like **struggle sessions** to manipulate beliefs over time, leading to compliance or acceptance.
+- **Stockholm syndrome** exemplifies captives identifying with captors.
+
+## 2. Hacker Warfare
+- Hackers act as soldiers in cyber and information wars, conducting attacks on targeted systems and theft.
+- Governments respond with sanctions and hunt down hackers, as seen in the **Colonial Pipeline hack**.
+
+## 3. Economic Warfare
+- Targets adversaries' financial systems, exemplified by U.S. sanctions on Russia during the Ukraine conflict.
+- Includes disrupting payment processing, stealing intellectual property, and spreading false reputational claims.
+
+## 4. Cyber Warfare
+- A subset of information warfare that includes:
+  - **APTs (Advanced Persistent Threats)**: Covertly infiltrate and maintain access to systems.
+  - **Simulated Warfare**: Saber-rattling through military exercises to deter adversaries.
+
+## 5. Strategies in Warfare
+### Defensive Strategies
+- Detection and alerts
+- Emergency preparedness
+- Systems like EDR and firewalls
+
+### Offensive Strategies
+- Web attacks
+- System hacking
+- Man-in-the-middle attacks
+- Session hijacking
+
+
 # Cyber Kill Chain
 Cyber Kill chain: A series of steps that describe the progression of a cyber attack from reconnaissance all the way to exfiltration
 - Developed by Lockheed Martin, the Cyber Kill Chain provides a framework for understanding and countering advanced persistent threats.
@@ -55,15 +87,55 @@ TTPs stand for Tactics, Techniques, and Procedures. They are the methods and app
 TTPs help security professionals understand and respond to cyber threats by providing insights into how attackers operate and what defensive measures can be taken to mitigate risks.
 
 # Common Adversarial Behaviours
-## Web Shell
-A web shell is a malicious script or program that attackers upload to a compromised web server to gain remote access and control. It allows attackers to execute commands, upload or download files, and perform other malicious activities on the server. Web shells are commonly used in website defacements, data breaches, and other cyberattacks.
+
+## Covert Channels
+- Data is sent back to the attacker using HTTP, disguised as normal traffic.
+- Uses user agent string for covert communication, making it less detectable in logs.
+- HTTPS adds encryption, complicating detection of malicious activities.
+
+## Defensive Measures
+- **Monitoring and Logging**: Essential to detect and respond to covert channels and other attacks.
+- **Web Application Firewall (WAF)**:
+  - Can decode and analyze traffic for malicious content.
+  - Alerts on suspicious activity.
+- **Intrusion Detection Systems (IDS) and Intrusion Prevention Systems (IPS)**:
+  - Need proper tuning to detect covert communications.
+- **Manual Inspection**: Regular review of logs and alerts for anomalies.
+
+## Importance of Programming
+- Learning programming helps automate log monitoring and threat detection.
+- Writing scripts can refine detection processes, showcasing skill and enhancing job performance.
+
+## Web Shells
+- Common tool used by attackers for remote control after compromising a server.
+- Types of web shells: ASP, ASPX, CFM, JSP, Perl, PHP.
+- Can execute commands and upload files through compromised web servers.
+- **Defense Against Web Shells**:
+  - Monitor web directories for unauthorized files.
+  - Utilize WAFs, antivirus, endpoint detection, and response (EDR) tools.
+
+## Command and Control (C2) Servers
+- C2 servers communicate with compromised systems.
+- Known malicious URLs can be identified and blocked using databases.
+- Regularly monitor for traffic to known C2 servers.
 
 ## DNS Tunneling
-DNS tunneling is a technique used by attackers to bypass network security controls and exfiltrate data from a target network. It involves embedding data within DNS queries or responses, which are then transmitted over the DNS protocol. By encoding data in DNS traffic, attackers can evade traditional security measures that may not inspect DNS traffic thoroughly.
+- Malicious data can be exfiltrated through DNS, often bypassing firewalls.
+- Tools like DNSCat2, Iodine, and Heyoka are used for DNS tunneling.
+- **Defense**:
+  - Monitor DNS traffic for unusual patterns or commands.
 
 ## Data Staging
+- Attackers stage data in a hidden area of the system before exfiltration.
+- **Defense**:
+  - Monitor for unusual changes, such as new directories.
+  - Regularly audit system for unexpected changes.
+  - Maintain backups to recover from potential data loss.
 
-## Internal Recon
+## Conclusion
+- Continuous monitoring and awareness of system behaviors are crucial for defending against covert channels and attacks.
+- Employ both offensive and defensive strategies to enhance security posture.
+
 
 # Threat Hunting
 Threat hunting is the proactive process of searching for signs of malicious activity or security threats within an organization's network, systems, or data. It involves systematically analyzing and investigating data, logs, and other sources of information to identify potential security incidents or indicators of compromise that may have evaded traditional security controls. The goal of threat hunting is to detect and respond to threats before they can cause damage or disruption, thereby enhancing the organization's overall cybersecurity posture.
@@ -159,8 +231,182 @@ DREAD is a risk assessment model used to evaluate and prioritize security risks 
 - Affected users: The number of users or systems affected by the vulnerability.
 - Discoverability: The ease with which the vulnerability can be discovered or detected.
 
+# Incident Management and Response Overview
+
+## Software Tools
+- **Forensic Tools:** 
+  - **Autopsy** and **FTK (Forensic Toolkit)** are highlighted as competent forensic tools. 
+  - Autopsy can be installed on Kali Linux or easily obtained for hands-on experience.
+  
+- **Write Blockers:**
+  - Essential for making forensically sound copies of compromised drives.
+  
+- **Forensic Operating Systems:**
+  - **Caine:** A virtual machine with built-in forensic tools.
+  - **Remnex:** Primarily used for malware analysis.
+
+## Incident Response Process
+1. **Documentation:**
+   - Document everything that happens during an incident.
+   - Important to take notes, screenshots, and identify security incidents precisely.
+
+2. **Communication:**
+   - Use secure communication channels to notify relevant parties (e.g., HR, accounting).
+   - Avoid using standard email due to potential interception by attackers.
+
+3. **Triage:**
+   - Analyze, confirm, categorize, and prioritize security incidents.
+   - Similar to a battlefield medic assessing which soldiers to treat first based on severity.
+
+4. **Notification:**
+   - Inform stakeholders, management, and possibly the press depending on the incident's severity.
+
+5. **Containment:**
+   - Segregate the affected system to prevent further damage. 
+   - Options include pulling the plug or quarantining the malware.
+
+6. **Evidence Gathering:**
+   - Collect tangible evidence (e.g., duplicate drives, network traffic captures) while maintaining forensic soundness.
+
+7. **Eradication:**
+   - Remove the cause of the problem (e.g., reimage affected machines, apply patches).
+
+8. **Recovery:**
+   - Restore systems to operational status post-eradication.
+
+9. **Post-Incident Analysis:**
+   - Conduct After Action Reports (AARs) to learn from the incident.
+   - Document lessons learned and refine policies/procedures.
+
+## Conclusion
+- Incident management is critical, requiring a systematic approach to identify, respond, and learn from incidents.
+
+
+# Artificial Intelligence and Machine Learning Overview
+
+## Introduction
+- Hosts Sophie and Daniel discuss machine learning (ML) and artificial intelligence (AI), emphasizing the need for familiarity with these concepts for the CEH exam and cybersecurity.
+
+## Definitions
+- **Artificial Intelligence (AI):** 
+  - Machines designed to mimic human thought processes and decision-making. 
+  - AI can analyze large datasets programmatically, making it useful in various applications, including cybersecurity.
+
+- **Machine Learning (ML):**
+  - A subset of AI focused on learning from data.
+  - Comprises conditional statements (if-then logic) to classify data based on provided datasets.
+
+## Key Concepts in Machine Learning
+1. **Supervised Learning:**
+   - Involves labeled datasets to train models (e.g., categorizing fruits and cars).
+   - Enables classification and prediction based on past data.
+
+2. **Unsupervised Learning:**
+   - Works with unlabeled datasets to find patterns and group data based on similarities (e.g., clustering).
+
+### Learning Techniques
+- **Supervised Learning Techniques:**
+  - **Classification:** Identifying categories based on labeled data.
+  - **Regression:** Understanding relationships between variables to make predictions.
+
+- **Unsupervised Learning Techniques:**
+  - **Clustering:** Grouping data based on attributes.
+  - **Association:** Finding relationships between different variables (e.g., recommendations).
+  - **Dimensionality Reduction:** Simplifying data inputs for easier processing.
+
+## Applications in Cybersecurity
+- AI and ML are utilized in:
+  - **Endpoint Security:** Monitoring unusual behavior (e.g., access anomalies).
+  - **Authentication:** Improving security measures against unauthorized access.
+  - **Phishing Detection:** Identifying and mitigating phishing attempts.
+
+## Conclusion
+- Understanding AI and ML terminology and concepts is essential for the CEH exam and practical applications in cybersecurity.
+
+# Standards and Regulations Overview
+
+## Introduction
+- **Hosts**: Sophie and Daniel
+- **Topic**: Importance of standards and regulations in cybersecurity.
+
+## Key Points
+1. **Regulatory Importance**:
+   - Cybersecurity professionals often work in regulated industries.
+   - Standards help ensure compliance and data protection.
+   - Regulations provide guidelines for handling customer data responsibly.
+
+2. **Standards Overview**:
+   - **PCI DSS (Payment Card Industry Data Security Standard)**:
+     - Essential for organizations handling credit card transactions.
+     - Compliance is crucial for operational viability.
+     - Resources for PCI DSS can be found on the PCI Standards Council website.
+  
+   - **ISO 27001:2013**:
+     - International standard for information security management systems.
+     - Useful for cybersecurity professionals; understanding it can lead to job opportunities.
+     - Accreditations available for organizations seeking ISO 27001 compliance.
+
+   - **HIPAA (Health Insurance Portability and Accountability Act)**:
+     - Protects personal health information (PHI).
+     - Healthcare organizations must comply to prevent identity theft and fraud.
+     - Cybersecurity experts are needed to ensure compliance and secure sensitive information.
+
+   - **Sarbanes-Oxley Act (SOX)**:
+     - Ensures corporate transparency and accountability in financial reporting.
+     - Developed in response to corporate scandals like Enron.
+     - Aims to protect investors by improving the accuracy of corporate disclosures.
+   - ** Sarbanes-Oxley Act (SOX)**:
+     - Requires outside auditors for corporate accountability to prevent insider trading.
+     - Focuses on corporate and criminal fraud accountability, especially in financial disclosures and conflict of interest.
+     - Includes aspects of cybersecurity management.
+
+   - ** Digital Millennium Copyright Act (DMCA)**:
+	- Protects intellectual property (IP) and copyrighted works in digital formats.
+	- Complicates the legality of making backup copies of encrypted DVDs; while it's legal to own a digital copy, decrypting the DVD to create it is illegal.
+
+   - ** Federal Information Security Modernization Act (FISMA)**:
+	- Governs information security policies for U.S. federal entities.
+	- Provides guidelines for information security management.
+
+   - ** General Data Protection Regulation (GDPR)**:
+	- EU regulation that grants individuals rights over their personal data.
+	- Affects businesses handling data within the EU; requires timely reporting of breaches and imposes significant fines for non-compliance.
+	- Following Brexit, the UK created its own version, the Data Protection Act (DPA), to align with GDPR standards.
+
+## Conclusion
+- Understanding these regulations is essential for cybersecurity professionals.
+- Familiarity with compliance standards opens up career opportunities in various industries.
+
 # CEH Hacking Methodolgy
 https://www.eccouncil.org/cybersecurity-exchange/ethical-hacking/what-is-ethical-hacking/
+
+# MITRE ATT&CK Framework Overview
+
+## What is the MITRE ATT&CK Framework?
+- A **knowledge base** of adversary tactics and techniques derived from real-world observations.
+- Used for **threat modeling** by both blue teams (defensive) and red teams (offensive).
+- Helps organizations identify common attack vectors and improve cybersecurity measures.
+
+## Key Features
+- **Accessible Website**: [attack.mitre.org](https://attack.mitre.org) contains various matrices.
+- **Matrices**: Includes Enterprise, Mobile, and ICS (Industrial Control Systems) matrices.
+- **Tactics and Techniques**:
+  - **Tactics**: Represent the *why* of an attack (e.g., achieving credential access).
+  - **Techniques**: Represent the *how* an adversary achieves a goal (e.g., dumping credentials).
+  - **Sub-techniques**: More specific methods within a technique (e.g., specific ways to abuse elevation controls).
+
+## Practical Use
+- Enables organizations to prepare their systems against common attack methods.
+- Supports detailed threat modeling and planning for red and blue team operations.
+- **Attack Navigator**: A web-based tool to visualize and annotate attack matrices, aiding in analysis of adversary behaviors and techniques.
+
+## Resources
+- Extensive documentation and resources available on the MITRE website for further learning.
+- Data can be exported to Excel for easier sorting and analysis.
+
+## Conclusion
+Understanding the MITRE ATT&CK framework is crucial for cybersecurity professionals to effectively respond to threats and improve defensive strategies. It is a widely recognized tool in the cybersecurity field.
+
 
 # Diamond Model of Intrusion Analysis
 The Diamond Model of Intrusion Analysis is a framework used to understand and analyze cyber threats. The model emphasizes the interactions between these elements and how they contribute to cyber attacks. It helps analysts identify TTPs used by adversaries, assess their capabilities and infrastructure, and understand their motivations and objectives.
