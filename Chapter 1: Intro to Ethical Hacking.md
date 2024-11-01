@@ -355,20 +355,20 @@ DREAD is a risk assessment model used to evaluate and prioritize security risks 
      - Ensures corporate transparency and accountability in financial reporting.
      - Developed in response to corporate scandals like Enron.
      - Aims to protect investors by improving the accuracy of corporate disclosures.
-   - ** Sarbanes-Oxley Act (SOX)**:
+   - **Sarbanes-Oxley Act (SOX)**:
      - Requires outside auditors for corporate accountability to prevent insider trading.
      - Focuses on corporate and criminal fraud accountability, especially in financial disclosures and conflict of interest.
      - Includes aspects of cybersecurity management.
 
-   - ** Digital Millennium Copyright Act (DMCA)**:
+   - **Digital Millennium Copyright Act (DMCA)**:
 	- Protects intellectual property (IP) and copyrighted works in digital formats.
 	- Complicates the legality of making backup copies of encrypted DVDs; while it's legal to own a digital copy, decrypting the DVD to create it is illegal.
 
-   - ** Federal Information Security Modernization Act (FISMA)**:
+   - **Federal Information Security Modernization Act (FISMA)**:
 	- Governs information security policies for U.S. federal entities.
 	- Provides guidelines for information security management.
 
-   - ** General Data Protection Regulation (GDPR)**:
+   - **General Data Protection Regulation (GDPR)**:
 	- EU regulation that grants individuals rights over their personal data.
 	- Affects businesses handling data within the EU; requires timely reporting of breaches and imposes significant fines for non-compliance.
 	- Following Brexit, the UK created its own version, the Data Protection Act (DPA), to align with GDPR standards.
