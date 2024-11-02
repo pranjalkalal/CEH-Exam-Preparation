@@ -16,7 +16,7 @@ The notes combine the insights and expertise of multiple sources, including cont
 
 📜 License
 
-This project is licensed under LICENSE (specify the type).
+This project is licensed under any LICENSE (specify the type).
 
 
 🔗 Resources
