@@ -323,11 +323,8 @@ DREAD is a risk assessment model used to evaluate and prioritize security risks 
 ## Conclusion
 - Understanding AI and ML terminology and concepts is essential for the CEH exam and practical applications in cybersecurity.
 
-# Standards and Regulations Overview
+# Standards and Regulations
 
-## Introduction
-- **Hosts**: Sophie and Daniel
-- **Topic**: Importance of standards and regulations in cybersecurity.
 
 ## Key Points
 1. **Regulatory Importance**:
@@ -361,17 +358,17 @@ DREAD is a risk assessment model used to evaluate and prioritize security risks 
      - Includes aspects of cybersecurity management.
 
    - **Digital Millennium Copyright Act (DMCA)**:
-	- Protects intellectual property (IP) and copyrighted works in digital formats.
-	- Complicates the legality of making backup copies of encrypted DVDs; while it's legal to own a digital copy, decrypting the DVD to create it is illegal.
+   	 - Protects intellectual property (IP) and copyrighted works in digital formats.
+	   - Complicates the legality of making backup copies of encrypted DVDs; while it's legal to own a digital copy, decrypting the DVD to create it is illegal.
 
    - **Federal Information Security Modernization Act (FISMA)**:
-	- Governs information security policies for U.S. federal entities.
-	- Provides guidelines for information security management.
+	   - Governs information security policies for U.S. federal entities.
+	   - Provides guidelines for information security management.
 
    - **General Data Protection Regulation (GDPR)**:
-	- EU regulation that grants individuals rights over their personal data.
-	- Affects businesses handling data within the EU; requires timely reporting of breaches and imposes significant fines for non-compliance.
-	- Following Brexit, the UK created its own version, the Data Protection Act (DPA), to align with GDPR standards.
+	   - EU regulation that grants individuals rights over their personal data.
+     - Affects businesses handling data within the EU; requires timely reporting of breaches and imposes significant fines for non-compliance.
+	   - Following Brexit, the UK created its own version, the Data Protection Act (DPA), to align with GDPR standards.
 
 ## Conclusion
 - Understanding these regulations is essential for cybersecurity professionals.
