@@ -9,10 +9,149 @@ Network scanning is the active process of utilizing networking technologies to g
 4. Network Scanning/Mapping: Network mapping involves creating a visual representation or map of a computer network to identify its structure, layout, and interconnected devices. It helps administrators understand the network topology, identify potential security risks, and plan for network management and security measures. Network mapping tools use techniques such as ICMP echo requests, traceroute, and SNMP queries to gather information about network devices and connections.
    - Host Discovery: Host discovery involves identifying active hosts (devices) on a network. It typically involves sending probe packets to IP addresses within a specified range and analyzing responses to determine which hosts are reachable and responsive. Host discovery techniques include ICMP echo requests (ping), ARP requests, TCP SYN scans, and UDP scans. The goal of host discovery is to determine the presence and availability of hosts on a network.
   
-# Networ Scanning Tools
-Tools to use: nmap, hping3, masscan, metasploit
+# Network Scanning Tools
 
-# Scans Examples/Types
+Network scanning is a fundamental skill for ethical hacking, used to identify and analyze hosts, services, and open ports within a network. This guide provides an overview of essential network scanning tools and techniques.
+
+## 1. **Nmap**
+   - **Overview**: Known as the "king" of network scanning tools, Nmap is versatile and widely used for host discovery, service versioning, and vulnerability detection.
+   - **Basic Usage**: Run `nmap [target]` to get started.
+   - **Key Features**:
+     - **Host Discovery**: Identifies live hosts.
+     - **Port Scanning**: Customizable scans for specific port ranges.
+     - **Service Detection**: Recognizes running services and their versions.
+     - **Scripting Engine (NSE)**: Provides scripts for vulnerability detection.
+     - **Timing/Performance Adjustments**: Adjust scan speed to avoid IDS/IPS detection.
+     - **Output Options**: Saves results in various formats (e.g., XML, grepable).
+   - **Documentation**: [Nmap.org](https://nmap.org) has extensive resources, including a free portion of the Nmap book.
+
+## 2. **Unicornscan**
+   - **Overview**: A fast, high-performance network scanner, particularly suited for scanning large networks or the internet.
+   - **Usage**: Simple commands, e.g., `unicornscan [target]`.
+   - **Limitations**: Generally requires IP address input, sometimes not as thorough as Nmap.
+
+## 3. **Masscan**
+   - **Overview**: Known for its speed, Masscan is ideal for large-scale internet scans.
+   - **Key Features**:
+     - **Internet-Scale Scanning**: Efficient for identifying open ports across many hosts.
+     - **Compatible with Nmap Syntax**: Can use similar options for familiarity.
+   - **Usage Example**: `masscan -p80 --rate=1000 [target network]`.
+
+## 4. **Hping3**
+   - **Overview**: A packet crafting tool, excellent for sending custom packets, ideal for testing network responses.
+   - **Key Features**:
+     - **Packet Crafting**: Supports ICMP, TCP, and UDP packet creation.
+     - **Scanning Modes**: Offers SYN scans, ICMP mode, etc.
+   - **Example**: `hping3 -S -p 80 -c 1 [target]` to send a single SYN packet to port 80.
+
+## 5. **Metasploit**
+   - **Overview**: Primarily an exploitation framework but includes network scanning capabilities.
+   - **Usage**: `msfconsole` > `search scanner` to locate available scanners.
+   - **Key Features**: Provides various scanner modules (e.g., HTTP scanners, ARP sweep for host discovery).
+
+## 6. **Additional Scanning Tools**
+   - **SolarWinds**: Common in network administration, includes tools for port scanning and host discovery.
+   - **PRTG Network Monitor**: Offers network monitoring with host discovery features.
+   - **Omnipeek & NetScan Tools Pro**: Provides advanced scanning and monitoring, often paid.
+
+## Summary
+While **Nmap** remains the go-to for comprehensive network scanning, tools like **Masscan** and **Unicornscan** offer speed, and **Hping3** enables detailed packet customization. For additional functionality, Metasploit, SolarWinds, and other network monitoring solutions provide supplementary scanning features.
+
+# Host Discovery Techniques
+
+Host discovery is essential for identifying connected devices on a network, often forming the first phase in network reconnaissance. Host discovery can be performed both **externally** and **internally** to map devices, understand network structure, and prepare for further testing.
+
+## Key Techniques
+
+### 1. **ICMP (Ping)**
+   - **ICMP Echo Request (ICMP Type 8)**: Sends a ping to a target to check if it’s alive. Common, but often blocked on Windows networks for security.
+   - **Timestamp & Address Mask**: Alternatives to ICMP Echo, useful if ICMP Echo requests are blocked. Executed with flags like `-PP` (timestamp) or `-PM` (address mask) in Nmap.
+   - **Tool Example**: `ping [IP address]`.
+
+### 2. **ARP (Address Resolution Protocol)**
+   - Primarily used for discovering devices on a local subnet.
+   - **Tool Example**: `arping [IP address]`, useful for internal scans.
+
+### 3. **UDP (User Datagram Protocol)**
+   - Although slower, UDP can sometimes discover hosts where ICMP and TCP are blocked.
+   - **Tool Example**: `nmap -sU [target IP or range]`.
+
+### 4. **TCP SYN Scan**
+   - Sends SYN packets to initiate a TCP connection, checking if devices respond.
+   - **Tool Example**: `nmap -PS [IP address]`.
+
+## Common Tools
+
+### 1. **Ping and Automated Scripting**
+   - Simple command to check individual hosts or scripts to scan entire IP ranges.
+   - Example Bash Script: `sweeper.sh` that automates ping sweeps over a range.
+
+### 2. **Nmap**
+   - A versatile network scanner.
+   - Useful commands:
+     - `nmap -sn [network]` for a ping sweep.
+     - `nmap -PE`, `nmap -PP`, `nmap -PM` to customize ICMP request types.
+   - **King of Host Discovery Tools** due to its flexibility and comprehensive options.
+
+### 3. **Angry IP Scanner**
+   - User-friendly, fast tool for quick host discovery.
+
+### 4. **Traceroute**
+   - Helps map the route packets take to reach a destination, identifying intermediary devices.
+   - **Command Example**: `traceroute [target domain]`.
+
+## Advanced Techniques
+
+### Protocol Ping in Nmap
+   - Sends IP packets across multiple protocols like ICMP, IGMP, and IP-in-IP to test for responses.
+   - Command: `nmap -PO [IP address]`.
+
+### Combining Techniques
+   - Mix different pings and scan types for comprehensive results, especially when some protocols are blocked.
+
+## Testing Contexts
+
+- **Black Box**: No prior knowledge of the network; requires complete discovery.
+- **Gray Box**: Limited access or knowledge; may include partial credentials.
+- **White Box**: Full access and network details provided by the client.
+
+## Tips for Effective Host Discovery
+
+- Use a mix of **ICMP**, **ARP**, and **TCP SYN** scans.
+- Check responses for any blocked protocols and adapt.
+- Ensure **multiple tools** are tried for verification and completeness.
+
+## References and Further Learning
+- **Nmap Book**: For in-depth command usage and options.
+- **Additional Tools**: Path Analyzer Pro, VisualRoute.
+
+Host discovery is about identifying live systems on a network, often requiring adjustments based on network structure and security policies. Keep experimenting with different tools and flags to maximize visibility!
+
+# Port and Service Scanning
+
+1. **Port vs. Service Scanning**:
+   - **Port Scanning**: Identifies open TCP ports on a target. An open port may or may not have a service running on it, but knowing it’s open can reveal potential vulnerabilities.
+   - **Service Scanning**: After identifying open ports, a service scan can determine the specific application or service type running, if any, on that port.
+
+2. **Common Ports and Services**:
+   - Ports like 80 (HTTP) and 443 (HTTPS) have commonly agreed-upon uses but are not restricted to these services. For example, a service can run on any available port, though defaults exist for ease of identification (e.g., 8080 often for proxies).
+   - Recognizing service types on open ports helps identify potential targets for vulnerabilities, especially by comparing version details to known exploits.
+
+3. **Nmap Scanning Techniques**:
+   - **Basic Port Scan**: Simply detects open ports.
+   - **Service and Version Detection (`-sV` flag)**: Probes each open port to detect the specific application and version, allowing for vulnerability research.
+   - **Example**: The scan found ports like 8080 and 9001 open, identifying a version of Nginx on one and a JDBC-related service on another.
+
+4. **Practical Usage and Output Handling**:
+   - Saving Nmap outputs (`-o` option) is useful for later analysis, especially when looking through numerous open ports.
+   - Nmap's service file, located in `/usr/share/nmap/nmap-services`, lists well-known ports and services, acting as a reference for commonly open ports and their associated services.
+
+5. **Takeaways**:
+   - Port and service scanning is foundational in ethical hacking, assisting in identifying vulnerable points in a network.
+   - Familiarity with common ports, along with using tools like Nmap for detailed scanning, is essential for effective vulnerability assessment.
+
+
+# Scans types
 > Just a little note: we will encounter two scenarios when scanning ports:
 > - if port is open then we receive response and we know it's open, or if closed then we don't and we are unsure if it's closed or filtered by firewall. (as in TCP Connect Scans).
 > - if port is closed then we receive response like an error or RST and we know it's closed, or if port is open then we don't receive response and we are unsure if it's open or filtered by firewall (as in inverse TCP scans and UDP scan).
