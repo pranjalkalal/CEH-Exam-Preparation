@@ -103,26 +103,77 @@ NTP (Network Time Protocol) is a networking protocol used to synchronize the clo
 - ntptrace is a command-line utility that traces the path that an NTP packet takes from the local host to a remote NTP server.
 - Usage: `ntptrace target_IP`
 
-# NFS
-NFS (Network File System) is a distributed file system protocol used for sharing files and directories across a network. It allows clients to access files on remote servers as if they were stored locally.
+# NFS Enumeration
 
-The server running the NFS service acts as the central point for managing shared files and directories. Clients connect to this server over the network to access the shared resources.
+## What is NFS?
+- **NFS (Network File System)** allows file systems to be shared between systems over a network.
+- Common in UNIX/Linux systems, operating on **port 2049**.
+- Versions: **NFSv2**, **NFSv3**, **NFSv4**.
 
-## NFS Enumeration
-- we can use tools like rpcscan, rpcinfo, and showmount.
-- we can use `showmount -e [IP]` to list the NFS shares.
-- Now we know a a sharename on the server, we follow these steps to get it on our machine:
-  1. we create a directory for example mkdir /tmp/mount to mount the share to.
-  2. use the command `sudo mount -t nfs <IP>:<sharename> <Directory to mount to: /tmp/mount/> -nolock`.
+## Tools for NFS Enumeration
 
-# SMTP
-SMTP (Simple Mail Transfer Protocol) is a standard protocol used for sending and receiving email messages over the Internet.
+1. **Nmap**
+   - Scans for open ports (2049) and discovers NFS shares.
+   - Command: `sudo nmap -sV -p 2049 --script=nfs-showmount <target-ip>`
 
-## SMTP Enumeration
-The SMTP service has two internal commands that allow the enumeration of users:
-  - VRFY (confirming the names of valid users) and
-  - EXPN (which reveals the actual address of user’s aliases and lists of e-mail (mailing lists).
+2. **rpcinfo**
+   - Queries RPC services, including NFS.
+   - Command: `rpcinfo -p <target-ip>`
 
-Using these SMTP commands, we can reveal a list of valid users. We can do this manually, over a telnet connection- however Metasploit provides a module called "smtp_enum". Using the module is simple, we provide a list of usernames and the host IP and it returns the valid usernames found. Another tool is "smtp-user-enum" and can be used as in the example `smtp-user-enum -M VRFY -U {users_file} -t {target_IP}`. And of course, nmap, using the script `smtp-enum-users`.
+3. **showmount**
+   - Lists NFS exports (shared directories).
+   - Command: `showmount -e <target-ip>`
 
-We can then bruteforcing these usernames with Hydra for example to crack the password.
+4. **rpc_scan**
+   - Python tool to discover RPC services.
+   - Command: `./rpc_scan.py <target-ip>`
+
+5. **NFSClient** (Optional)
+   - Mount NFS shares manually.
+   - Command: `nfsclient <target-ip>:/<exported-dir> <mount-point>`
+
+## Mounting NFS Shares
+- Command: `sudo mount -t nfs <target-ip>:/<nfs-export> <mount-point>`
+- Command: `sudo mount -t nfs <IP>:<sharename> <Directory to mount to: /tmp/mount/> -nolock`.
+- - Example: `sudo mount -t nfs 192.168.1.10:/ /mnt/nfs`
+
+## Security Risks
+- Misconfigured exports: Allows unauthorized access.
+- Exposed sensitive files: `/etc/passwd`, `.ssh/authorized_keys`.
+- Attackers can mount shares and explore files.
+
+## Hardening NFS
+- Restrict access by IP.
+- Use **NFSv4** for better security.
+- Apply **Kerberos** authentication.
+- Set correct file permissions on NFS shares.
+
+
+# SMTP Enumeration
+
+**SMTP (Simple Mail Transfer Protocol)** is used for sending emails, but it can also be leveraged for enumeration, such as identifying users or email addresses on a system.
+
+## Key Commands for Enumeration
+- **VRFY**: Verifies if an email or username exists.
+- **EXPN**: Expands a mailing list or alias to show actual recipients.
+- **RCPT TO**: Verifies recipient information.
+
+## Enumeration Process
+1. **Port 25** is typically used for SMTP. Scan with Nmap to check if it's open.
+2. Tools like **Telnet** or **Netcat** can be used to connect to the SMTP server.
+3. Use **EHLO** or **HELO** to start a session.
+4. Use **VRFY** followed by a username to check if it exists.
+5. If the username exists, the server will return a success message (e.g., `252 User exists`); if not, a failure message (e.g., `550 Unknown recipient`).
+
+## Example Enumeration Tool: `SMTP-user-enum`
+- Automates user enumeration through various methods (VRFY, EXPN, RCPT TO).
+- Supports lists of usernames from sources like **SecLists**.
+
+### Example Command:
+```bash
+smtp-user-enum -M VRFY -U /path/to/usernames.txt -T target_ip
+```
+
+```bash
+   nmap -p 25 target_ip
+```
