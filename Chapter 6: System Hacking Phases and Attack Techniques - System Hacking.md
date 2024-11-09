@@ -1,20 +1,17 @@
-# CEH Hacking Methodology
+## CEH Hacking Methodology
 
 The CEH (Certified Ethical Hacker) methodology, as outlined by the EC-Council, is a structured approach to ethical hacking with specific phases targeting common goals and techniques. Here's a summary of each phase:
 
----
 
 ### 1. **Reconnaissance**
    - **Objective:** Gather information on the target before any direct engagement.
    - **Techniques:** Passive and active information gathering, including open-source intelligence (OSINT), scanning, and footprinting.
    
----
 
 ### 2. **Scanning**
    - **Objective:** Identify live hosts, open ports, services, and potential vulnerabilities.
    - **Techniques:** Network scanning, vulnerability scanning, and enumeration.
    
----
 
 ### 3. **System Hacking**
    - **Objective:** Gain unauthorized access to systems and escalate privileges.
@@ -23,7 +20,6 @@ The CEH (Certified Ethical Hacker) methodology, as outlined by the EC-Council, i
      - **Vulnerability Exploitation:** Leveraging identified vulnerabilities to gain access.
      - **Social Engineering:** Trick users into revealing sensitive information or taking unsafe actions.
 
----
 
 ### 4. **Privilege Escalation**
    - **Objective:** Gain higher-level access once initial access is achieved.
@@ -31,7 +27,6 @@ The CEH (Certified Ethical Hacker) methodology, as outlined by the EC-Council, i
      - **Horizontal Escalation:** Accessing accounts with different permissions but at the same level.
      - **Vertical Escalation:** Moving to higher privilege levels, such as administrative access.
 
----
 
 ### 5. **Maintaining Access (Persistence)**
    - **Objective:** Ensure continued access to the compromised system.
@@ -40,7 +35,6 @@ The CEH (Certified Ethical Hacker) methodology, as outlined by the EC-Council, i
      - Creating backdoor accounts.
      - Using persistence mechanisms to reconnect if access is interrupted.
 
----
 
 ### 6. **Hiding Files and Data Exfiltration**
    - **Objective:** Extract data covertly and avoid detection.
@@ -48,7 +42,6 @@ The CEH (Certified Ethical Hacker) methodology, as outlined by the EC-Council, i
      - **Steganography:** Hiding sensitive data within image or video files.
      - **Covert Channels:** Using encrypted communication protocols like HTTPS for data transfer.
    
----
 
 ### 7. **Covering Tracks**
    - **Objective:** Conceal evidence of hacking activities.
@@ -56,10 +49,9 @@ The CEH (Certified Ethical Hacker) methodology, as outlined by the EC-Council, i
      - Clearing logs and deleting entries to remove traces of unauthorized access.
      - Ensuring minimal detection by system monitors or administrators.
 
----
 
 
-# Windows Authentication
+## Windows Authentication
 
 ### Windows SAM (Security Accounts Manager):
 - SAM is a database stored locally on a Windows system and contains user account information, including usernames and hashed passwords.
@@ -194,7 +186,6 @@ Password cracking uses a variety of techniques, both technical and non-technical
 ### 4. **Attacks Without Cracking**
    - **Pass-the-Hash**: Authentication bypass using hashed passwords directly for systems that accept them as passwords.
 
----
 
 ## Steps and Techniques
 
@@ -214,7 +205,6 @@ Password cracking uses a variety of techniques, both technical and non-technical
 4. **Exfiltration Tactics**:
    - Use tools like `curl` to send captured hashes to an external server, e.g., with Python’s HTTP server.
 
----
 
 ## Countermeasures
 
@@ -226,11 +216,9 @@ Password cracking uses a variety of techniques, both technical and non-technical
    - Avoid weak passwords that could be quickly cracked or guessed.
    - Regularly monitor for unauthorized hardware (e.g., keyloggers).
   
----
 
 # Enhancing Password Cracking Techniques
 
----
 
 ## Key Techniques
 
@@ -254,19 +242,16 @@ Password cracking uses a variety of techniques, both technical and non-technical
    - Builds likely passwords based on frequent character sequences, improving the dictionary's relevance.
    - Operates as a hybrid of dictionary and brute-force techniques.
 
----
 
 ## Tips for Efficient Cracking
 - **Hardware Optimization**: Use multi-GPU setups, water-cooled systems, and multi-threading to increase speed.
 - **Avoid Redundancy**: Use scripting to combine dictionaries without duplicates.
 - **Utilize Known Criteria**: Apply filters based on password policies (e.g., length limits) to narrow guesses.
 
----
 
 ## Conclusion
 - Combining techniques such as **combinator**, **Prince**, **toggle case**, and **Markov chain** enhances efficiency in password cracking.
   
----
 
 
 # Buffer Overflow
@@ -286,7 +271,6 @@ If we have a program which has a buffer overflow issue, it means it doesn't hand
      - **ESP** (Stack Pointer) and **EBP** (Base Pointer): Track data in the stack.
    - Exploit requires control over these pointers to redirect execution.
 
----
 
 ## Tools and Setup
 
@@ -317,7 +301,6 @@ If we have a program which has a buffer overflow issue, it means it doesn't hand
      - **EIP Redirect**: Points to **Jump ESP** to run shellcode in ESP.
    - Confirmed code execution by opening a reverse shell.
 
----
 
 ## Defense Mechanisms
 
@@ -330,8 +313,6 @@ If we have a program which has a buffer overflow issue, it means it doesn't hand
    - Use **static and dynamic code analysis** in the development lifecycle to catch buffer overflows early.
 
 
----
-
 
 # Privilege Escalation
 Privilege escalation refers to the process of gaining higher levels of access or privileges on a system or network than what was initially granted to a user or process. It's a common goal for attackers who have gained initial access to a system with limited privileges. There are two types:
@@ -343,7 +324,6 @@ Privilege escalation refers to the process of gaining higher levels of access or
   - In vertical privilege escalation, the attacker gains access to higher levels of privileges than their current account or process.
   - This can involve escalating privileges from a low-privileged user account to an administrator or root-level account.
 
----
 
 ## Techniques for Privilege Escalation
 
@@ -378,7 +358,6 @@ Privilege escalation refers to the process of gaining higher levels of access or
    - Misconfigured **sudo** permissions may allow escalation.
    - `sudo -l` command shows accessible binaries that could be exploited to gain root access.
 
----
 
 ## Tools for Privilege Escalation
 
@@ -391,7 +370,6 @@ Privilege escalation refers to the process of gaining higher levels of access or
 3. **Linux Privilege Checker**
    - Runs privilege checks on Linux systems, identifying areas to escalate privileges.
 
----
 
 ## Defense Against Privilege Escalation
 
@@ -401,7 +379,6 @@ Privilege escalation refers to the process of gaining higher levels of access or
 - **Multifactor Authentication**: Adds an extra layer of protection against unauthorized access.
 - **Secure Application Development**: Use **SAST** and **DAST** to test application security.
 
----
 
 # Maintaining Access (Persistence)
 1. Backdoors: Attackers may install backdoor programs or modify existing system components to create secret entry points into the compromised system. These backdoors can provide remote access to the system, allowing attackers to return and regain control even if their initial access is discovered and removed.
