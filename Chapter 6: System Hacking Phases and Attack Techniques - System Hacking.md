@@ -398,45 +398,158 @@ Rootkits are malicious software designed to conceal the presence of other malici
 - Hardware/Firmware Rootkits: Infect system hardware or firmware, controlling the system at a fundamental level.
 - Memory Rootkits: Reside entirely in system memory, injecting malicious code into processes.
 
-# Steganography
-Steganography is the practice of concealing messages or information within other non-secret data or media in a way that the existence of the hidden information is not readily apparent. 
+## Steganography
+Steganography is the practice of hiding data within other files, known as the **cover medium**. This allows data to be concealed within images, audio, or video files without altering their appearance. It’s commonly used to exfiltrate sensitive information, like personal data or intellectual property, without detection. 
 
-There are tools which can be used for that like:
-- stegsnow: `stegsnow -p password cover_text.txt hidden_message.txt > output.txt`
-- steghide: `steghide embed -ef hidden_file.txt -cf cover_image.jpg -p password`
+### Example Methods
+- **Slack Space**: Hiding data in unused portions of a file, making it less noticeable.
+- **Edward Snowden Example**: Snowden reportedly used steganography to exfiltrate data.
 
-And there are tools which are used to analyze and extract hidden messages like zsteg.
+### Tools
+- **StegSnow**: Embeds hidden text into file slack space with optional compression and password protection.
+- **StegHide**: A versatile tool used for embedding various data types in images and other file types.
 
-# Covering tracks
+## Steganalysis
+Steganalysis is the process of detecting and analyzing hidden data within files, often used in **threat hunting** and cybersecurity defense.
 
-# Mimikatz
-It is a Windows password post exploitation tool used to dump credentials and other sensitive information.
+### Detection Methods
+- **Visual Analysis**: Observing abnormalities in files, such as odd pixelation in images or inaudible frequencies in audio files.
+- **File Metadata**: Examining metadata fields for hidden information.
+- **Strings Command**: Searching for readable text in files to identify embedded data.
 
-### what is DP API?
-DPAPI stands for Data Protection API, which is a feature provided by Windows systems for encrypting and decrypting data. DPAPI is primarily used to protect sensitive data stored on Windows systems, such as user credentials, private keys, and other secrets.
+### Tools
+- **Zsteg**: Analyzes files for hidden data, providing insight into embedded messages and metadata.
 
-- `sekurlsa::dpapi` to grap master keys from dpapi.
-- `lsadump::backupkeys /system:win2019.example.com /export`
-- `lsadump::dcsync /domain:example.com /user:Administrator`
+Steganography and steganalysis each require specialized techniques and tools, and while steganography is challenging to detect, skilled steganalysis can reveal hidden data.
 
-### Skeleton Key Attack
-In a skeleton key attack, an attacker gains unauthorized access to a Windows Active Directory (AD) domain controller and injects a "skeleton key" into the domain controller's memory. This "skeleton key" allows the attacker to authenticate as any user on the domain without needing their password (we use "mimikatz" as the passsword).
+# Covering Tracks
 
-#### How?
-- Firstly we have to enable the SeDebugPrivilege privilege for the current process: `privilege::debug`
-- then: `misc::skeleton` and that's it!
+In cybersecurity, attackers, red team members, or penetration testers may attempt to hide their activity on a system. Covering tracks is essential for maintaining access and avoiding detection.
 
-### Golden Ticket Attack
-A golden ticket allows to authenticate to any service with one single ticket. 
+## Track-Covering Techniques
 
-1. First we need to find the krbtgt service hash: `lsadump::dcsync /domain:example.com /user:krbtgt`.
-2. Then we need to find the SID of a user account that will be granted the ticket: `whoami /user` on user's machine (Either an account I created or one I compromised).
-3. Then: `kerberos::golden /domain:example.com /sid:{sid} /rc4:{krbtgt NTLM hash} /id:500 /user:{anything}` will grant the user this ticket where we use 500 as we are looking for administrative privileges.
+### Disabling Security and Logging Systems
+- **Disabling Auditing**: Stops logging specific actions, like login events, by modifying audit policies.
+- **Disabling IDS/IPS**: Although risky (it may trigger alerts), it can prevent detection if attackers remain unnoticed.
+- **Disabling Tripwires**: Prevents alerts when accessing sensitive files.
 
-### Overpass the Hash Attack
-1. Firstly we need to find the user NTLM hash: `sekurlsa::logonpasswords`.
-2. Then we need to execute this command: `sekurlsa::pth /user:Admisitrator /domain:example.com /ntlm:{user's NTLm}`.
-3. Mimikatz opens a prompt then with user's privileges.
+### Manipulating Logs
+- **Clearing Logs**:
+  - **Windows**: PowerShell `Clear-EventLog`, `wevtutil` for event logs, and Event Viewer GUI.
+  - **Linux**: `history -c`, `echo > .bash_history`, and `shred` to overwrite log files.
+- **Selective Deletion**: Removing specific log entries instead of clearing all logs avoids suspicion, as completely empty logs can trigger alerts.
+
+### Modifying Timestamps
+- **FSUtil in Windows**: Disables last access timestamps, hiding file access history.
+- **Linux `touch` Command**: Updates file timestamps to avoid showing recent access.
+
+### Disabling Restore Points and Virtual Memory
+- **System Restore Points**: Disabling them in Windows removes evidence of activity saved in system snapshots.
+- **Page and Hibernation Files**: Virtual memory files can contain remnants of attacker activity; deleting or overwriting these files removes evidence.
+
+## Defensive Measures Against Track-Covering
+
+1. **Centralized Logging (Syslog)**: Transmit logs to a remote Syslog server to maintain copies outside of the compromised system.
+2. **Event Viewer Subscriptions**: In Windows, create a central server to subscribe to and collect logs from other machines, preserving evidence even if logs on a local machine are tampered with.
+3. **SIEM (Security Information and Event Management)**:
+   - **Log Normalization**: SIEM tools normalize logs, making them easier to analyze and review.
+   - **Alerting and Dashboarding**: Provides a centralized view of logs and alerts, highlighting missing or disabled logs.
+   - **Syslog Integration**: Often integrates with Syslog to ensure all logs are captured and normalized.
+
+These techniques enhance detection and resilience, making it harder for attackers to cover their tracks.
+
+# Active Directory Enumeration: Techniques and Tools
+
+Active Directory (AD) enumeration is essential in understanding and exploiting a Windows domain. By gathering information on users, computers, groups, and domain structure, security professionals can identify potential lateral movement paths within the network.
+
+## AD Enumeration Techniques and Tools
+
+### 1. PowerView
+**PowerView** is part of the PowerSploit toolkit and is widely used in AD enumeration for gathering detailed information on domain structure and assets. It provides PowerShell commands to enumerate AD objects and relationships.
+
+#### Key PowerView Commands
+- **Get-NetDomain**: Lists details about the current domain, including the domain controller, domain mode, and domain owner roles.
+- **Get-NetForest**: Provides information about the forest, including root domain, global catalog, and site details.
+- **Invoke-ShareFinder**: Searches for shared drives within the domain to identify accessible resources.
+
+*Usage Tip*: PowerView scripts can be run directly from a local attack machine (e.g., a Kali box) using PowerShell’s `Invoke-Expression` to pull the script via HTTP.
+
+### 2. BloodHound
+**BloodHound** is a visual tool that maps and analyzes AD relationships, making it easier to spot vulnerabilities and privilege escalation paths. It uses **SharpHound** (available as an `.exe` or `.ps1` script) to collect AD data and generates JSON files that BloodHound converts into an interactive graph.
+
+#### Key BloodHound Features
+- **Graphical Representation**: Displays relationships between domain objects, like user and group memberships, making it easy to identify paths for privilege escalation.
+- **Query Options**: Built-in queries allow users to find key information such as:
+  - Domain admins and computers with unsupported OS.
+  - Users with **DC Sync** rights and **Kerberostable** accounts.
+  - Computers where domain users are local admins.
+
+#### Setup
+1. **SharpHound Data Collection**: Run SharpHound (`sharphound.exe` or `sharphound.ps1`) on a compromised AD-connected system, which outputs JSON data in a zip file.
+2. **Neo4j Database**: BloodHound relies on a Neo4j database for storing and querying data. Start Neo4j, log in, and connect BloodHound to the database.
+3. **Upload JSON**: Import the SharpHound JSON files to BloodHound to create a visual map of AD relationships.
+
+### Summary
+PowerView and BloodHound offer complementary approaches to AD enumeration:
+- **PowerView**: Command-line, detailed PowerShell-based enumeration.
+- **BloodHound**: Visual, graph-based analysis ideal for identifying privilege escalation paths.
+
+# Mimikatz 
+Mimikatz is a powerful post-exploitation tool primarily used on Windows systems to extract and manipulate credentials, aiding in privilege escalation and persistence.
+
+## Key Features and Attacks
+
+### 1. Abusing Data Protection API (DPAPI)
+- **DPAPI**: A Windows feature that securely stores sensitive data (e.g., Wi-Fi, browser passwords).
+- **Mimikatz Commands**:
+  - **`sekurlsa::dpapi`**: Extracts master keys from DPAPI, allowing access to encrypted data.
+  - **`lsa::backupkeys /system`**: Exports DPAPI master keys, enabling decryption of sensitive information on other systems.
+  
+### 2. Malicious Replication (DC Sync Attack)
+- **DC Sync Attack**: Mimikatz impersonates a domain controller to request password data for domain users.
+- **Mimikatz Command**:
+  - **`lsa::dcsync /domain:<domain> /user:<username>`**: Requests password hash data for a specified user, enabling pass-the-hash attacks or offline password cracking.
+
+### 3. Skeleton Key Attack
+- **Skeleton Key Attack**: Creates a “skeleton key” that allows any AD user to log in with a universal password (e.g., “Mimikatz”).
+- **Mimikatz Command**:
+  - **`misc::skeleton`**: Activates the skeleton key, enabling login across accounts without modifying individual user passwords.
+
+### 4. Golden Ticket Attack
+- **Purpose**: Grants broad access to Active Directory (AD) by creating a forged Kerberos Ticket Granting Ticket (TGT) for a specific user with administrative privileges.
+- **Requirements**:
+  - **krbtgt Hash**: Required to create the TGT.
+  - **Domain SID** and **FQDN**.
+- **Mimikatz Command**:
+  - **`kerberos::golden /domain:<FQDN> /sid:<SID> /rc4:<krbtgt hash> /user:<username>`**
+  - **Outcome**: Creates a `ticket.kirbi` file, enabling persistent, stealthy access across AD.
+    
+### 5. Silver Ticket Attack
+- **Purpose**: Provides access to a single service within AD, rather than full domain access.
+- **Requirements**:
+  - **Service Account Hash**: Used to create a service-specific TGT.
+  - **Note**: Common service accounts often have weak passwords, making them easier to compromise.
+- **Use Case**: Limited access, targeting a specific service without full domain privileges.
+
+### Pass-the-Ticket
+- **Purpose**: Uses a previously obtained Kerberos TGT to access resources without needing a password.
+- **Mimikatz Command**:
+  - **`kerberos::ptt`**: Loads the TGT (`ticket.kirbi`) into the session, enabling access to AD resources as the specified user.
+
+## Hash-Based Attacks
+
+### 1. Pass-the-Hash (PTH)
+- **Purpose**: Allows the use of an NTLM hash to authenticate without knowing the plaintext password.
+- **Requirements**: NTLM hash of the target account.
+- **Mimikatz Command**:
+  - **`sekurlsa::pth /user:<username> /domain:<domain> /ntlm:<hash>`**
+  - **Outcome**: Opens a new session with privileges of the specified user.
+
+## Summary
+Mimikatz is a critical tool for both red teams and incident responders. It allows access to and manipulation of Windows authentication systems, making it essential for both offensive and defensive cybersecurity professionals to understand its capabilities.
+
+**Note**: Mimikatz use requires elevated privileges on the target system, typically obtained post-exploitation.
+
 
 # Pivoting/Relaying
 ### Pivoting:
