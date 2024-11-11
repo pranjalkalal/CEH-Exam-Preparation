@@ -118,6 +118,52 @@ DORA process refers to the 4 step communication for a device to get IP assigned 
 - **Spoofed ARP Entry**: The attacker sends an ARP reply mapping `192.168.1.1` to the attacker's MAC address `66:77:88:99:AA:BB`.
 - **Result**: Devices update their ARP tables, associating `192.168.1.1` with `66:77:88:99:AA:BB`, causing traffic to be directed to the attacker.
 
+# DNS Poisoning 
+
+## Overview
+DNS Poisoning, also known as DNS Cache Poisoning, is an attack technique used to redirect traffic from a legitimate domain to a malicious IP address. This allows attackers to capture sensitive information or perform phishing attacks. It exploits the DNS resolution process, manipulating DNS cache or settings.
+
+## DNS Resolution Process
+1. **Local Check**: The machine checks if it is the requested domain.
+2. **Resolver Cache**: Checks the cached DNS entries stored locally.
+3. **Host File**: Checks entries in the host file (e.g., `/etc/hosts`).
+4. **DNS Server**: If not found locally, the query is sent to the configured DNS server, which may query higher-level authoritative servers.
+
+## Attack Techniques
+1. **Host File Modification**: Malware or an attacker may edit the local host file to redirect domains.
+2. **Malicious DNS Server Configuration**: Attackers configure malicious DNS servers using DHCP responses, setting a malicious IP for DNS queries.
+3. **Cache Poisoning**: Injects fake DNS records into the resolver cache, causing repeated redirections to attacker-controlled sites.
+
+## DNS Cache Poisoning Demo
+Using `Ettercap`, the attacker can perform DNS poisoning by configuring a fake DNS response within a local network:
+1. Clear the resolver cache using `ipconfig /flushdns` (on Windows).
+2. Use `Ettercap` to configure a fake DNS response, setting `twitter.com` to the attacker’s IP.
+3. Run `Ettercap` to capture and manipulate DNS requests. Redirected traffic will now resolve to the attacker’s IP.
+
+## Tools for DNS Poisoning
+- **Ettercap**: Commonly used for man-in-the-middle attacks, DNS spoofing, and other network-based attacks.
+- **DerpNSpoof**: A lightweight command-line tool for DNS spoofing and poisoning.
+- **Bettercap**: An alternative to Ettercap, providing DNS spoofing features.
+
+## Mitigations
+- **Use DNSSEC**: Prevents unauthorized changes to DNS records by authenticating responses.
+- **Enable DNS Security Features**: Such as DNS filtering and validation checks.
+- **Secure DNS Settings**: Ensure DNS configurations are secure, preventing unauthorized modifications.
+
+
+### Example Command in Ettercap
+1. Edit `etter.dns` file to set malicious DNS responses.
+2. Run `Ettercap` with plugins enabled for DNS spoofing:
+    ```bash
+    sudo ettercap -T -q -i <interface> -P dns_spoof -M arp // //
+    ```
+
+### Additional Resources
+- [DerpNSpoof GitHub](https://github.com/path/to/derpNSpoof)
+- [Ettercap Documentation](https://www.ettercap-project.org/)
+
+
+
 # Sniffing Defenses
 #### 1. Use Encrypted Protocols
 - **TLS/SSL**: Use HTTPS instead of HTTP for secure web communications.
