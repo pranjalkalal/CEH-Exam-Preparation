@@ -66,20 +66,12 @@ Other options: Lightweight servers like Python’s `http.server` or LiteSpeed fo
 
 
 ## Common Web Server Vulnerabilities
-1. **Outdated Software**:  
-   - Unpatched operating systems, web servers, or applications expose known vulnerabilities.  
 
-2. **Default Configurations**:  
-   - Default usernames, passwords, or file locations are often exploited.  
-
-3. **Poor Authentication Mechanisms**:  
-   - Weak or absent authentication controls allow unauthorized access.
-
-4. **Misconfigurations**:  
-   - Incorrect permissions or settings can expose sensitive data.  
-
-5. **Software Vulnerabilities**:  
-   - Security flaws in CMSs (e.g., WordPress) or web applications can be exploited.  
+1. **Outdated Software**: Unpatched operating systems, web servers, or applications expose known vulnerabilities.  
+2. **Default Configurations**: Default usernames, passwords, or file locations are often exploited.  
+3. **Poor Authentication Mechanisms**: Weak or absent authentication controls allow unauthorized access.
+4. **Misconfigurations**: Incorrect permissions or settings can expose sensitive data.  
+5. **Software Vulnerabilities**: Security flaws in CMSs (e.g., WordPress) or web applications can be exploited.  
 
 
 ## Countermeasures and Mitigations
