@@ -35,12 +35,12 @@ A **web server** is a network service that delivers web applications and pages t
  Stable, free, and highly configurable.
 
 2. **Nginx**:  
-   - Known for its performance and efficiency in handling concurrent connections.  
-   - Often used for load balancing and reverse proxying.
+Known for its performance and efficiency in handling concurrent connections.  
+Often used for load balancing and reverse proxying.
 
 3. **IIS (Internet Information Services)**:  
-   - Proprietary Microsoft server software.  
-   - Integrated into Windows Server with advanced features for Windows-based environments.
+ Proprietary Microsoft server software.  
+Integrated into Windows Server with advanced features for Windows-based environments.
 
 Other options: Lightweight servers like Python’s `http.server` or LiteSpeed for quick setups.
 
