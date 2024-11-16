@@ -31,8 +31,8 @@ A **web server** is a network service that delivers web applications and pages t
 
 ## Common Web Server Software
 1. **Apache**:  
-   - Most widely used open-source web server.  
-   - Stable, free, and highly configurable.
+ Most widely used open-source web server.  
+ Stable, free, and highly configurable.
 
 2. **Nginx**:  
    - Known for its performance and efficiency in handling concurrent connections.  
