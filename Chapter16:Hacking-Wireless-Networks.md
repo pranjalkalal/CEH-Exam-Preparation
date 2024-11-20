@@ -66,7 +66,7 @@
 4. **WPA3:**
    - AES-GCMP-256, 192-bit encryption, personal and enterprise modes, currently robust.
 
-# Common Wireless Attacks
+# Wireless Threats and Attacks
 
 ## Authentication Attacks
 - **Definition:** Attacks aimed at the authentication mechanisms of a wireless network.
@@ -153,7 +153,7 @@
    - Automates wireless auditing and penetration testing.
    - Scans for networks and attempts to crack WEP/WPA keys.
 
-# Actual Wireless Hacking
+# Wireless Hacking
 
 **MAC Spoofing:**
 MAC spoofing is a technique used to impersonate a trusted device on a network by spoofing its MAC address. The process is as follows:
@@ -178,20 +178,90 @@ WPA cracking aims to capture a WPA handshake and then crack the passphrase. The 
 2. Once the handshake is captured, attempt to crack the WPA password using `aircrack-ng`:
    `sudo aircrack-ng -a2 -b <BSSID> -w /path/to/wordlist capture.cap`
 
-# Wireless Security Controls:
+# Wireless Hacking Countermeasures
 
-## Configuring Access Points:
-- **Changing Defaults:** Changing default settings, such as SSID, router name, and administrative passwords, is crucial to prevent attackers from exploiting known vulnerabilities associated with default configurations.
-- **Password Strength:** Creating strong passwords or passphrases for both administrative access and wireless security is recommended. Complex passwords with a mix of letters, numbers, and symbols are advised.
-- **Encryption:** Enabling robust encryption protocols like WPA2Personal for wireless networks ensures data confidentiality and integrity.
-- **SSID Broadcasting:** Disabling SSID broadcasting hides the network from casual observers, adding a layer of obscurity, although it's not a foolproof security measure.
+This document outlines key countermeasures to protect against wireless hacking, emphasizing actionable steps to enhance security.
 
-## Additional Security Measures:
-- **Remote Management:** Disabling remote management prevents unauthorized access to the AP's administrative interface over the internet, reducing the attack surface.
-- **Physical Security:** Protecting physical access to APs and devices is essential to prevent theft or tampering, particularly in IoT environments.
-- **Scheduled Audits:** Conducting periodic audits, including Wi-Fi surveys and packet captures, helps verify the effectiveness of security measures and identify potential vulnerabilities or anomalies.
+## Wireless Security Controls
+- **Definition**: Measures to improve system security, including:
+  - **Technical controls**: Patches, updates, encryption protocols.
+  - **Administrative controls**: Audits, policy enforcement.
+  - **Procedural controls**: Incident response and change management.
 
-## Advanced Security Solutions:
-- **VPN:** Virtual Private Networks provide secure remote access to networks, enhancing privacy and confidentiality.
-- **Network Access Control (NAC) and Protection (NAP):** Implementing NAC or NAP solutions, such as PacketFence, enforces policies to ensure only authorized devices connect to the network.
-- **Firewalls, IDS, IPS:** Deploying firewalls and intrusion detection/prevention systems adds an additional layer of defense against malicious activities.
+
+## Patches and Updates
+- Regularly update:
+  - **Client devices** (e.g., laptops, mobile phones).
+  - **Firmware** and **software** for Access Points (APs).
+- Importance:
+  - Fixes bugs and vulnerabilities.
+  - Enhances device security.
+- Example: TP-Link updates include security enhancements and bug fixes.
+
+
+## Changing Default Configurations
+- **Default settings** are predictable and exploitable:
+  - Default SSIDs (e.g., "Linksys").
+  - Default admin passwords.
+  - Standard DHCP configurations.
+- **Recommendations**:
+  - Modify SSID to non-identifiable names.
+  - Change admin credentials.
+  - Avoid broadcasting SSID (security through obscurity).
+  - Use strong, randomly generated passphrases.
+
+
+## Enable Strong Encryption
+- Use at least **WPA2-Personal** for encryption.
+- Enterprise environments should consider **WPA2-Enterprise**:
+  - Employs RADIUS and certificate-based authentication for added security.
+- Avoid deprecated protocols like WEP.
+
+
+## Limit Remote Access
+- Disable remote login unless absolutely necessary.
+- If enabled:
+  - Use HTTPS to secure connections.
+  - Employ strong authentication mechanisms.
+  
+
+## Network Access Control (NAC) and Segmentation
+- **NAC Tools**:
+  - Example: PacketFence (open-source NAC solution).
+  - Enforce strict access policies for devices connecting to the network.
+- **Network Segmentation**:
+  - Divide networks into segments.
+  - Restrict access between segments to prevent lateral movement.
+  
+
+## Additional Measures
+- **VPN Usage**:
+  - Encrypts data over untrusted networks.
+  - Ideal for remote workers or public WiFi scenarios.
+- **Firewalls, IDS, IPS**:
+  - Example: Cisco Adaptive Wireless IPS for enterprise wireless security.
+  - Detect and prevent intrusions or anomalies.
+
+
+## Physical Security
+- Protect access points and devices:
+  - Secure in locked areas.
+  - Limit access to authorized personnel.
+- Prevent tampering or theft, especially in IoT deployments.
+
+
+## Scheduled Audits and Baselines
+- Conduct regular **WiFi surveys** and **heat maps**:
+  - Identify signal bleed into untrusted areas.
+  - Optimize signal strength and placement.
+- Compare current configurations to established baselines.
+- Update baselines after approved changes.
+
+
+## Public WiFi Guidelines
+- Avoid connecting enterprise devices to public WiFi.
+- Educate users on risks and enforce policies against usage.
+
+
+### Summary
+Effective wireless security requires a combination of regular updates, strong configurations, physical protection, and continuous auditing. By implementing these countermeasures, organizations can significantly reduce vulnerabilities and mitigate wireless threats.
