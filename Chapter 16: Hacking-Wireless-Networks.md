@@ -1,70 +1,76 @@
 # Wireless Basics
 
+
 ## Wireless Features
-1. **Access Points (APs):**
-   - Devices that provide wireless connectivity.
-2. **Wireless LAN (WLAN):**
-   - Local Area Network using wireless connections.
-3. **BSSID (Basic Service Set Identifier):**
-   - MAC address of the access point.
-4. **SSID (Service Set Identifier):**
-   - Name of the wireless network.
-5. **Association:**
-   - Connecting to an AP. Disassociation needed to connect to a different AP.
+### Key Terms
+- **Access Point (AP)**: Device providing wireless connectivity.
+- **Wireless LAN (WLAN)**: Wireless local area network.
+- **Basic Service Set Identifier (BSSID)**: MAC address of an access point.
+- **Service Set Identifier (SSID)**: Name of a wireless network.
+- **Association**: Process of connecting to an AP.
+
 
 ## Wireless Standards (802.11)
-1. **802.11a:**
-   - Frequency: 5 GHz
-   - Distance: 35-100 meters
-   - Speed: 54 Mbps
-2. **802.11b:**
-   - Frequency: 2.4 GHz
-   - Distance: 35-140 meters
-   - Speed: 11 Mbps
-3. **802.11g:**
-   - Frequency: 2.4 GHz
-   - Distance: 38-140 meters
-   - Speed: 54 Mbps
-4. **802.11n:**
-   - Frequency: 2.4 GHz and 5 GHz
-   - Distance: 70-250 meters
-   - Speed: 54-600 Mbps
-5. **802.11ac:**
-   - Frequency: 5 GHz
-   - Distance: 46-92 meters
-   - Speed: 433-6,933 Mbps
-6. **802.11ax:**
-   - Frequency: 2.4 GHz, 5 GHz, and 6 GHz
-   - Distance: Up to 9.1 meters
-   - Speed: 574-9,608 Mbps
+### Overview
+802.11 is the standard for Wi-Fi. Variants have different frequency bands, ranges, and data rates.
+
+| Standard       | Frequency (GHz) | Range (meters) | Bandwidth (Mbps)       |
+|----------------|------------------|----------------|-------------------------|
+| **802.11a**    | 5                | 35-100         | 54                      |
+| **802.11b**    | 2.4              | 35-140         | 11                      |
+| **802.11g**    | 2.4              | 38-140         | 54                      |
+| **802.11n**    | 2.4 / 5          | 70-250         | 54-600                  |
+| **802.11ac**   | 5                | 46-92          | 433-6933                |
+| **802.11ax**   | 2.4 / 5 / 6      | Up to 9.1      | 574-9608 (up to 10 Gbps)|
+
 
 ## Authentication Types
-1. **Open WiFi:**
-   - No authentication required.
-2. **Pre-Shared Key (PSK):**
-   - Common password-based authentication.
-3. **Centralized Authentication (e.g., RADIUS):**
-   - Used in corporate environments.
+1. **Open Wi-Fi**: No authentication required; highly insecure.
+2. **Pre-Shared Key (PSK)**:
+   - Common in personal networks.
+   - Requires a password to connect.
+3. **Centralized Authentication**:
+   - Uses systems like RADIUS.
+   - Common in enterprise networks.
+4. **Captive Portals**: Requires users to accept terms via a web browser.
 
-## Types of Antennas
-1. **Yagi Antennas:**
-   - Directional, common for TV antennas.
-2. **Omnidirectional Antennas:**
-   - Radiates signal in all directions.
-3. **Parabolic Grid Antennas:**
-   - Used for long-distance, looks like a grid.
-4. **Reflectors:**
-   - Enhance signal by concentrating EM radiation.
 
-## Wireless Encryption Types
-1. **WEP (Wired Equivalent Privacy):**
-   - 24-bit IV, RC4 algorithm, weak security.
-2. **WPA (Wi-Fi Protected Access):**
-   - 48-bit IV, RC4 with TKIP, improved but still vulnerable.
-3. **WPA2:**
-   - 48-bit IV, AES CCMP, 128-bit encryption, secure but crackable.
-4. **WPA3:**
-   - AES-GCMP-256, 192-bit encryption, personal and enterprise modes, currently robust.
+## Antenna Types
+### Types and Characteristics
+1. **Yagi Antennas**:
+   - Highly directional.
+   - Common in outdoor setups.
+2. **Omnidirectional Antennas**:
+   - Radiates signals in all directions.
+   - Used in typical indoor setups.
+3. **Parabolic Grid Antennas**:
+   - Highly directional with a grid-like structure.
+   - Ideal for long-distance links.
+4. **Reflectors**:
+   - Enhance signals by focusing electromagnetic waves.
+
+
+## Wireless Encryption
+### Evolution of Encryption Protocols
+1. **WEP (Wired Equivalent Privacy)**:
+   - 24-bit static IV and RC4 cipher.
+   - Weak and easily cracked.
+2. **WPA (Wi-Fi Protected Access)**:
+   - 48-bit IV, RC4 with TKIP.
+   - Improved over WEP but still vulnerable.
+3. **WPA2**:
+   - AES-CCMP (Counter Mode with CBC-MAC Protocol).
+   - Stronger than WPA; supports personal and enterprise modes.
+4. **WPA3**:
+   - AES-GCMP-256 with 192-bit encryption.
+   - Enhanced security for modern networks.
+
+
+## Key Takeaways
+- Wireless technology is fundamental but requires strong security measures.
+- Use the latest standards (e.g., 802.11ax) and encryption protocols (e.g., WPA3) whenever possible.
+- Understanding these basics is crucial for securing and optimizing wireless networks.
+
 
 # Wireless Threats and Attacks
 
