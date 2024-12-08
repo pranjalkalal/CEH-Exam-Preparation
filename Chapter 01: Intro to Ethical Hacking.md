@@ -246,40 +246,51 @@ DREAD is a risk assessment model used to evaluate and prioritize security risks 
   - **Remnex:** Primarily used for malware analysis.
 
 ## Incident Response Process
-1. **Documentation:**
-   - Document everything that happens during an incident.
-   - Important to take notes, screenshots, and identify security incidents precisely.
 
-2. **Communication:**
-   - Use secure communication channels to notify relevant parties (e.g., HR, accounting).
-   - Avoid using standard email due to potential interception by attackers.
+### Step 1: Preparation
+- Audit resources and assets to define security purposes, rules, policies, and procedures.
+- Build and train an incident response team.
+- Define readiness procedures and gather required tools.
+- Train employees to secure systems and accounts.
 
-3. **Triage:**
-   - Analyze, confirm, categorize, and prioritize security incidents.
-   - Similar to a battlefield medic assessing which soldiers to treat first based on severity.
+### Step 2: Incident Recording and Assignment
+- Record and report incidents.
+- Define incident communication plans for employees.
+- Notify IT support or create a ticket for tracking.
 
-4. **Notification:**
-   - Inform stakeholders, management, and possibly the press depending on the incident's severity.
+### Step 3: Incident Triage
+- Analyze, validate, categorize, and prioritize incidents.
+- Examine compromised devices to determine:
+  - Attack type, severity, and target.
+  - Impact, propagation method, and exploited vulnerabilities.
 
-5. **Containment:**
-   - Segregate the affected system to prevent further damage. 
-   - Options include pulling the plug or quarantining the malware.
+### Step 4: Notification
+- Notify stakeholders such as:
+  - Management, third-party vendors, and clients.
 
-6. **Evidence Gathering:**
-   - Collect tangible evidence (e.g., duplicate drives, network traffic captures) while maintaining forensic soundness.
+### Step 5: Containment
+- Prevent the spread of infection to other assets.
+- Minimize additional damage.
 
-7. **Eradication:**
-   - Remove the cause of the problem (e.g., reimage affected machines, apply patches).
+### Step 6: Evidence Gathering and Forensic Analysis
+- Collect and analyze evidence to investigate:
+  - Attack methods, exploited vulnerabilities, compromised devices, and averted mechanisms.
 
-8. **Recovery:**
-   - Restore systems to operational status post-eradication.
+### Step 7: Eradication
+- Eliminate root causes and close attack vectors.
+- Prevent similar future incidents.
 
-9. **Post-Incident Analysis:**
-   - Conduct After Action Reports (AARs) to learn from the incident.
-   - Document lessons learned and refine policies/procedures.
+### Step 8: Recovery
+- Restore affected systems, services, resources, and data.
+- Ensure no service or business disruption.
 
-## Conclusion
-- Incident management is critical, requiring a systematic approach to identify, respond, and learn from incidents.
+### Step 9: Post-Incident Activities
+- Conduct a final review and analysis:
+  - Document the incident.
+  - Assess impact and revise policies.
+  - Disclose the incident as required.
+  - Close the investigation.
+
 
 
 # Artificial Intelligence and Machine Learning Overview
