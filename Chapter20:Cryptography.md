@@ -59,9 +59,13 @@
       -Key-Based and Input based cipher
   - **cipher modes of operation**
     - **1.electronic code book mode (ECB)**
+      - The plaintext is divided into a fixed length of blocks, which is equal to the size of the secret key. In the first stage, the encryption starts by taking the first block of the plaintext, and the secret key is taken as input to the block cipher encryption algorithm; the output is the first block of ciphertext. The process is repeated for all the plaintext blocks.   
     - **2.cipher block chaning mode (CBC)**
+      -  First, the plaintext is divided into blocks of the same size. The first block is XOR with the initialization vector (IV), and the resultant is sent as input to the block cipher encryption algorithm, along with the secret key. The output is the first block of ciphertext. This cipher block is used to perform XOR with the next plaintext block; the chain process continues till the last block of plaintext. 
     - **3.cipher feedback mode(CFB)**
-    - **4.counter mode**   
+      - previously generated ciphertext is used as feedback for the encryption algorithm to encrypt the next plaintext block to ciphertext. First, the initialization vector (IV) is stored in a shift register and sent to the encryption algorithm, along with a secret key. From the result of that encryption, the first S bits are selected, and the XOR operation is performed with a plaintext block of size S. The resultant output is the ciphertext block. For the next encryption block, the previous cipher block is given as the input to the shift register; it shifts S bits to the left, and the process is continued till the end of the plaintext. 
+    - **4.counter mode**
+      - The counter mode is a block cipher mode of operation that uses a counter value in the encryption and decryption process. A counter value is initiated and sent as the input to the block cipher encryption algorithm with a secret key, and the result is subjected to the XOR operation with a block of plaintext. The output is the ciphertext block. This process is performed in a sequential manner to encrypt all the other plaintext blocks.    
     
 ## Symmetric Algorithms
 
@@ -196,11 +200,11 @@ Digital signatures use a combination of encryption and hashing. They ensure that
 
 ## Application of Cryptography
 - **BlockChain:** referred to as distributed ledger technology(DLT)
-- *4 Types:*
-  - 1.Public blockchain
-  - 2.Private blockchain
-  - 3.Federated blockchain
-  - 4.Hybrid Blockchain
+- **4 Types:**
+   1.Public blockchain : Bitcoin and Ethereum
+   2.Private blockchain : Hyperledger and Ripple (XRP)
+   3.Federated blockchain
+   4.Hybrid Blockchain : IBM Food Trust
 
 # Tools
 
