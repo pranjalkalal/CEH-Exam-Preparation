@@ -102,7 +102,12 @@
 
 **Key Takeaway**: Cloud computing provides various service and deployment models, each with unique responsibility areas, enabling flexibility and scalability for different needs.
 
-# Container Basics
+**Fog Computing**: It is distributed and independent digital environment in which application and data storage are between data source and cloud service.
+- act as intermediatry between h/w and remote server and also called intelligent gateway
+**Edge Computing**: it is distributed decentralized computing model in which data processing is performed close to the edge.
+- helps in building automation systems 
+
+# Container Technology
 - **Definition:** A container is a portable software package that includes everything needed to run an application, such as configuration files, libraries, and dependencies. This ensures consistency, scalability, and cost-effectiveness.
 - **Advantages:** Containers simplify the development process by providing predefined environments, reducing setup time, and ensuring applications run consistently across different platforms.
 
@@ -118,29 +123,54 @@
 3. **Registries**:
    - Stores container images.
    - Supports image delivery via orchestration software.
+   - popular registry services include Docker Hub,Amazon Elastic Container Registry (ECR), Docker Trusted Registry (DTR) etc..
 
 4. **Orchestrators**:
+   - orchestrators are tools that allow DevOps administrators to fetch images from the registries,deploy them into containers and manage container operation.
    - Transforms images into containers and deploys them.
    - Manages large-scale container deployments programmatically.
+   - popular orchestrators: kubernetes,docur swarm,nomad,mesos etc..
 
 5. **Hosts**:
    - Operate and manage containers based on orchestrator instructions.
 
+**Three phases of container lifecycle:**
+   1.Image creation,Testing and accreditation
+   2.Storage and retrieval of image
+   3.Deployment and Management of container
+   
 ## Key Terms and Concepts
 - **Docker**:
-  - A leading platform for building, deploying, and managing containerized applications.
-  - Features:
-    - Docker Images: Base templates for creating containers.
-    - Docker Daemon: Manages Docker objects and handles API requests.
-    - Docker Registry (e.g., Docker Hub): Repository for official and custom container images.
-    - Docker Files: Text files with commands for creating container images.
+  - A leading platform for building, deploying, and managing containerized applications. it is PAAS through os level virtualization.
+  - **Doken engine**: it is client/server application installed on host that allows to develop, deploy and run applications using this components: Server,Rest API,Client CLI
+  - **Docker Swarm**: It is mode in D.engine which allows to manage multiple D.E withing D.platform
+  - **Doker Architecture**:  
+     - components: Doker Daemon, Docker Client, Docker Registries
+  - **Doker Objects**
+     - Images,Containers,Services,Networking,Volumes
+  - **Doker Operations**
+  - **Container network model CDN**
+    - 2 drivers:IPAM Driver(IP adress mannagement),network driver
+    - D.E have 5 native network drivers(Host,Bridge,overlay,MACVLAN,None)
+       - Host: By using a host driver, a container implements the host networking stack.
+       - Overlay: An overlay driver is used to enable container communication over the physical network infrastructure.
+       - MACVLAN: A macvlan driver is used to create a network connection between container interfaces and the parent host interface or sub-interfaces using the Linux MACVLAN bridge mode.
+       - None: A none driver implements its own networking stack and is isolated completely from the host networking stack. 
+    - 3 remote drivers(contiv,weave,kuryr)
+       
+   - Docker Images: Base templates for creating containers.
+   - Docker Daemon: Manages Docker objects and handles API requests.
+   - Docker Registry (e.g., Docker Hub): Repository for official and custom container images.
+   - Docker Files: Text files with commands for creating container images.
 
 - **Orchestration**:
   - Automates the container lifecycle, including:
     - Provisioning and deployment.
     - Resource allocation and scaling.
     - Security and monitoring.
-  - Popular tools: Kubernetes, OpenShift, Docker Swarm, Ansible.
+  - Popular tools: Kubernetes(K8), OpenShift, Docker Swarm, Ansible.
+- **Cluster**: set of two or more connected nodes that run parallelly to complate task.
+   - 3 types: Highly available(HA) or fail-over, Load Balancing, High performance computing
 
 ## Security Challenges in Containerization
 1. **Untrusted Images**:
@@ -166,6 +196,10 @@
 - Tools like Docker and Kubernetes streamline containerization and orchestration processes.
 - Containers are not buckets—though both can "contain" items, they serve distinct purposes in technology.
 
+# Serverless computing
+ - It is emerging technology for deployment of cloud based enterprise application built on container and microservices.
+ - it is function as service model
+ - microsoft azure functions, aws lambda,google cloud function,IBM c.f, AWS Fargate,Alibaba cloud function compute.
 # Hacking Cloud Services
 
 ## Cloud Vulnerability Scanning
