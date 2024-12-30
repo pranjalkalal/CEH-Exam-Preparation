@@ -103,9 +103,10 @@
 **Key Takeaway**: Cloud computing provides various service and deployment models, each with unique responsibility areas, enabling flexibility and scalability for different needs.
 
 **Fog Computing**: It is distributed and independent digital environment in which application and data storage are between data source and cloud service.
-- act as intermediatry between h/w and remote server and also called intelligent gateway
+   - act as intermediatry between h/w and remote server and also called intelligent gateway.
+     
 **Edge Computing**: it is distributed decentralized computing model in which data processing is performed close to the edge.
-- helps in building automation systems 
+   - helps in building automation systems 
 
 # Container Technology
 - **Definition:** A container is a portable software package that includes everything needed to run an application, such as configuration files, libraries, and dependencies. This ensures consistency, scalability, and cost-effectiveness.
@@ -169,6 +170,7 @@
     - Resource allocation and scaling.
     - Security and monitoring.
   - Popular tools: Kubernetes(K8), OpenShift, Docker Swarm, Ansible.
+
 - **Cluster**: set of two or more connected nodes that run parallelly to complate task.
    - 3 types: Highly available(HA) or fail-over, Load Balancing, High performance computing
 
@@ -200,8 +202,39 @@
  - It is emerging technology for deployment of cloud based enterprise application built on container and microservices.
  - it is function as service model
  - microsoft azure functions, aws lambda,google cloud function,IBM c.f, AWS Fargate,Alibaba cloud function compute.
-# Hacking Cloud Services
 
+# Cloud Computing Treats
+
+## OWASP Top 10 Cloud Security Risks
+   - R1- Accountability and Data Ownership: because of cloud data ownership is in the hand of CSP.
+   - R2-User Identity Fedration: CSPs have less control over the user lifecycle
+   - R3-Regulatory Compliance: following regulatory compliance can be complex because cloud is multiregion technology and it's may not secure the data which secure in contry which also secure in another country.
+   - R4-Business Continuity and Resilliency: if cloud provider handles business continuity improperly then here risk possible.
+   - R5-User privacy and Secondary Usage of Data: social websites data stores in cloud and  most social application providers mine user data for secondary usage.
+   - R6-Service and Data integration: when data transfered from end user to cloud data center there need to implement proper security outherwise transit unsecure data are suspectible to evesdroping and interception attack.
+   - R7-Multi Tenancy and Physical Security: Inadequate logical segregation may lead to tenants interfering with each other's security fetures.
+   - R8-Incidence Analysis and forensic support: owning to distrubuted storage of logs across the cloud,law enforcingagencies may face problem in forensics recovery.
+   - R9-Infrastructure Security: Configuration baselines of the infrastructure should comply with the industry best practices because there is constant risk of malicious actions.
+   - R10-Non-Production Environment Exposure: Using non-production environments increases the risk of unauthorized access, information disclosure, and information modification.
+     
+## OWASP Top 10 serverless security Risks
+- Serverless applications are vulnerable to the same type of attacks as traditional web applications.
+  - A1-injection
+  - A2-Broken Authentication
+  - A3-sensitive data exposure
+  - A4-XML external entity (XXE)
+  - A5-Broken access control
+  - A6-Security Misconfiguration
+  - A7-XSS
+  - A8-Insecure Deserialization
+  - A9-Using Components with known vulnerabilities
+  - A10-Insufficient logging and monitoring
+## Cloud Computing threats
+   - Insufficient Due Diligence: ignored CSP's cloud environment poses risks to operational responsibilities such as security, encryption..
+   - Unsynchronized system clocks: Unsynchronized clocks can affect the working of automated tasks.
+   - Economic denial of sustainability-EDOS: executes malicious code that consumes a lot of computational power and storage from the cloud server, then the legitimate account holder is charged for this kind of computation until the primary cause of CPU usage is detected  
+
+# Cloud Hacking 
 ## Cloud Vulnerability Scanning
 - **Purpose**: Identifies security weaknesses in cloud-specific configurations, not just OS or application vulnerabilities.
 - **Focus Areas**:
