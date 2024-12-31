@@ -1,7 +1,13 @@
 # IoT Overview
 #### Definition
   - Connecting everyday objects and systems to networks to make them globally available and interactive.
+  - also known as Internet of Everything-IoE
 
+- **4 primary System**: IoT device,gateway system,data storage and remote control
+  1. Sensing Technology
+  2. IoT Gateways
+  3. Cloud Server/Data Storage
+  4. Remote Control using Mobile APP
 ## Components of IoT
 1. **Things:**
    - Everyday devices like refrigerators, washing machines, sensors, cameras, and network devices connected to the internet.
