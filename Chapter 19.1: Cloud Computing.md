@@ -493,37 +493,47 @@
 ## International Cloud security Organizations
    - Cloud security alliance-CSA is nonprofit global organization
 ## Cloud Security Tools
+  ### Cloud Security Tools
    **Shadow Cloud Asset Discovery Tools**
-      - **Cisco Umbrella**
-      - Securiti
-      
-    Microsoft Defender for cloud apps
-    fire compass
-    data theorem
-    cloudcodes
+   - **Cisco Umbrella** 
+   - **Securiti**
+   - **Microsoft Defender for cloud apps**
+   - **fire compass**
+   - **data theorem**
+   - **cloudcodes**
+  **Qualys Cloud Platform**
+  **Fidelis cloudpassage Halo**
+  **Lookout CipherCloud**
+      - saveral developing secure access service edge-SASE categories,including CASB, Zero trust network access-ZTNA, Secure web gateway-swg and data loss prevention-DLP
+   -   Data-aware cloud security
+   -   Netskope security cloud
+   -   prisma cloud
+   -   ForgeRock Identity Cloud
+   -   Deep Security
+  ### Container security tools
+   - Aqua,sysdig flaco,anchore,neuvector,lacework,tenable.io container sceurity
+  ### Kuberenetes security tools
+   - Kube-bench,Alcide advisor,advanced cluster security for kub,aqua kub.sec.,kubexray,sumo logic
+  ### Serverless Application Security Solutions
+   - CloudGuard,Synk,Aqua Security for FAAS,Prisma cloud,Dashbird,Thundra
 
-## Tools for Cloud Security
-1. **Qualys**:
-   - Cloud vulnerability scanning and security assessments.
+  ### Cloud Access security Broker-CASB
+   - CASBs are on-premise or cloud-hosted solutions responsible for enforcing security,compliance and governance policies for cloud app.
+   -  these are placed between CSP and consumer
+   -  Azure security services includes CASB functionality
+   -  **Fetures of CASB**
+       1. Visibility into cloud usage
+       2. Data security
+       3. Threat protection
+       4. Compliance
+   - CASBs offers: Firewalls,authentication,WAFs,DLP
+   - CASB solutions: Forcepoint CASB,Cloudcodes,cisco cloudlock,bitglass cloud security,microsoft cloud app security,fortiCASB
+ ### Netx Generation Secure Web Gateway-NG SWG
+  - It is Cloud based security solution
+  - NG SWG solutions: Netskope NG SWG,Cloudflare Gateway,Quantum Next genration firewall security gateway
 
-2. **Prisma Cloud**:
-   - Cloud-native application protection platform by Palo Alto Networks.
-
-3. **Aqua Security**:
-   - Protects workloads, cloud platforms, and Kubernetes deployments.
-
-4. **Tenable**:
-   - Comprehensive tools for cloud and on-prem vulnerability management.
-
-5. **Kubebench**:
-   - Open-source tool for checking Kubernetes deployment security against CIS benchmarks.
-
-6. **Sumo Logic**:
-   - Provides observability and security analytics for cloud deployments.
-
-
-**Key Takeaways**:
-- **Consistency**: Regularly apply standard controls like patching and encryption.
-- **Customization**: Leverage cloud-specific features like S3 policies and Kubernetes namespaces.
-- **Tools**: Use security tools to automate assessments and maintain a robust posture.
-- **Ongoing Process**: Security is a continuous journey requiring constant updates and vigilance.
+# Summary
+- **Pacu**, an open source AWS exploitation framework for enumerating and hijacking IAM roles
+- **DumpsterDiver**: DumpsterDiver allows attackers to examine a large volume of file types while scanning hardcoded secret keys such as AWS access keys, SSL keys, and Microsoft’s Azure keys
+- **Alcide Advisor**: As Kubernetes is a de facto container deployment and management tool, its workloads need to be regularly monitored and secured with appropriate security implementations. Security professionals use tools, such as Kube-bench, Alcide Advisor, and StackRox, to secure the Kubernetes environment.
+- **CloudGoat AWS**: CloudGoat is Rhino Security Labs' "Vulnerable by Design" AWS deployment tool. It allows you to hone your cloud cybersecurity skills by creating and completing several "capture-the-flag" style scenarios
