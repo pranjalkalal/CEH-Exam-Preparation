@@ -290,41 +290,50 @@
  - can able to : Dump credentials,dump permissions,dump instance metadata,create DB snapshot,create new user
    
 **Steps for exploit misconfigured AWS S3 Buckets**
-    1. Identify S3 bucket
-    2. Setup AWS CLI
-    3. Extract access key
-    4. Cnfigure AWS-Cli
-    5. Identify vulnerable S3 buckets
-    6. exploit s3 buckets
+
+   1. Identify S3 bucket
+   2. Setup AWS CLI
+   3. Extract access key
+   4. Cnfigure AWS-Cli
+   5. Identify vulnerable S3 buckets
+   6. exploit s3 buckets
+      
 **Compromise AWS IAM credentials**
+
    - Repository Misconfiguration
    - Social engineering
    - Password Reuse
    - vul. in aws hosted application(SSRF,Reading local file)
    - Exploiting third party software
    - Insider threat
+     
 **Hijacking Misconfigured IAM Role using Pacu**: AWS exploitation framework for enumerating and hijacking IAM roles,and can find assuming role is possible or not
 
 **Cracking AWS Access keys using Dumpster Driver**: it allows attacker to examine lasrge volume of file types while scanning hardcoded secret keys also this tool can identify any potential secret leaks and hardcoded passwords in target cloud service.
 
 **Exploiting Docker Container on AWS using Cloud Container Attack tool CCAT**
+
    1. Abuse AWS Credentials
    2. Pull the target docker image
    3. create backdoor image
    4. push backdoor docker image
 
 **Serverless-Based Attacks on AWS lambda**
+
    - **Black Box senario**: attackers make certain assumptions regarding specific feature as they do not have prior information about internal working environment.
    - **White box senario**: have prior information about environment
+     
 **Exploiting Shadow Admin in AWS**:Shadow admins are user accounts with specific permission that allow attackers to penetrate target cloud network.
    - some techniques to abuse shadow admin permission
       1. elevating access permission
       2. modifying existing roles
       3. creating new accounts
+         
    - Shadow admin scan tools
       1. SkyArk: contains 2 main scanning modules-AWStealth and AzureStealth
       2. Red-shadow
       3. ACLight2
+         
 **Exploiting Docker Remote API**: Retrive files from Docker Host,scanning internal network,retriving credentials,querying databases
 
 **Hacking Container Volumes**
@@ -401,27 +410,97 @@
    - load balancer should be incorporated
    - use zero trust principles to segment business applications
 ## Placement of Security Controls in cloud
-   **Categories of security controls**
-      1. Deterrent Controls
-      2. Preventive Controls
-      3. Detective Controls
-      4. Corrective Controls
+**Categories of security controls**
+   
+   1. Deterrent Controls: reduce attacks on cloud system
+      - Warning sign on the fence or property to inform potential attackers of adverse consequences if the proceed attack.
+   2. Preventive Controls: Strengthen the system against incidents by minimizing or eliminating vulnerabilities
+      - Strong authentication mechanism to prevent unauthorized use of cloud system
+   3. Detective Controls: Detect and React appropriately to occurring incidents
+      - Employing IDSs,IPS  
+   4. Corrective Controls: Minimize the consequences of incident by limiting damage
+       - Restoring system backups
       
 ## Best Practices for securing Cloud
+   - Regularly undergo AICPA SAS 70 Type II audits
+   - verify own cloud in public domain blacklists
+   - 
 ## NIST Recommendation for Cloud security
+   - Assess the risk posed to the client's data,s/w and infra.
+   - select an appropriate deployement model
+   - use auditing process for data protection and software isolation
+   - Renew SLAs in case of Security gap between organization's scurity requirnment and cloud provider's standards
+   - use incident detection and reporting mechanism
+   - analyze security objectives
+   - Enquire about responsibility of data privacy and security issues in cloud.
 ## Security Assertion Markup Language-SAML
+   - SAML is popular Open standard protocol used for authentication and authorization between communicationg parties.
+   - it can be offered as software as a service to be installed at service provider(SP)
+   - **It consists 3 entities**
+      1. Client or user : entity with valid account
+      2. Service provider(SP) : It is server hosting application for users
+      3. Indentity Provider(IdP) : entity within system that stores user directories and validating mechanism
 ## Cloud Network Security
+   1. VPC
+   2. public private subnets
+   3. Transit Gateways : it is network routing solution
+   4. VPC endpoiints : 2 types-Interface and gateway load balancer
 ## Cloud Security Controls
+  - **Cloud Application Security**: known as safety net in zero trust security implementation
+  - **High Availability Across Zones**
+  - **Cloud Integration and Auditing**
+      - cloud integration is the process of grouping multiple cloud environments togather in the form of public or hybrid cloud
+      - Cloud auditing is process of analyzing services.
+  - **Security Groups**
+  - **Instance Awareness** : the cloud based kill chain model describes the possibilities of using fake instances cor C2C to exfiltrate data from cloud
 ## Kubernetes V.and solutions
+  1. No certificate Revocation
+  2. Unauthenticated HTTPS Connections
+  3. Exposed Bearer Tokens in logs
+  4. exposure of sensitive data via env.var.
+  5. Secrets at rest not encrypted by default
+  6. Non-constant time password comparison
+  7. Hardcoded credential paths
+  8. log rotation is not atomic
+  9. No Back-off process for scheduling
+  10. no non-repudiation
+      
 ## Serverless security Risks and solutions
+   1. A1-Injection
+   2. A2-Broken authentication
+   3. A3-sensitive data exposure
+   4. A4-XXE
+   5. A5 Broken access control
+   6. A6-security misconfiguration
+   7. A7-XSS
+   8. A8-insecure deserialization
+   9. A9-using components with known vulnerabilities
+   10. A10-Insufficient logging and monitoring
+   
 ## Best Practices for Container Security
+
 ## B.P for Docker Security
+   - use linux security modules such as seccomp,apparmor and SELinux to gain fine-grained control over the processes
+   - use --read-only flag
+   - use InSec and DevSec to detect docker vulnerability
+     
 ## B.P for Kubernetes Security
+   - use copy then rename method
+   - use online certificate status protocol-OCSP stapling to check the revocation status of certificate
 ## B.P for Serverless Security
 ## Zero Trust Networks
 ## Org/Provider cloud security compliance checklist
 ## International Cloud security Organizations
+   - Cloud security alliance-CSA is nonprofit global organization
 ## Cloud Security Tools
+   **Shadow Cloud Asset Discovery Tools**
+      - **Cisco Umbrella**
+      - Securiti
+      
+    Microsoft Defender for cloud apps
+    fire compass
+    data theorem
+    cloudcodes
 
 ## Tools for Cloud Security
 1. **Qualys**:
