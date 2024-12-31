@@ -288,100 +288,140 @@
 
 **Nimbostratus**: used for fingerprinting and exploiting amazone cloud infrastructures.
  - can able to : Dump credentials,dump permissions,dump instance metadata,create DB snapshot,create new user
+   
 **Steps for exploit misconfigured AWS S3 Buckets**
-  -
+    1. Identify S3 bucket
+    2. Setup AWS CLI
+    3. Extract access key
+    4. Cnfigure AWS-Cli
+    5. Identify vulnerable S3 buckets
+    6. exploit s3 buckets
+**Compromise AWS IAM credentials**
+   - Repository Misconfiguration
+   - Social engineering
+   - Password Reuse
+   - vul. in aws hosted application(SSRF,Reading local file)
+   - Exploiting third party software
+   - Insider threat
+**Hijacking Misconfigured IAM Role using Pacu**: AWS exploitation framework for enumerating and hijacking IAM roles,and can find assuming role is possible or not
+
+**Cracking AWS Access keys using Dumpster Driver**: it allows attacker to examine lasrge volume of file types while scanning hardcoded secret keys also this tool can identify any potential secret leaks and hardcoded passwords in target cloud service.
+
+**Exploiting Docker Container on AWS using Cloud Container Attack tool CCAT**
+   1. Abuse AWS Credentials
+   2. Pull the target docker image
+   3. create backdoor image
+   4. push backdoor docker image
+
+**Serverless-Based Attacks on AWS lambda**
+   - **Black Box senario**: attackers make certain assumptions regarding specific feature as they do not have prior information about internal working environment.
+   - **White box senario**: have prior information about environment
+**Exploiting Shadow Admin in AWS**:Shadow admins are user accounts with specific permission that allow attackers to penetrate target cloud network.
+   - some techniques to abuse shadow admin permission
+      1. elevating access permission
+      2. modifying existing roles
+      3. creating new accounts
+   - Shadow admin scan tools
+      1. SkyArk: contains 2 main scanning modules-AWStealth and AzureStealth
+      2. Red-shadow
+      3. ACLight2
+**Exploiting Docker Remote API**: Retrive files from Docker Host,scanning internal network,retriving credentials,querying databases
+
+**Hacking Container Volumes**
+   - kubernetes support different types of vulumes like Network file system-NFS, and internet small computer system interface-iSCSI
+   - Accessing Master nodes: if attackers can gain access to API or etcd,they can retrive conf. detail of mounted volumes
+   - Accessing Nodes: Kubelet manages the pods, so if attackers can access a node in pod , they can easily gain access to all the volumnes used within pod.'df' command used
+   - Accessing Container: By gaining access to the container, attacker can configure a hostpath volume type to retrive sensitive info from node.
+
+**CloudGoat 2 - vulnerable by design AWS Deployment tool**:
+   - CloudGoat is Rhino security labs 'vulnerable by design' aws deployment tool
+
+**Gaining access by exploiting SSRF vulnerability**
 
 ## AWS Privilege Escalation Techniques
-- **Metadata Service Exploitation**:
-  - Access through SSRF vulnerabilities using the special IP `169.254.169.254`.
-  - Gaining credentials (access key, secret key, session token) from `security-credentials`.
+   1. create a new policy version
+   2. assign the default policy version to an existing version
+   3. create an EC2 instance with existing instance profile
+   4. Create new user access key
+   5. create/update login profile
+   6. attach policy to user/group/role
+   7. create/update inline policy for user/group/role
+   8. add user to group
+**Escalating Privileges of Google Storage Buckets using GCPBucketBrute**
+    - GCPBucketBrute is script based tool that allows to enumerate google storage bucket.
 
-- **IAM Role Misconfigurations**:
-  - Exploiting overly permissive IAM roles to escalate privileges.
-  - Identifying unused or improperly configured roles using AWS CLI.
+**Privilege escalation using misconfigured user account in azure AD**
+   - attacker discovers normal user account in azure AD using tools such as Bloodhound or AzureHound
 
-- **Key Discovery**:
-  - Searching GitHub or forums for leaked keys and credentials.
-  - Leveraging AWS CLI for detailed role and key analysis.
+**creating backdoor accounts in aws**
+   - attackes use tools like endgame aand pacu to create backedoor .
 
-- **Public AMIs**:
-  - Downloading and analyzing shared AMIs for sensitive information.
+**Backdooring Docker Image using Dockerscan**
+   - dockerscan is docker analysis and hacking tool
 
-## Pentesting AWS Environments
-- **Tools**:
-  - **Pakku**: Framework for AWS penetration testing, automating enumeration and misconfiguration analysis.
-  - **Cloud Goat**: Creates an insecure AWS environment for testing.
-- **Focus Areas**:
-  - IAM role analysis and misconfiguration.
-  - Privilege escalation through found keys or roles.
-  - Metadata service abuse.
+**Maintaining Access and covering tracks on AWS by manipulating cloud trail service**
+   - for covering tracks: attacker disable logging functionality in aws by pausing cloudtrail service then maintain access to aws.
 
-## Key Security Concerns
-1. **Publicly Accessible Resources**:
-   - Public buckets and AMIs exposing sensitive data.
-2. **IAM Misconfigurations**:
-   - Roles with excessive permissions or improper restrictions.
-3. **Metadata Service Exploits**:
-   - Using SSRF vulnerabilities to gain access to AWS credentials.
+**AWS Hacking tool: AWSpwn**
+   - reconnaissance
+   - Privilege escalation
+   - Maintaining Access
+   - Clearing tracks
+     
+- cli_lambda -> A Lambda function that acts as an AWS cli proxy and does not require credentials.
+  
+- rabbit_lambda -> An example Lambda function that responds to user-delete events by creating more copies of the deleted user.
 
-**Key Takeaways**:
-- Regularly scan cloud environments for vulnerabilities, especially configuration issues.
-- Secure S3 buckets and IAM roles to avoid unauthorized access.
-- Utilize ethical hacking tools like Pakku and Cloud Goat to simulate real-world scenarios and identify weaknesses.
+- backdoor_created_roles_lambda -> A Lambda function that adds a trust relationship to each newly created role.
 
-# Cloud Security Controls
+- backdoor_created_users_lambda -> A Lambda function that adds an access key to each newly created user.
 
-## What Are Cloud Security Controls?
+# Cloud Security
+
+## Cloud Security Controls?
 - Measures implemented to enhance the security of cloud systems.
-- Categories:
-  - **Standard Security Controls**: Traditional measures applicable to cloud environments.
-  - **Cloud-Specific Security Controls**: Tailored measures for cloud systems.
+  
+- **Cloud Security Control Layers**:
+   1. Application : SDLC,binary analysis,Web app firewall,Transactional sec
+   2. Information: DLP(Data loss prevention),CMF,Database activity monitoring,encryption
+   3. Management:GRC(Governance risk compliance),IAM,VA/VM,Patch management,conf.manag.,monitoring
+   4. Network: NIDS/NIPS,firewall,DPI,anti-ddos,QoS(Quality of service),DNSSEC,OAuth
+   5. Trusted Computing: H/W and S/W RoT and API's
+   6. Computation and storage: Host based firewall,HIDS/HIPS,Integrity and File/log management,encryption,masking
+   7. Physical: physical plant security,CCTV,Guards
 
-
-## Standard Security Controls
-1. **Secure Software Development Lifecycle (SDLC)**:
-   - Prevent flaws in cloud-hosted applications and APIs.
-   - Example: Avoid leaking AWS credentials.
-
-2. **Patching and Updates**:
-   - Ensure operating systems, applications, and infrastructure are up-to-date.
-   - Prevent exploitation of known vulnerabilities (e.g., EternalBlue).
-
-3. **Change Default Configurations**:
-   - Avoid using default credentials or settings.
-
-4. **Firewalls and Intrusion Detection/Prevention**:
-   - Use tools like IDS, IPS, and WAF for monitoring and defense.
-
-5. **Logging and Monitoring**:
-   - Track activity to detect anomalies and respond quickly.
-
-6. **Denial-of-Service Mitigation**:
-   - Use devices or services to prevent DoS/DDoS attacks.
-
-7. **Encryption**:
-   - Encrypt sensitive data at rest and in transit.
-
-8. **Endpoint Protection**:
-   - Deploy antivirus and EDR solutions.
-
-
-## Cloud-Specific Security Controls
-1. **S3 Bucket Permissions**:
-   - Ensure correct access controls for S3 buckets.
-   - Enable features like default encryption and versioning.
-
-2. **Docker Security Best Practices** (via OWASP):
-   - Use trusted Docker images.
-   - Limit container capabilities and use "no new privileges" flags.
-   - Disable inter-container communication when unnecessary.
-   - Run Docker in rootless mode.
-
-3. **Kubernetes Security Best Practices**:
-   - Keep Kubernetes up-to-date.
-   - Restrict API access using namespaces and network policies.
-   - Conduct regular security audits.
-
+## Cloud computing Security Considerations
+   - services should be tailor made by vendor
+   - CSPs should provide highr multi-tenancy-for optimum utilization
+   - Should implement Disaster recovery plan
+   - monitor Quality of service to maintain service level agreements
+   - data integrity
+   - should be fast,reliable and quick response
+   - Symmetric and asymmetric algo implemented
+   - load balancer should be incorporated
+   - use zero trust principles to segment business applications
+## Placement of Security Controls in cloud
+   **Categories of security controls**
+      1. Deterrent Controls
+      2. Preventive Controls
+      3. Detective Controls
+      4. Corrective Controls
+      
+## Best Practices for securing Cloud
+## NIST Recommendation for Cloud security
+## Security Assertion Markup Language-SAML
+## Cloud Network Security
+## Cloud Security Controls
+## Kubernetes V.and solutions
+## Serverless security Risks and solutions
+## Best Practices for Container Security
+## B.P for Docker Security
+## B.P for Kubernetes Security
+## B.P for Serverless Security
+## Zero Trust Networks
+## Org/Provider cloud security compliance checklist
+## International Cloud security Organizations
+## Cloud Security Tools
 
 ## Tools for Cloud Security
 1. **Qualys**:
