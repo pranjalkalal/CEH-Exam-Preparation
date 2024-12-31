@@ -237,6 +237,7 @@
 # Cloud Hacking 
 ## Cloud Vulnerability Scanning
 - **Purpose**: Identifies security weaknesses in cloud-specific configurations, not just OS or application vulnerabilities.
+   - main objective of hacking the cloud environment is gaining access to user data and blocking access to cloud service 
 - **Focus Areas**:
   - Cloud misconfigurations (e.g., AWS, Azure).
   - Vulnerable containers and container images.
@@ -244,6 +245,7 @@
 
 ## Tools for Cloud Security Scanning
 1. **Trivy**
+   - Container image vulnerability scanning automated tool
    - Comprehensive security scanner for container images, Git repositories, virtual machine images, Kubernetes, and AWS.
    - Detects CVEs, IAC issues, sensitive information leaks, and software license violations.
 
@@ -270,8 +272,25 @@
 - **Manual Methods**:
   - Checking source code for S3 bucket URLs.
   - Using brute-forcing techniques with tools like Burp Suite or custom scripts.
- 
     
+**Bucket Permission Enumeration using S3Inspector**
+
+**enumerationg Kubernetes etcd**: etcd is a distributed and consistent key-value storage, where kubernetes cluster data, service discovery details,API objects,etc.. are stored
+- attackers examine etcd processes,configuration files,open ports(identifying port number 2379) etc.. to identify endpoint connected to kubernets environment.
+- for identify location of etcd server and PKI information: ps -ef | grep apiserver
+  
+**enumerating Azure AD accounts**
+- for perform azure ad enumeration use tool like Azurecar
+- for perform password spraying use tool like Ruler
+  
+ **Gathering cloud keys through IMDS attack**   
+ - use curl to perform this attack
+
+**Nimbostratus**: used for fingerprinting and exploiting amazone cloud infrastructures.
+ - can able to : Dump credentials,dump permissions,dump instance metadata,create DB snapshot,create new user
+**Steps for exploit misconfigured AWS S3 Buckets**
+  -
+
 ## AWS Privilege Escalation Techniques
 - **Metadata Service Exploitation**:
   - Access through SSRF vulnerabilities using the special IP `169.254.169.254`.
