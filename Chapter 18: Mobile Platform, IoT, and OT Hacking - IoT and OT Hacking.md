@@ -4,16 +4,13 @@
   - also known as Internet of Everything-IoE
 
 - **4 primary System**: IoT device,gateway system,data storage and remote control
-  1. Sensing Technology
-  2. IoT Gateways
-  3. Cloud Server/Data Storage
-  4. Remote Control using Mobile APP
+  
 ## Components of IoT
-1. **Things:**
+1. **Things/Sensing Technology:**
    - Everyday devices like refrigerators, washing machines, sensors, cameras, and network devices connected to the internet.
 2. **Gateway:**
    - Connects IoT devices to each other, end users, or the cloud.
-3. **Cloud Server:**
+3. **Cloud Server/Data storage:**
    - Stores and processes IoT data, making it available for consumption.
 4. **Remote Apps:**
    - Interface for users to connect and manage IoT devices, often via smartphones or laptops.
@@ -29,10 +26,13 @@
    - IoT hardware components.
 2. **Access Gateway:**
    - Allows communication between different IoT technologies.
+   - Protocol translation and messaging.
 3. **Internet Layer:**
    - IP-based communication for IoT devices.
+   - Connection Between Endpoints.
 4. **Middleware:**
    - Services running in the background to support the application layer.
+   - Device management and information management.
 5. **Application Layer:**
    - End-user interface for interacting with IoT devices.
 
@@ -44,84 +44,179 @@
 - **Energy:** Monitoring and control in power plants, solar, hydroelectric.
 
 ## Communication Technologies and Protocols
-- **Common Technologies:**
-  - Wi-Fi, RFID, ZigBee, LTE, LP WAN, SigFox, Ethernet.
-- **Operating Systems:**
-  - Embed OS, Windows 10 IoT, Contiki NG, Ubuntu Core.
+
+- **Short-range wireless communication**
+   - BLE, QR Codes and Barcodes,RFID,Thread(IPV6 based protocol),Wifi direct,Z-wave,ZigBee(10-100m),ANT-adaptive network topology used in sport fitness sensors.
+    - WiFi: used wifi standard is 802.11n which offers maximum speed of 600 mbps and range 50m.
+    - light-fidelity(Li-Fi):just like wifi but 2 differences-mode of communication and speed,and Li-Fi is visible light communications(VLC) system that use light bulb to transfer data at very high speed pf 224Gpds.
+       
+- **Medium-range wireless communication**
+    - HaLow(varient of Wifi for rural areas),LTE-Advanced,6LoWPAN(IPV6),QUIC-Quick UDP Internet Connections 
+- **Long-range wireless communication**
+    - LPWAN (LoRaWAN,Sigfox,Neul),VSAT-very small aperture terminal,cellular,MQTT,NB-IoT-nerrowband IoT is varient of LoRaWAN an sigfox
+- **Wired Communication**
+    - Ethernet,multimedia over coax alliance-MoCA,Power line communication-PLC 
+- **IoT O.S.**
+    -  RTOS,ubuntu core(aka snappy),fuchsia(by google)
+- **IoT application Protocols**
+  - COAP,EDGE,LWM2M,Physical web,XMPP,Mihini/M3DA
 
 ## Communication Models
 1. **Device to Device:**
-   - Direct communication between two devices.
+   - Device-to-device communication is most commonly used in smart home devices such as thermostats, light bulbs, door locks, CCTV cameras, and fridges, which transfer small data packets to each other at a low data rate.
 2. **Device to Cloud:**
-   - Devices communicate with the app service provider.
+   - devices communicate with the cloud directly, rather than directly communicating with the client to send or receive data or commands. It uses communication protocols such as Wi-Fi or Ethernet, and sometimes uses Cellular as well.
 3. **Device to Gateway:**
-   - Devices communicate with an IoT gateway which then connects to the app service provider.
+   - In this model, the IoT device communicates with an intermediate device called a gateway, which in turn communicates with the cloud service.
 4. **Backend Data Sharing:**
-   - Device communicates with multiple app service providers.
+   - This type of communication model extends the device-to-cloud communication type such that the data from the IoT devices can be accessed by authorized third parties. Here, devices upload their data onto the cloud, which is later accessed or analyzed by third parties.
 
 ## Security Challenges
 - **Common Issues:**
   - No or weak security, poor access control, vulnerable web applications, clear text communications, lack of support, physical theft.
 
-# IoT Threats and Vulnerabilities
+## IoT Threats and Vulnerabilities
+  - Threats to IoT can be sorted into 3 primary categories:Security,Privacy and safety.
 
-## OWASP Top 10 IoT Threats
-1. **Weak, Guessable, or Hard-coded Passwords**
-   - Easily guessed or hard-coded credentials pose significant security risks.
+# IoT Attacks
+  - **IoT Security Problems**: IoT = Application + Network + Mobile + Cloud
+  - Application vul.: validation of inputted string,AuthN,AuthZ,no automatic security updates,default password.
+  - Network vul.: Firewall,improper communications encryption,services,lack of automatic updates.
+  - Mobile vul.: Insecure API,Lack of communication channels encryption,authentication,lack of storage security.
+  - Cloud vul.: Improper authentication,no encryption for storage and communications,insecure web interface
+  - this all vul. comes under IoT
+    
+### OWASP Top 10 IoT Threats
+  1. **Weak, Guessable, or Hard-coded Passwords**
+     - Easily guessed or hard-coded credentials pose significant security risks.
+  
+  2. **Insecure Network Services**
+     - Services that lack encryption and other security measures are vulnerable to attacks.
+  
+  3. **Insecure Ecosystem Interfaces**
+     - Includes web applications, APIs, and other components that interact with the device.
+  
+  4. **Lack of Secure Update Mechanism**
+     - Firmware updates without secure methods can be exploited for attacks.
+  
+  5. **Use of Insecure or Outdated Components**
+     - Deprecated or insecure software components can be compromised.
+  
+  6. **Insufficient Privacy Protection**
+     - User data must be stored and transmitted securely to protect privacy.
+  
+  7. **Insecure Data Transfer and Storage**
+     - Sensitive data should be encrypted during transfer and storage.
+  
+  8. **Lack of Device Management**
+     - Poor management interfaces can lead to security lapses.
+  
+  9. **Insecure Default Settings**
+     - Default settings like "admin/admin" for username and password should be avoided.
+  
+  10. **Lack of Physical Hardening**
+      - Physical access to the device can lead to its compromise.
+        
+### IoT Attack Surfaces
+  1. Ecosystem(general)
+  2. Device Memory
+  3. Device Physical Interfaces
+  4. Device Web Interface
+  5. Device Firmware
+  6. Device Network Services
+  7. Administrative Interface
+  8. Local Data Storage
+  9. Cloud Web Interface
+  10. Third party backend APIs
+  11. Update Mechanism
+  12. Mobile Application
+  13. Vendor Backend APIs
+  14. Ecosystem Communication
+  15. Network Traffic
+  16. Authentication/Authorization
+  17. Privacy
+  18. Hardware/sensors
 
-2. **Insecure Network Services**
-   - Services that lack encryption and other security measures are vulnerable to attacks.
-
-3. **Insecure Ecosystem Interfaces**
-   - Includes web applications, APIs, and other components that interact with the device.
-
-4. **Lack of Secure Update Mechanism**
-   - Firmware updates without secure methods can be exploited for attacks.
-
-5. **Use of Insecure or Outdated Components**
-   - Deprecated or insecure software components can be compromised.
-
-6. **Insufficient Privacy Protection**
-   - User data must be stored and transmitted securely to protect privacy.
-
-7. **Insecure Data Transfer and Storage**
-   - Sensitive data should be encrypted during transfer and storage.
-
-8. **Lack of Device Management**
-   - Poor management interfaces can lead to security lapses.
-
-9. **Insecure Default Settings**
-   - Default settings like "admin/admin" for username and password should be avoided.
-
-10. **Lack of Physical Hardening**
-    - Physical access to the device can lead to its compromise.
-
-## IoT Attack Surfaces
-1. **Physical Interfaces**
-   - Ports and physical connections on the device that can be exploited.
-
-2. **Firmware**
-   - Vulnerabilities in the firmware can be exploited through updates.
-
-3. **Network Traffic**
-   - Unencrypted communications can be intercepted.
-
-4. **Vendor and Third-Party APIs**
-   - APIs must be secure to prevent unauthorized access.
-
-5. **Local Storage**
-   - Data stored on the device should be protected.
-
-6. **Mobile Applications**
-   - Security weaknesses in associated mobile apps can be exploited.
-
-## Additional IoT Vulnerabilities
+ ### Additional IoT Vulnerabilities
 - **MFA/2FA:** Implementing multi-factor authentication to enhance security.
 - **Lockout Policies:** Prevent brute force attacks by locking accounts after several failed attempts.
 - **DDoS Protection:** Devices should be protected against denial-of-service attacks.
 - **Regular Updates and Patches:** Ensure timely updates to address vulnerabilities.
 - **Insecure Third-party Components:** Ensure third-party components are secure.
 - **Hardware Access Ports:** Secure physical ports like JTAGs and UARTs to prevent unauthorized access.
+  
+ ### Unique IoT Attacks
+ 
+- **HVAC Attacks**: Exploiting web-managed heating, ventilation, and air conditioning systems.
+  - hack corporate systems,security vulnerability
+  - **steps:**
+      1. attackers use Shodan and searches for vulnerable industrial control systems-ICSs
+      2. after finding vulnerable ICS,attacker searches for default user creadentials using online tool-Defpass
+      3. use those credentials
+      4. after gaining access to ICSs, attampt to gain access to HVAC system remotely
+      5. after gaining access, attacker can control temprature from HVAC or do other attacks on local network.
+         
+- **Rolling Code Attacks**: Intercepting and predicting codes used in key fobs, it is used to steal vehicle.
+  - the code that locks or unlocks a vehicle or garage is called rolling code or hopping code.Here Jammer is used
+  - tools rfcat-rolljam, RFCrack
+    
+- **Bluetooth Attacks**: Exploits like BlueBorne and Bluejacking.
+  - **Steps**:
+     1. Discover Blutooth Device
+     2. Retrive MAC address
+     3. Send probes
+     4. retrive OS info
+     5. Gain access and control device.
+      
+- **DDoS via Jamming**: Overwhelming IoT devices' communication channels.
+- **Sybil Attack**: Overloading systems with false identities, e.g., causing traffic jams via manipulated GPS data.
+  - transmits radio signals randomly and disables the endpoints from sending or receiving any messages.
+    
+- **SDR(Software defined radio) Based Attack**: using software based radio communication system, attacker can examine the communication signals passing through IoT network and can send spam messages to interconnected devices.
+   - Types of SDR-based attacks: Replay Attack(tool:URH-Universal Radio Hacker), Cryptanalysis attack,Reconnaissance attack
+     
+- **DNS Rebinding Attack**: It is process of obtaining access to victim's router.
+- **DDOS Attack**: exploiting vulnerability and install malicious software,Army of Botnets,large volume of request
+
+**Case Study: Enemybot**
+  - it is Mirai-based botnet malware dicoverd in 2022.
+  - It uses sophisticated string obfuscation methods to bypass security solutions.
+  - **Steps**:
+    1. Creating Exploits : Scanner-bot killer
+    2. Disabling Other Malware on target : mirai's source code with additional keywords 
+    3. Gaining access : brute force attack
+    4. Launching Attack : Crypto mining
+    5. Persistence : XOR encoding
+       
+- **Malwares**
+  - Enemybot: Enemybot is a Mirai-based botnet malware discovered in early 2022
+  - EquationDrug: EquationDrug is a dangerous computer rootkit that attacks the Windows platform. It performs targeted attacks against various organizations and lands on the infected system by being downloaded and executed by the Trickler dubbed "DoubleFantasy,"
+  - IExpress Wizard: IExpress Wizard is a wrapper program that guides the user to create a self-extracting package that can automatically install the embedded setup files, Trojans, etc.
+  - BitCrypter: BitCrypter can be used to encrypt and compress 32-bit executables and .NET apps without affecting their direct functionality.
+    
+# IoT Hacking Methodology
+  - Using this methodology, an attacker acquires information through techniques such as gathering info,identifying attack surface area and vulnerability scanning.
+  - **Phases of Hacking Methodology**
+     1. Information Gathering :
+       - **tool**:
+         - Shodan: information about internet connected devices,ip address,hostname,ISP,Device location,Banner of target IoT device.
+         - MultiPing: find IP of any IoT device,scan to identify vulnerability.
+         - FCC ID Search: find the details and granted cerification of the devices.It contains 2 elements (Grantee ID-Initial 3 or 5 char,Product ID-remaining char)
+         - IoTSeeker: discover IoT device using default credentialsand vulnerable to hijacking attacks, check about factory set credentials
+           
+     2. Vulnerability Scanning
+      - **tools**:
+        - Nmap: identify open ports and services.
+        - RIoT(Retina IoT) scanner: identifies at-risk IoT devices such as IP cameras,DVRs,printers,Routers.
+        - Foren6: sniff the traffic of IoT devices,uses sniffer to capture 6LoWPAN traffic,captures RPL related information and able to capture live packets
+     3. Launch Attacks
+     4. Gain Remote Access
+     5. Maintain Access 
+# IoT Attack Countermeasures
+
+
+
+
 
 # IoT Attacks Tools
 
@@ -139,12 +234,7 @@
 - **Burp Suite/OWASP ZAP**: Web application security testing tools.
 - **GNU Radio/RTL-SDR**: Software and hardware for software-defined radio (SDR) applications.
 
-## Unique IoT Attacks
-- **HVAC Attacks**: Exploiting web-managed heating, ventilation, and air conditioning systems.
-- **Rolling Code Attacks**: Intercepting and predicting codes used in key fobs.
-- **Bluetooth Attacks**: Exploits like BlueBorne and Bluejacking.
-- **DDoS via Jamming**: Overwhelming IoT devices' communication channels.
-- **Sybil Attack**: Overloading systems with false identities, e.g., causing traffic jams via manipulated GPS data.
+
 
 # OT Overview
 
