@@ -208,7 +208,10 @@
       - **tools**:
         - Nmap: identify open ports and services.
         - RIoT(Retina IoT) scanner: identifies at-risk IoT devices such as IP cameras,DVRs,printers,Routers.
-        - Foren6: sniff the traffic of IoT devices,uses sniffer to capture 6LoWPAN traffic,captures RPL related information and able to capture live packets
+        - Foren6: sniff the traffic of IoT devices,uses sniffer to capture 6LoWPAN traffic,captures RPL related information and able to capture live packets.
+        - Wireshark: sniff traffic
+        - Gqrx: Analyzing Spectrum
+        - IoT Inspector:
      3. Launch Attacks
      4. Gain Remote Access
      5. Maintain Access 
