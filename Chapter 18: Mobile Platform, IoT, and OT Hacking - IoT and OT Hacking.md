@@ -244,14 +244,41 @@
 - IoT Hacking Tools: IoTVAS(automated security assessment),Firmwalker,rfcat-rolljam,KillerBee,GATTack.io,Jtagulator
 
 # IoT Attack Countermeasures
+  - monitor traffic on port 48101,disable UPnP port on routers
+  - **IoT Framework Security Consideration**:EDGE,GATEWAY,CLOUD PLATFORM,MOBILE
+    
+    - Mobile: An ideal framework for the mobile interface should include proper authentication mechanism for the user, account lockout mechanism after a certain number of failed attempts, local storage security, encrypted communication channels and the security of the data transmitted over the channel.
+      
+    - Cloud Platform: A secure framework for the cloud component should include encrypted communications, strong authentication credentials, secure web interface, encrypted storage, automatic updates and so on.
+Edge: Framework consideration for edge would be proper communications and storage encryption, no default credentials, strong passwords, use latest up to date components and so on.
 
-
-
-
+    - Gateway: An ideal framework for the gateway should incorporate strong encryption techniques for secure communications between endpoints. Also, the authentication mechanism for the edge components should be as strong as any other component in the framework. Where ever possible the gateway should be designed in such a way that it authenticates multi-directionally to carry out trusted communication between the edge and the cloud. Automatic updates should also be provided to the device for countering vulnerabilities.
+      
+  - **IoT Hardware Security Best Practices**
+      - limit entry points
+      - Employe h/w tamper protection mechanism
+      - monitor secure booting
+      - Implement security patches
+      - maintain proper interface management system
+      - avoid open access to hardware unit
+      - secure authentication keys
+      - maintain proper event logging mechanism
+      - maintain proper anti-malware protection system
+      - protect device access credentials
+      - isolate devices from regular supply units
+      - Implement root on trust mechanism
+  - **IoT Device Management**
+      - It allows user to track,monitor and manage physical IoT device and forces users to remotely update the firmware.
+      - It helps in providing permission and security capability for protection against vulnerability.
+      - Solutions: Azure IoT central,Oracle Fusion cloud IoT,Predix,Cloud IoT Core,IBM Watson IoT Platform,BalenaCloud
+- **IoT Security Tools**:
+    - SeaCat.io: security first SaaS tech.
+    - DigiCert to IoT Device Manager: uses mordern PKI to deliver degital trust  
 
 # OT Overview
 
 **Operational Technology (OT)**: 
+- It is combination of S/w and H/w designed to detect or cause in industrial operations through direct monitoring and controling of industrial physical devices.
 - Technologies used in manufacturing, energy, and critical infrastructure.
 - Involves managing, monitoring, and controlling industrial systems and operations.
 - Companies like Siemens, Schneider Electric, and Allen Bradley are prominent OT manufacturers.
