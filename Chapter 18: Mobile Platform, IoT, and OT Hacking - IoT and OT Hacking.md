@@ -210,32 +210,42 @@
         - RIoT(Retina IoT) scanner: identifies at-risk IoT devices such as IP cameras,DVRs,printers,Routers.
         - Foren6: sniff the traffic of IoT devices,uses sniffer to capture 6LoWPAN traffic,captures RPL related information and able to capture live packets.
         - Wireshark: sniff traffic
-        - Gqrx: Analyzing Spectrum
-        - IoT Inspector:
+        - Gqrx: It is SDR implemented with help of GNU radio and Qt GUI tool.attackers use funcube dongles,airspy,HackRF and RTL-SDR with Gqrx SDR to analyze spectrum.also can evesdrop on radio FM frequencies
+        - IoT Inspector: It analyse network traffic to find vulnerability also helps to breach privacy and security mechanisms.
+  
      3. Launch Attacks
+        - RFCrack: Test RF communication, launch various attacks like DDOS,rolling-code attacks,signal-jamming attacks, Sybil attacks,MITM attacks.also can use other tools like KillerBee to attack zigbee and IEEE802.15.4 networks.
+        - Attify Zigbee Framework: used for hack zigbee devices,can perform Replay attack,use abstumbler from framework to identify channel used by target device.
+        - HackRF One: perform attacks like BlueBorne or AirBorne attacks such at replay,fuzzing and jamming.Hack RF is advanced h/w and s/w defined radio with 1MHz to 6MHz range.use half duplex mode.It can sniff wide range of wireless protocol ranging from GSM to Z-wave
+        - H/w based attack: RTL-SDR, It is available in form of USB dongle that can be used to capture radio signals.
+        - S/W based attack: GNU radio
+        - ChipWhispere: Side-Channel Attack performed by this tool.and used for embeded hardware security research.perform side-channel power analysis and glitching attack.attacker can breake AES,triple DES using power analysis attack.ChipWhispere needs 2 things-Capture Board,Target Board
+        - Side channel attacks: Cache attacks,timing attacks,power monitoring attacks,electromagnetic attacks,acoustic cryptanalysis,fault analysis,data remanence and optical attacks.
+        -  Identify communication interfaces: tools-BUS Auditor,Damn Insecure and Vulnerable application(DIVA),PCB
+        -  NAND Glitching: It is process of gaining privileged root access while booting device
      4. Gain Remote Access
      5. Maintain Access 
+         - Firmware Mod kit: reconstruct the malicious firmware from legitimate firmware.
+         - Firmwalker,Firmalyzer enterprise,firmware analysis toolkit
+
+ - **Firmware Analysis and Reverse Engineering**
+     1. Obtain Firmware
+     2. Analyzer Firmware
+     3. Extract the Filesystem
+     4. Mount the Filesystem
+     5. Analyze the Filesystem
+     6. Emulate Firmware
+
+- **Iot Hacking Tools**
+- Information gathering tools:Censys,Thingful,shodan
+- Sniffing Tools: Suphcap(Z-Wave sniffer),CloudShark,Ubiqua Protocol Analyzer,Perytons Protocol Analyzers,Tcpdump,open Sniffer
+- Vulnerability Scanning tools: beSTROM(smater fuzzer-find buffer overflow vul.),Metasploit Pro,IoTsploit,IoTSeeker,Bitdefender Home Scanner,IoT Inspector
+- Tools to perform SDR-Based Attacks: Universal Radio Hacker,BladRF,Rfcat,HackRF,FunCube Dongle,Gqrx
+- IoT Hacking Tools: IoTVAS(automated security assessment),Firmwalker,rfcat-rolljam,KillerBee,GATTack.io,Jtagulator
+
 # IoT Attack Countermeasures
 
 
-
-
-
-# IoT Attacks Tools
-
-## Hardware Tools
-- **JTagulator**: Used for identifying JTAG interface pins.
-- **UART TTL to USB Device**: Connects UART to USB, enabling device communication.
-- **Bus Pirate**: Interfaces with hardware devices for testing and debugging.
-- **SOIC Clip**: Connects to integrated circuits for direct interaction.
-- **CR232 to USB Adapter**: Interfaces with Serial Peripheral Interface (SPI) chips.
-
-## Software Tools
-- **Shodan**: Searches for internet-connected devices and identifies vulnerabilities.
-- **Censys and Thingful**: Similar to Shodan for identifying and analyzing IoT devices.
-- **Wireshark/TCPDump**: Network protocol analyzers for monitoring network traffic.
-- **Burp Suite/OWASP ZAP**: Web application security testing tools.
-- **GNU Radio/RTL-SDR**: Software and hardware for software-defined radio (SDR) applications.
 
 
 
