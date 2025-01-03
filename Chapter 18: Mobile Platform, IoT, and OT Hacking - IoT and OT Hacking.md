@@ -303,26 +303,23 @@ Edge: Framework consideration for edge would be proper communications and storag
    - Similar to PLCs but more robust and suitable for harsh environments.
    - Often have better environmental tolerances and higher autonomy.
 
-6. **BPCS (Basic Process Control Systems)**:
-   - Ensures operator decisions are implemented in the physical processes.
-   - Receives information and makes sure actions are executed.
-
-7. **SIS (Safety Instrumented Systems)**:
-   - Ensures safety by automatically handling anomalies and emergencies.
-   - Example: Shutting off power to prevent explosions.
-
-8. **HMI (Human Machine Interface)**:
-   - Interface through which operators interact with OT devices.
-   - Often touchscreen-based for ease of use.
-
-9. **IED (Intelligent Electronic Devices)**:
-   - Devices that receive data and issue control commands.
-   - Example: Tripping a breaker during a voltage anomaly.
-
-10. **IIoT (Industrial Internet of Things)**:
-    - Integration of IT and OT.
-    - Connects traditional OT systems to IT networks for enhanced management.
-
+**Essential Technology**
+  1. Assets
+  2. Zones and Conduits : network segregation technique used to isolate networks and assets to impose and maintain strong access control mechanisms.
+  3. Industrial Network and Business Network
+  4. Industrial Protocol: proprietary protocols(S7,CDA,SRTP) or non-proprietary protocols(Modbus,OPC,DNP3,CIP)
+  5. Network Perimeter/Electronic Security Perimeter
+  6. Critical infrastructure
+ **IT/OT Convergence(IIOT)**
+  - It is integration of it computing systems and OT operation monitoring systems to bridge the gap between IT/OT technologies for improving overall security,effeciency and productivity.
+  - It enable smart manufactutring known as industry 4.0
+  - using IoT for industrial operations known as industrial IoT
+  - **benefits of converging IT/OT**
+      - Enhancing Decision Making,Enhancing Automation,Expedite Business Output,Minimizing Expenses,Mitigating Risks.
+**The Purdue Model**
+  - aka industrial automation and control system reference model.
+  - It is derived from the purdue Enterprise Reference Architecture(PERA) model,which is widely used to describe internal connection and dependencies of important components in the ICS networks.
+  - consists 3 Zones:Manufacturing zone(OT) and Enterprise Zone(IT) separated by Demilitarized Zone(DMZ).   
 **Security Challenges**:
 - **Plain Text Protocols**: Many OT protocols are not encrypted.
 - **Complexity**: High complexity can make security management difficult.
