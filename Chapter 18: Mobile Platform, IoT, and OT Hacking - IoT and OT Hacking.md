@@ -316,35 +316,91 @@ Edge: Framework consideration for edge would be proper communications and storag
   - using IoT for industrial operations known as industrial IoT
   - **benefits of converging IT/OT**
       - Enhancing Decision Making,Enhancing Automation,Expedite Business Output,Minimizing Expenses,Mitigating Risks.
+        
 **The Purdue Model**
   - aka industrial automation and control system reference model.
   - It is derived from the purdue Enterprise Reference Architecture(PERA) model,which is widely used to describe internal connection and dependencies of important components in the ICS networks.
-  - consists 3 Zones:Manufacturing zone(OT) and Enterprise Zone(IT) separated by Demilitarized Zone(DMZ).   
+  - consists 3 Zones:Manufacturing zone(aka OT System, has 4 levels-0 to 3) and Enterprise Zone( aka IT System,has 2 level-4 to 5) separated by Demilitarized Zone(DMZ).
+    1. OT System:
+      - all the devices,networks,control and monitoring systems reside in this zone
+        - level 0/Physical Process: actual physical process is defined and product is manufactured.
+        - level 1/basic controls/Intelligent devices: Analyzation and alteration of physical process can be done at this level
+        - level 2/Control systems/Area supervisory controls: Supervising,monitoring and controlling the physical process is carried out at this level.control systems can be DCSs,SCADA etc..
+        - level 3/operation system/Site operations: Production workflows and output of desired product are ensured at this level.
+    2. IT System:
+      - supplychain management and scheduling are performed using business system like SAP and ERP.
+        - level 4/Businesslogistic system:Managing schedules,planning and other logistics of manufacturing operations are performed here,level 4 systems include application server,file servers,database servers,supervising systems,email clients etc...
+        - level 5/Enterprise Network:internet connectivity and management can be handled at this level and business operations like B2B and B2C also performed at this level
+      3. Industrial DMZ: It is barrier between the OT and IT.it includes microsoft domain controllers,database replication servers and proxy servers.
+- **Protocols**
+    - **Used in level 4 and 5**: DCOM,DDE,FTP/SFTP,GE-SRTP,IPv4/IPv6,OPC,TCP/IP,Wifi
+    - **Used in level 3**:CC-Link,HSCP,ICCP/IEC 60870-6,IEC 61850,ISA/IEC 62443,Modbus,NTP,Profinet,SuiteLink,Tase-2
+    - **Used in level 2**:6LoWPAN,DNP3,DNS/DNSSEC,FTE,HART-IP,IEC 60870-5-101/104,SOAP
+    - **Used in level 0 and 1**:BACnet,EtherCAT,CANopen,Crimson,DeviceNet,Zigbee,ISA SP100,MELSEC-Q,Niagara Fox,Omron Fins,PCWorx,Profibus,Sercos II,S7 communication,WiMax
+
+      
 **Security Challenges**:
 - **Plain Text Protocols**: Many OT protocols are not encrypted.
 - **Complexity**: High complexity can make security management difficult.
 - **Proprietary and Legacy Technology**: Hard to secure due to outdated systems and proprietary designs.
 - **Convergence Issues**: Combining IT and OT brings IT security vulnerabilities into OT environments.
 
-# OT Threats, Tools, and Countermeasures
+**ICS-Industrial Control System**
+  - operation of ICS systems can be configured in three modes-
+    - Open loop: Output of system depends on preconfigured settings
+    - Closed loop: Output always has effect on the input to acquire the desired objective.
+    - Manual mode: System is totally under control of humans.
+ - **Components**: Distributed control system-dcs,SCADA,PLC-programmable logical controller,BPCS-basics process control system
+
+   
+# OT Attacks
 
 ## Vulnerabilities in OT Systems
-1. **Interconnected Systems**: Often connected to the internet for remote access, exposing them to external threats.
-2. **Missing/Non-Existent Updates**: Lack of regular updates due to perceived isolation, increasing vulnerability.
-3. **Weak Passwords/No Authentication**: Often overlooked as systems were initially isolated.
-4. **Weak Firewall Rules**: Inadequate firewall configurations, leading to security breaches.
-5. **Non-Existent Network Segmentation**: Flat networks without segmentation make it easier for attackers to access the entire system.
-6. **Weak/Non-Existent Encryption**: Lack of encryption due to a false sense of security.
+1. Public Accessible OT Systems
+2. Insecure Remote Connections
+3. Missing security updates
+4.  Weak passwords
+5.  Insecure Firewall configuration
+6.  OT Systems placed within the corporate IT network
+7.  Insufficient Security for Corporate IT Network from OT Systems
+8.  Lack of Segmentation within OT Network
+9.  Lack of Encryption and Authentication for Wireless OT Networks
+10.  Unrestricted Outbound Internet Access from OT Network
 
 ## Threats to OT Systems
 1. **Malware**: Can be introduced via removable media, external hardware, web applications, and end-user devices.
+   - PIPEDREAM: attack framework designed with set of tools aimed at ICS/SCADA devices.5 components- EvilScholar,BadOmen,DustTunnel,MouseHole,LazyCargo
+   - other malware: Caddywiper,EKANS,MegaCortex,Distruptionware,Lockergoga,tirton,olympic destroyer.
+   - Industryoyer v2: it was revived in 2022.OT based power grids in specific regions of ukraine.with self-contained executables and configuration files,the malware implements the communication protocol IEC-104 on the target network to manipulate RTUs over TCP connections.
+   - Stage 1:Leveraging Initial Resources
+   - Stage 2:Communicating with target power station
+   - Stage 3:Launching an Actual Attack
 2. **Denial of Service (DoS/DDoS) Attacks**: Can disrupt critical services, leading to indirect human life risks.
 3. **Sensitive Data Exposure**: Breaches leading to exposure of critical operational data.
-4. **HMI-Based Attacks**: Exploiting human-machine interfaces through software vulnerabilities or physical access.
+4. **HMI-Based Attacks**: Exploiting hacker/human-machine interfaces through software vulnerabilities or physical access.SCADA vulnerability
+  -  Gamma is one of the prominent domain-specific languages for human–machine interfaces (HMIs) that is prone to code injection attacks.
+  - A PLC rootkit attack is also referred to as a PLC ghost attack.
 5. **Human Error**: Programming or configuration errors, physical mishandling of equipment.
 6. **Side Channel Attacks**: Exploiting physical aspects like timing, power consumption, and electromagnetic emanations.
-7. **Radio Frequency (RF) Attacks**: Capturing or injecting RF signals to manipulate or gain access to OT systems.
+7. **Radio Frequency (RF) Attacks**: Capturing or injecting RF signals to manipulate or gain access to OT systems.Replay,code injection.abusing e-stop attack
 
+***MITRE ATT&CK for ICS***
+  1. Initial Access: Drive-by compromise,Exploiting a public facing software application,Exploit remote services
+  - additional techniques: External remote services,internet-accessible devices,Remote services,replication through removable media,Rogue master,Spear-phising attachment,Supply chain compromise,Transient cyber assets,wireless compromise
+  2. Execution: Changing the operating mode,CLI,Execution through APIs
+    - additional techniques: GUI,Native API,Hooking,Scripting,Modify controller tasking,scripting,user execution
+  3. Persistance: modify program,module firmware,project file infection,system firmware,valid account
+  4. Privilege Escalation: Exploiting software,Hooking
+  5. Evasion: Removing the indicators,Rootkits,changing operator mode,masquerading,spoofed reporting messages
+  6. Discovery: enumerating network connection,network sniffing,identifying remote systems,Remote System information discovery,wireless sniffing
+  7. lateral movement: Default credentials,program download,remote services,exploiting the remote services,Lateral tool transfer,valid accounts
+  8. Collection: automated collection, Information repositories,I/O image
+  9. C&C: frequently used ports,connection proxy,standard application layer protocol
+  10. Inhibit Response Function: Activate firmware update mode,Block command messages,Block reporting messages
+  11 Impair Process Control: I/O brute forcing,alter the parameters,Module firmware
+  12. Impact: Damage to property,loss of availability,denial of control
+
+## OT Hacking Methodology
 ## Tools for Securing and Testing OT Systems
 1. **Shodan**: Search engine for internet-connected devices, useful for identifying vulnerable OT systems.
 2. **Search Diggity**: Suite of tools for searching and analyzing potential attack vectors via search engines.
