@@ -267,6 +267,7 @@ Edge: Framework consideration for edge would be proper communications and storag
       - protect device access credentials
       - isolate devices from regular supply units
       - Implement root on trust mechanism
+        
   - **IoT Device Management**
       - It allows user to track,monitor and manage physical IoT device and forces users to remotely update the firmware.
       - It helps in providing permission and security capability for protection against vulnerability.
@@ -401,14 +402,35 @@ Edge: Framework consideration for edge would be proper communications and storag
   12. Impact: Damage to property,loss of availability,denial of control
 
 ## OT Hacking Methodology
-## Tools for Securing and Testing OT Systems
-1. **Shodan**: Search engine for internet-connected devices, useful for identifying vulnerable OT systems.
-2. **Search Diggity**: Suite of tools for searching and analyzing potential attack vectors via search engines.
-3. **S7 Scan**: Python tool for scanning and enumerating Siemens PLCs.
-4. **PLC Scan**: Scans PLC devices over S7 or Modbus protocols.
-5. **SmartRF Studio**: Texas Instruments tool for evaluating and debugging RF systems.
-6. **Industrial Exploitation Framework (ISF)**: Framework similar to Metasploit for exploiting vulnerabilities in ICS and SCADA systems.
+- Objective of OT hacking is to damage or distrupt business process
+- ***Profit from OT when it successfully compromised***
+  - Take complate control over the system,damage the systems or steal critical business or operational data.
+  - Shutdown a plant or block the production entirely to perform DoS attacks and cause financial or reputational damage
+  - Reprogram an assembly process to skip production steps resulting in manufacturing faulty products.
+  - Compromising industrial machines to potentially injure employees through overheating,emergency shutdowns,etc.
+  - Install malware to distrupt the operation of critical infrastructure
+  - Install ransomware to block access to OT systems and ask for ransom
+- **OT Hacking Methodology**
+  1. Information Gathering
+    - tools: Shodan, Crtifence default password database,nmap
+    - SCADA protocols/port: Modbus/502,fieldbus/1089-91,DNS/19999,Ethernet/IP/2222,DNP3/20000,Profinet/34962-64,EtherCAT/34980,
+  2. Vulnerability Scanning
+    - tools: Nessus(V.A),skybox(Detailed path analysis),wireshark(modbus does not have any buil in feature of encryption so analyze communication between device and modbus is easy)
+    - Fuzzowski-fuzzing protocols-Modbus,BACnet,IPP(internet printing protocol),NetworkMiner(Passive network sniffing and packet capturing)
+    - GRASSMARLIN: Discovering ICS/SCADA network topology,it is opensource tool that passively maps and visually displays ICS network topology,this tool determine available network,generate network topology and further visualize the communication between identified hosts.
+  3. Launch Attacks
+    - tools: Metasploit,modbus-clito hack PLC devices through modbus protocol
+    - H/W tools: Signal analyzer(Binary operations),Multimeter(voltage meter),microcontrollers and memory programmer(type of chips,flash memories etc),Oscilloscope(analog digital signals),Soldering Equipment(attach setach h/w),Digital Microscope or Magnifying Glass(reading some info),Communication Interface-JTAG(communicate with ICS),Screwdrivers and Precision Screwdrivers(open devices to analyze internal parts),Precision Tweezers for connection and converters(capture information directly from Communication Bus)
+    - S/W tools: GDB (debugging tool),OpenOCD(connect their system),Binwalk(scan and examine firmware binaries and images),Fritzing(designing electronic diagrams),Radare2(portable framework),OllyDbg(Code disaaembling tool),IDA Pro(dissembler tool)
+  4. Gain Remote Access
+    - tools: DNP3-port 20000
+  5. Maintain Access
 
+  - OT Hacking tools
+    - Infogathering:SearchDiggity,kamerka-GUI,Redpoint,s7scan,SCADAPASS,plcscan
+    - Sniffing and V.s tools:SmartRF packet sniffer tool,microsoft defender for IoT
+    - ICS exploitation framework(ISF) same as metasploit,PLClinject,MODBUS PTF,Moki linux,sixnet-tools,mbtget
+         
 ## Countermeasures
 - **Regular Updates and Patches**: Ensure systems are regularly updated to mitigate known vulnerabilities.
 - **Strong Authentication**: Implement strong passwords and multi-factor authentication.
@@ -418,3 +440,29 @@ Edge: Framework consideration for edge would be proper communications and storag
 - **User Training**: Educate users on best security practices and potential risks.
 - **Monitoring and Auditing**: Continuously monitor systems and conduct regular security audits.
 - **Incident Response Planning**: Develop and regularly update an incident response plan.
+
+- **Zero Trust Model for ICS/SCADA**
+  1. Defining the network
+  2. Mapping the traffic
+  3. Architecting the network
+  4. Developing a ZT policy
+  5. Monitoring and maintaining 
+
+- International OT security organizations such as OTCSA,OT-ISAC and NERC
+- OTCSA:Operational Technology cyber security alliance,  educates operators and manufacturers with constant technical awareness and provide guidelines
+- OT ISAC: operational technology information sharing and analysis center, share threat information among OT industries such as energy and water utility sectors.
+- NERC: North Americal Electric Reliability Corporation,  assure the effective and efficient reduction of risks to the reliability and security of the electric grid.
+- IISF: Industrial Internet security Framework,  addresses the risk of attack by unexpected sources both inside and outside the organization’s network, which can hinder production
+- ISA/IEC-62443:  provides a flexible framework to address and mitigate current and future security vulnerabilities in Industrial Automation and Control Systems (IACSs), which are a part of the OT industry.
+
+### OT Security Solutions
+  - Firewall: Monitoring and Controlling, can also use tools like SCADAwall,Waterfall,palo alto NGFW for protecting network.
+  - Unified Identity and OT access management: Centralize certain operations, can also use tools like OT access, FireEye etc..
+  - Asset inventory and device authorization: Connecting only authorized devices, SCADAfence, cyberlence, Guardian and dragos
+  - OT Network Monitoring and anomaly Detection: employs machine learning algorithms, Claroty and OT Threat Intelligence
+  - Decoys to Deceive Attackers: Honeypots, ThreatDefend, Conpot and GasPot
+
+**OT Security Tools**
+  - Flowmon: ensure the reliability of their industrial networks confidently to avoid downtime and disruption of service continuity.
+  - Tenable.ot
+  - Singtel, Forescout,PA-220R,Claroty
