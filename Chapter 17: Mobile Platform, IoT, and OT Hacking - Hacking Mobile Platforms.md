@@ -68,12 +68,22 @@ The OWASP Mobile Top 10 outlines common mobile security risks:
 4. **Insecure Authentication**: Weak login mechanisms.
 5. **Insufficient Cryptography**: Poor implementation of encryption.
 6. **Insecure Authorization**: Allowing unauthorized access.
-7. **Client Code Quality Issues**: Vulnerable application code.
+7. **Client Code Quality**: Vulnerable application code.
 8. **Code Tampering**: Modified or malicious apps.
 9. **Reverse Engineering**: Attackers decompiling apps to exploit vulnerabilities.
 10. **Extraneous Functionality**: Exposing debug or test features in production.
 
----
+- **Anatomy of Mobile attack**
+   1. The Device: 
+      - Browser based attacks: Phishing, Framing, Clickjacking,MITM,Buffer Overflow, Data Caching
+      - Phone/SMS based attacks: Baseband Attacks,SMiShing
+      - Application-bsed Attack: Sensitive Data Storage,No Encryption/Weak Encryption,Improper SSL Validation,Configuration Manipulation,Dynamic Runtime injection, Unintended Permissions, Escalated Privileges
+      - System based (O.S): No passcode/Weak Passcode, ios jailbreaking,Android Rooting, OS data caching,Passwords and Data Accessible,Carrier-loaded software,User-initiated code
+   2. The Network:
+      - Wifi(Weak encryption/no encryption), Rogue Access Point, Packet Sniffing,MITM,Session Hijacking,DNS Poisoning,SSLStrip,Fake SSL Certificates
+   3. The data center/Cloud 
+      - Web server based attacks: Platform Vulnerabilities,Server Misconfiguration,XSS,CSRF,Weak Input Validation, Brute Force Attacks.
+      - Database Attacks: SQL Injection, Privilege Escalation, Data Dumping, OS Command Execution
 
 ## General Security Guidelines
 1. **Keep Devices Updated**:
@@ -95,18 +105,25 @@ The OWASP Mobile Top 10 outlines common mobile security risks:
 
 
 #### Additional Risks and Considerations:
-- **Sandbox Bypass:** Mobile devices may be susceptible to sandbox bypass or escape, allowing malicious actors to evade security measures and compromise device integrity.
-- **Sim Hijacking:** Attackers can hijack SIM cards to intercept SMS messages, phone calls, and two-factor authentication (2FA) codes, compromising device security.
+- **Sandbox Bypass:** It helps Protect systems and users by limiting the resources the app can access to the mobile plateform,however, malicious applications may exploit vulnerabilities and bypass the sandbox.
+- **Sim Hijacking:** SIM card's S@T browser, apre-installed software on SIM cards that is designed to provide a set of instruction.Attackers exploit Simjacker to perform various malicious activities, such as capturing the locations of devices, monitoring calls, forcing device browsers to connect to malicious websites, and performing DoS attacks.
 - **Mobile Spam and Phishing:** Mobile users are vulnerable to spam and phishing attacks via SMS (smishing) and voice calls (vishing), which aim to deceive users into disclosing sensitive information.
 - **NSO Group and Pegasus:** Organizations like the NSO Group develop sophisticated malware like Pegasus, targeting mobile devices to infiltrate communications and compromise device security.
+- **Bluetooth attacks**: Bluesnarfing(Stealing information via Bluetooth),
+Bluebugging(Taking over a device via bluetooth)
+- **Agent smith attack**: replace legitimate app to malicious app.
+- **Exploiting SS7 Vulnerability**: Signaling System 7-SS7 like roaming,it perform MITM.This vulnerability in SS7 can also allow the attacker to bypass two-factor authentication and end-to-end encryption via SMS.
+- **Camfecting Attack**: Webcam capturing attack, Android camera hijacking
 
 ### Summary
 Mobile devices are indispensable but pose significant security risks due to their connectivity and multifunctionality. Awareness of attack surfaces, adherence to best practices, and leveraging robust security tools are critical for safeguarding mobile environments.
 
 
-
 # Android Security
-
+  
+**Android OS Architecture**
+   - System Apps,JAVA API Framework,Native C/C++ Libraries,Android Runtime,H/W Abstraction Layer,Linux Kernel
+     
 ## Android Basics
 - **Popularity**:
   - Android powers approximately **three out of four mobile devices** worldwide.
