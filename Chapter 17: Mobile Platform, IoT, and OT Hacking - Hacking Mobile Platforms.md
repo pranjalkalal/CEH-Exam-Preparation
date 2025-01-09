@@ -152,24 +152,52 @@ Mobile devices are indispensable but pose significant security risks due to thei
 
 ## Rooting Tools
 - **Popular Tools**:
-  - **Kingo Root**
-  - **King Root**
-  - **Towel Root**
-  - **One-Click Root**: Known for its ease of use.
+  - **Kingo Root**: It can be used to with or without PC.It helps users to root android devices to achieve the following:
+     - Preserve battery life, Access root-only apps,Remove carrier 'Bloatware',Customize appearance,Admin level permission 
+  - **TunesGo Root Android Tool**: Recognizes and analyzes android device and automatically chooses appropriate android root plan for device.
+  - **King Root,Towel Root,Magisk Manager,SuperSU Root,Framaroot,iRoot**
+  - **One-Click Root**: It supports most devices.It comes with extra fail-safes (such as instant unrooting) and offers full technical support.It can able to install apps on SD cards,installing custom ROMs and accessing blocked features.
 - **Requirements**:
   - Enable **USB Debugging Mode** on the device.
   - Follow tutorials specific to the device model.
 
-
 ## Android Hacking Tools
 - **For Ethical Hacking and Penetration Testing**:
-  - **Drozer**: Vulnerability scanner.
-  - **Zanti**: Mobile penetration testing toolkit by Zimperium.
-  - **Kali NetHunter**: A mobile penetration testing platform that doesn’t require rooting.
-  - **DroidSheep**: Intercept unprotected web sessions (requires rooting).
-  - **C-Sploit**: A Metasploit-like tool for Android.
-  - **ADB (Android Debug Bridge)**: Enables shell access for debugging and app management.
+  
+- **NetCut**: **wifi killing application**, it identify target device and block access to WiFi from victim devices in network.This tool works only on rooted device
 
+  - **Drozer**: Vulnerability scanner.**Identify Attack Surfaces**.No need any USB debugging techniques. Has drozer agent(emulator used for testing) and drozer console(CLI)
+    
+  - **Zanti**: spoof mac address,creating malicious wifi hotspot and **hijacking session**,exploit route vuln.,MITM and DOS,view modify and redirect all HTTP requests and responses
+  - **Network Spoofer**: chang website on other people's computer from android.It allows attacker to **redirect website** to other pages
+
+  - **Low Orbit Ion Cannon(LOIC)**: **Dos/DDoS attacks**,can perform UPD,HTTP or TCP flood attacks.
+  - **Kali NetHunter**: A mobile penetration testing platform that doesn’t require rooting.
+    
+  - **DroidSheep**: tools for Web **session hijacking(sidejacking)**.It listens for HTTP packets sent via a wireless(802.11) network connection and extracts the session IDs from these packets to reuse them. It capture sessions using libpcap library and support OPEN networks,WEP encryption networks and WPA and WPA2(PSK only) encrypted networks
+ 
+  - **Orbot Proxy**: it empowers other apps to privately use the internet.also use **Tor** to encrypt internet traffic,use this app to hide their identity.
+ 
+  - **ADB (Android Debug Bridge)**: It is Cli that allows attackers to communicate with android device.If android device has TCP debugging port 5555 is enabled than attacker able to use Phonesploit to perform malicious activities like screen capturing,dumping system info,viewing running applications,port forwarding,installing/uninstalling any application and turning wifi on/off.
+  - **C-Sploit**: A Metasploit-like tool for Android.
+  - **Android based sniffers**
+     - FaceNiff: intercept web session profiles over wifi.possible to hijack session only when wifi not using EAP and over any private network(Open/WEP/WPA-PSK/WPA2-PSK)
+     - Packet capture,tPacketCapture,Android PCAP,Sniffer Wicap 2 Demo,TestelDroid
+ 
+    - **Man-in-the-Disk Attack**: when application do not incorporate proper security measures against usage of the device's external storage,It leads to installation of potantially malicious apps to the user's devices,thereby blocking access to legitimate apps. internal storage is sandboxed but external storage is vulnerable to MITD attacks
+    - **Spearphone attack**: allows app to record loudspeaker data without any privilages,it can evesdrop on loudspeaker voice conversation by exploiting h/w based motion sensor like accelerometers.
+    - **Advanced SMS Phishing**:attackers use any low priced USB modem and trick the victim into accepting the malicious settings in the mobile,which results in redirecting the victim's data to attacker.It can be mitigated using app like Harmony Mobile
+    - **Bypass SSL Pinning**: it can exploit using reverse engineering(APKtool) and hooking(attacker can tamper runtime behavior,tool like frida) and also can perform MITM attack.
+    - **Tap'n Ghost Attack**:It is Novel attack technique.this attack targets NFC technology and RX electrodes used in capacitive touchscreens of mobile devices.It is based on 2 attack techniques: Tag-based adaptive ploy(TAp) and Ghost touch generator.launched on voting machines and ATMs. 
+   - **Android Trojans**
+      - SharkBot: banking trojan,which intiate money transfer using Automatic transfer system ATS technique.
+      - GiftHorse: embeded within more than 200 malicious applications.
+      - TeaBot,Android Police virus,Octo,Aberebot,Xenomorph
+   - **OTP Hijacking Tools**
+      - AdvPhishing: Social media phishing tool
+      - mrphish: bash-based script for phishing social meadia accounts with port forwarding and OTP bypassing control.It is works for both rott and non-root device.
+      - **Stormbreaker: camera/microphone hijacking tool,CamPhish,CamHack,E-Tool,CamOver,Cam-Dumper**
+      - **Android Hacking Tools:AndroidRAT(Full persistent backdoor, Java Android on the client side and Python on the server side), Fing-Network Tools, Arpspoof, Network discovery,NEXSPY,IntentFuzzer**
 
 ## Security Measures for Android Devices
 1. **Avoid Rooting**:
@@ -191,7 +219,17 @@ Mobile devices are indispensable but pose significant security risks due to thei
 9. **Disable Unused Features**:
    - Turn off WiFi, Bluetooth, and location services when not in use.
 
+- **Android Security tools**:
+   - Kaspersky Mobile Antivirus: focusing on anti-theft and virus protection for mobile and tablets.also help users to find their losted or stolen device.
+   - Avira Antivirus security, Avast Mobile Security,McAfee Mobile security,Lookout Security & Antivirus, Sophos Intercept X for mobile.
+- **Android Tracking tool**:
+   - Google Find my device, Prey Anti-theft,iHound,Mobile Tracker,Android Lost,Phone Tracker by number
 
+- **Android V.scanner**:
+   - Quixxi App shield: secure mobile apps from piracy, revenue loss, intellectual property (IP) theft, loss of user data, hacking, and cracking.
+   - Vulner Scanner, Shellshock scanner,yaazhini,quick android review kit-QARK
+   - **Sixo: Online APK Analyzer**: It can decompile binary XML files and resources
+   - DeGuard,sandDroid,Apktool,APK Analyzer Online,Android APK decompiler
 ### Summary
 Android's open nature provides flexibility but also introduces risks. Understanding rooting, using secure practices, and leveraging the right tools can help balance functionality with security.
 
@@ -203,6 +241,8 @@ Android's open nature provides flexibility but also introduces risks. Understand
   - Developed by Apple, iOS powers iPhones and iPads.
   - Released in 2007, initiating the smartphone revolution.
   - Renowned for its smooth performance, advanced hardware, and secure ecosystem.
+- **IOS Architectur**:
+   -  Cocoa application(Appkit framework), media, core services, core OS and kernel, and device drivers.  
 - **Security Features**:
   - **Secure Boot**: Ensures only authorized boot processes occur.
   - **Biometric Authentication**: Face ID, Touch ID.
@@ -224,18 +264,24 @@ Android's open nature provides flexibility but also introduces risks. Understand
   - Compromises built-in security measures.
 
 ### Types of Jailbreaking
-1. **Tethered**:
-   - Requires the device to be connected to a computer to boot in a jailbroken state.
-2. **Semi-Tethered**:
-   - Boots normally but requires a computer to reapply the jailbreak for functionality.
-3. **Untethered**:
-   - Device remains jailbroken even after reboots.
-4. **Semi-Untethered**:
-   - Similar to semi-tethered but allows patching directly from the device without a computer.
+1. **Userland Exploit**: It allows user level access but does not allow iboot-level access.only firmware updates can patch such vulnerabilities.
+2. **iBoot Exploit**: It allows user level and iboot level access.it take advantage pf loophole in iboot to delink the code signing appliance.firmware updates can patch such exploits.
+3. **Bootrom Exploit**: It uses a loophole in the secureROM to disable signature checks,which can use to load patch NOR firmware.firmware update can not patch it.both aceess allows here.only hardware update of bootrom by apple can patch it.
+
+### Jailbraking Techniques
+1. Untethered jailbreaking : device will be jailbroken after each reboot.
+2. Semi-tethered jailbreaking : user needs to start device with help of jailbreaking tool.
+3. Tethered jailbreaking : device starts up on its own.it must be re-jailbroken with computer using boot tethered feture each time ,it is turned on.
+4. Semi-untethered jailbreaking : when the device reboots, the kernel is not patched.it is patched without computer use app installed on device.
 
 ### Jailbreaking Tools
 - **Hexxa/Hexxa Plus**: Popular jailbreaking tools.
-- Numerous tutorials and tools are available online for jailbreaking.
+- **Apricot**: get a virtual jailbreak experiance
+- **Checkra1n,Yuxigon,sileo,Fugu14,Bregxi**
+- **Spyzie**: Attackers use various online tools such as Spyzie to hack the target iOS mobile devices. Spyzie allows attackers to hack SMS, call logs, app chats, GPS, etc.
+- **Cydia**: Cydia is a software application for iOS that enables a user to find and install software packages (including apps, interface customizations, and system extensions) on a jailbroken iPhone, iPod Touch, or iPad.
+- **Apricot**: Apricot is a web-based mirror OS for the latest iPhones. It supports iOS 13.2 devices. Users can run this mirror iOS version with the default iOS 13.2 simultaneously
+-**Hexxa Plus**: Hexxa Plus is a Jailbreak Repo Extractor for iOS 13.2, which allows you to install themes, tweaks, and apps. It is compatible with iOS 13 and higher versions up to iOS 13.2.3 including iOS 13.3 beta.
 
 
 ## iOS-Specific Security Threats
@@ -243,12 +289,19 @@ Android's open nature provides flexibility but also introduces risks. Understand
    - Exploits the "Trust This Device" feature during iTunes sync over WiFi.
    - Allows attackers remote access to sensitive data.
 2. **iOS Malware**:
-   - Includes threats like Pegasus and spyware tools.
+   - Includes threats like Pegasus(government agencies use this spyware to monitor terrorist activityor political propaganda,can exploit zero click exploit) and spyware tools.
+   - NoRebbot trojan: fake device reboot and run in background.
    - Targets high-profile users and exploits zero-day vulnerabilities.
 3. **Hacking Tools**:
    - Apps like **Network Analyzer Pro** can gather network information.
    - Tools like **Elcomsoft Phone Breaker** can access encrypted backups and iCloud data.
-
+   - **Spyzie:** it is online tool.hack target device remotely in invisible mode without jailbreaking the device.
+4. **Analyzing and manipulating iOS Applications**:
+   - **Cycript**: Runtime manipulation tool,it is javascript interpreter.can understand c,c++ and js commands.can do swizzling,authentication bypass and jailbreak detection bypass.
+   -**Swizzling**: aka monkey patching.modify existing method or add new functionality at run time.use to perform logging,javascript injection,detection bypass and authentication bypass
+   -**keychain dumper**: iOS has encrypted storage system called keychain that stores secrets
+   - **objection**: for analyze iOS, perform method hooking,bypass SSL pinningand bypass jailbreak detection.
+    
 
 ## Security Measures for iOS Devices
 1. **Avoid Jailbreaking**:
@@ -276,8 +329,10 @@ Android's open nature provides flexibility but also introduces risks. Understand
 - **Network Analyzer Pro**: For information gathering.
 - **Trustjacking**: Exploiting the trusted device feature to access the device remotely.
 - **Malware Examples**: Pegasus, developed by the NSO Group, used for espionage.
-
-
+**iOS Device security Tools**
+- **Avira Mobile Security**: Web protection and identify safeguarding
+**iOS Device Tracking Tools**: Find My, SpyBubble,Prey Find my phone tracker GPS,iHound,FoolowMee GPS Location Tracker,Mobistealth
+  
 ### Summary
 iOS devices are secure by design, but security depends on user behavior. Avoid risky actions like jailbreaking, practice good digital hygiene, and use security tools to safeguard your data.
 
