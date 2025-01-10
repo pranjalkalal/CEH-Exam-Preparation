@@ -350,12 +350,12 @@ iOS devices are secure by design, but security depends on user behavior. Avoid r
   - **Inventory Tracking**: Monitor devices as part of organizational assets.
   - **Real-Time Monitoring**: Generate alerts for compliance and security issues.
 - **Examples of MDM Solutions**:
-  - **ManageEngine Mobile Device Manager Plus**:
-    - Supports cloud or on-premises deployment.
-    - Manages devices running Android, iOS, macOS, Windows, and Chrome OS.
+  - **Citrix Endpoint Management**:
+    - provides a modern approach to manage various devices including desktops, laptops, smartphones, tablets, and IoT through a single platform.
   - **IBM Maas360 with Watson**:
     - Cloud-based mobility management solution.
     - Integrates with AI-driven insights for enhanced device security.
+  - VMware Airwatch,sicap MobiControl,Scalefusion MDM,ManageEngine Mobile Device Manager plus 
 
 
 ## Bring Your Own Device (BYOD)
@@ -375,6 +375,12 @@ iOS devices are secure by design, but security depends on user behavior. Avoid r
 
 
 ## BYOD Policies
+- **Policy Implementation**
+  1. Define your requirnments
+  2. Select the devices of your choice and build a technology portfolio
+  3. Develop policies
+  4. Security
+  5. Support
 1. **Secure Environment**:
    - Require secure passwords and full-disk encryption.
    - Implement device health checks before granting access.
