@@ -416,5 +416,19 @@ iOS devices are secure by design, but security depends on user behavior. Avoid r
 8. **Educate Users**:
    - Train employees on secure usage and recognizing phishing (e.g., smishing).
 
+**Source Code Analysis Tools**:
+- z3A Advanced App Analysis: identify security and privacy risks for both.
+- kiuwan,Appium,selendroid,bitbar,infer
+**Reverse Engineering Tools**:
+  - APKtool: reverse engineering third-party,closed binary android tool
+  - Frida,JEB,APK Studio,objection,Bytecode viewer
+**APK Repackaging detector**
+ - Promon SHIELD: used to protect mobile apps against repackaging attacks.
+**Mobile Protection Tools**
+ - Lookout personal, Zimperium's zIPS(IPS app),BullGuard mobile security and antivirus
+**Mobile anti-spyware**
+   - malwarebytes for android
+**Mobile Pen Testing Toolkit:Immuniweb mobilesuite**
+ -  It leverages machine learning technology to augment and accelerate manual mobile penetration testing of iOS and Android mobile applications. 
 ### Summary
 MDM tools streamline the management of mobile devices, enhancing security and productivity. BYOD policies balance convenience and security, but require robust guidelines and user education to mitigate risks. Adhering to general security practices ensures a secure mobile environment for both personal and corporate devices.
