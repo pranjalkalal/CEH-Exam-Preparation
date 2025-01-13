@@ -326,58 +326,52 @@ Privilege escalation refers to the process of gaining higher levels of access or
 
 
 ## Techniques for Privilege Escalation
+**1. Using DLL Hijacking**
+   - Attackers use tools like Robber and PowerSploit to detect hijackable DLLs and Perform DLL hijacking on the target system
+   - Robber: open-source tool,helps attackers to find executables prone to DLL hijacking.
+**2. By Exploiting vulnerabilities**
+   - Exploit Database or vulDB for finding exploits of existing vulnerability.
+**3. Using Dylib hijacking**
+   - macOS and windows both vulnerable to dynamic library attacks
+   - macOS provide several legitimate methods,such as DYLD_INSERT_LIBRARIES environment variable,which are user specific
+   - Attackers can utilize such methodsto perform various malicious activities such as stealthy persistence,run-time process injection,bypassing security software and bypassing Gatekeeper.
+   - Tool: Dylib hijack scanner helps attackers to detect dylibs that are vulnerable to hijacking attacks.
+**4. Using Spectre & meltdown vulnerabilities**
+   - It is CPU vulnerabilities found in the design of modern processors,including chips from AMD,ARM and Intel, caused by performance optimizations in these processors.
+   - user's privilege is distrupted through the interaction of features like branch prediction,out-of-order execution,caching and speculative execution
+   - Spectre Vulnerability: found in many modern processors,including apple,AMD,ARM,Intel,Samsung and Qualcomm processors, Attacker may use this vulnerability to read adjacent memory location of process and access information for which he is not authorized.
+   - Meldown Vulnerability: Found in all Intel and ARM processors deployed by Apple,exploit CPU optimization mechanism such as speculative execution
+**5. Using Named pipe imersonation**
+   - In windows, named pipes are used to provide legitimate communication between running processes.
+   - When process creates pipe,it will act as pipe server
+   - tools such as metasploit(use 'getsystem' command) to perform pipe impersonation on target host.
+**6. By exploiting misconfigured service**
+   - unquoted service paths,service object permissions,unattended installs(sensitive information such as the configuration of local accounts, usernames, and even decoded passwords stored in unattend.xml)
+**7. pivoting & relaying to hack external machines**
+   - pivoting:
+      1. discover live host
+      2. set up routing rules
+      3. scan ports of live system
+      4. exploit vulnerable service 
+   - Relaying:
+      1. set up port forwarding rules
+      2. access the system resources
+8. Using misconfigured NFS
+9. Using windows sticky keys
+10. By bypassing user account control-UAC
+11. By abusing boot or logon initialization scripts
+12. By modifying Domain Policy
+13. Retriving Password Hashes of other domain controllers using DCsync Attack
+14. other p.e techniques
+15. P.E. Tools
+16. Defend
+17. Defend tools
+18. tools for defend against DLL and Dylib Hijacking
+19. tools against spectre and meltdown vulnerabilities
 
-### 1. **OS or Software Vulnerabilities**
-   - Unpatched systems may have known exploits available on **ExploitDB**.
-   - Tools like **searchsploit** (Kali Linux) can find local exploit databases.
-
-### 2. **Misconfigurations**
-   - Misconfigured permissions or shared folders can open doors for escalation.
-   - Common errors include granting excessive permissions and failing to secure shares.
-
-### 3. **DLL Hijacking**
-   - **DLL Hijacking**: Placing a malicious DLL in a folder where the system expects a legitimate DLL.
-   - Tools like **ProcMon** help identify missing DLLs that can be hijacked.
-
-### 4. **Unattended Installation Files**
-   - **unattend.xml** or **unattended.xml** files often contain sensitive information.
-   - These files may store admin credentials, located in folders like `C:\Windows\System32\sysprep`.
-
-### 5. **Unquoted Service Paths**
-   - If a service path has spaces and lacks quotes, attackers can place a malicious executable in the expected path.
-   - Example: A service path like `C:\Program Files\App Name` may execute `App.exe` if found in `C:\Program`.
-
-### 6. **Scheduled Tasks**
-   - Manipulating scheduled tasks (e.g., PowerShell scripts in Windows or cron jobs in Linux) can allow execution of malicious code.
-
-### 7. **SUID/GUID Permissions**
-   - In Linux, files with **SUID/GUID** set can run with elevated privileges.
-   - Tools like **GTFOBins** list exploitable binaries with SUID bits.
-
-### 8. **Sudo Privileges**
-   - Misconfigured **sudo** permissions may allow escalation.
-   - `sudo -l` command shows accessible binaries that could be exploited to gain root access.
 
 
-## Tools for Privilege Escalation
 
-1. **LinPEAS/WinPEAS (PEAS Suite)**
-   - Automates privilege escalation checks and suggests exploitation paths on Linux (LinPEAS) and Windows (WinPEAS).
-
-2. **Windows Exploit Suggester**
-   - Analyzes Windows configurations to identify potential privilege escalation points.
-
-3. **Linux Privilege Checker**
-   - Runs privilege checks on Linux systems, identifying areas to escalate privileges.
-
-
-## Defense Against Privilege Escalation
-
-- **System Patching**: Apply patches for known vulnerabilities.
-- **Principle of Least Privilege**: Grant only necessary permissions to users.
-- **System Hardening**: Follow hardening guides and secure configurations.
-- **Multifactor Authentication**: Adds an extra layer of protection against unauthorized access.
-- **Secure Application Development**: Use **SAST** and **DAST** to test application security.
 
 
 # Maintaining Access (Persistence)
