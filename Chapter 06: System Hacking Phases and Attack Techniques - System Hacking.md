@@ -421,7 +421,7 @@ Privilege escalation refers to the process of gaining higher levels of access or
 
 # Maintaining Access (Persistence)
 - **Executing Applications**
-     1. Remote code execution techniques
+   1. Remote code execution techniques
         - Exploitation for client Execution
            - web browser based exploitation,office application based, Third party application based exploitation
          - Service execution
@@ -430,7 +430,7 @@ Privilege escalation refers to the process of gaining higher levels of access or
         - tools for execution applications
            - Dameware Remote Support : it is remote control and system management tool that mplifies remote Windows administration, provides built-in remote admin tools, and remotely manages Active Directory (AD) environment.
             - Ninja,pupy,PDQ Deploy,ManageEngine Desktop Central,PsExec
-     2. keylogger
+   2. keylogger
         - types of keystroke loggers
            i. H/W keystroke loggers
               1. PC/BIOS embeded
@@ -454,7 +454,7 @@ Privilege escalation refers to the process of gaining higher levels of access or
            - Spyrix keylogger free
         - keyloggers for mac os
            - Refog Mac Keylogger
-     3. spyware
+   3. spyware
         - Spyware propogation :  it installs itself when you visit and click something on a website, this process is known as “drive-by downloading.” 
         - spyware tools
            - Spytech SpyAgent : attackers use Spytech SpyAgent to track the websites visited, online searches performed, programs and apps in use, file and printing information, email communication, user login credentials, etc. of the target system
@@ -470,10 +470,12 @@ Privilege escalation refers to the process of gaining higher levels of access or
            - print spyware
            - telephone/cellphone spyware
            - GPS spyware
-     4. defend against keyloggers
+           
+   4. defend against keyloggers
         -  Install a host-based IDS that can monitor the system and disable the installation of keyloggers.
          - anti-keyloggers: Zemana Antilogger:  The AntiLogger detects the malware at the time it attacks your system, rather than detecting it based on its signature fingerprint.
-     5. defent against spyware
+         
+   5. defent against spyware
          -  anti-spyware : SUPERAntiSpyware
            
 - **Hiding files**
