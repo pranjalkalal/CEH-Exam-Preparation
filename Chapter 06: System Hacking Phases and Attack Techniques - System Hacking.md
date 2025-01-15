@@ -329,25 +329,32 @@ Privilege escalation refers to the process of gaining higher levels of access or
 **1. Using DLL Hijacking**
    - Attackers use tools like Robber and PowerSploit to detect hijackable DLLs and Perform DLL hijacking on the target system
    - Robber: open-source tool,helps attackers to find executables prone to DLL hijacking.
+     
 **2. By Exploiting vulnerabilities**
    - Exploit Database or vulDB for finding exploits of existing vulnerability.
+     
 **3. Using Dylib hijacking**
    - macOS and windows both vulnerable to dynamic library attacks
    - macOS provide several legitimate methods,such as DYLD_INSERT_LIBRARIES environment variable,which are user specific
    - Attackers can utilize such methodsto perform various malicious activities such as stealthy persistence,run-time process injection,bypassing security software and bypassing Gatekeeper.
    - Tool: Dylib hijack scanner helps attackers to detect dylibs that are vulnerable to hijacking attacks.
+     
 **4. Using Spectre & meltdown vulnerabilities**
    - It is CPU vulnerabilities found in the design of modern processors,including chips from AMD,ARM and Intel, caused by performance optimizations in these processors.
    - user's privilege is distrupted through the interaction of features like branch prediction,out-of-order execution,caching and speculative execution
    - Spectre Vulnerability: found in many modern processors,including apple,AMD,ARM,Intel,Samsung and Qualcomm processors, Attacker may use this vulnerability to read adjacent memory location of process and access information for which he is not authorized.
    - Meldown Vulnerability: Found in all Intel and ARM processors deployed by Apple,exploit CPU optimization mechanism such as speculative execution
+     
 **5. Using Named pipe imersonation**
    - In windows, named pipes are used to provide legitimate communication between running processes.
    - When process creates pipe,it will act as pipe server
    - tools such as metasploit(use 'getsystem' command) to perform pipe impersonation on target host.
+     
 **6. By exploiting misconfigured service**
    - unquoted service paths,service object permissions,unattended installs(sensitive information such as the configuration of local accounts, usernames, and even decoded passwords stored in unattend.xml)
+     
 **7. pivoting & relaying to hack external machines**
+   -  Using pivoting, attackers can open a remote shell on the target system tunneled through the initial shell on the compromised system. In relaying, resources present on the other systems are accessed through a tunneled shell session on the compromised system.
    - pivoting:
       1. discover live host
       2. set up routing rules
@@ -356,66 +363,144 @@ Privilege escalation refers to the process of gaining higher levels of access or
    - Relaying:
       1. set up port forwarding rules
       2. access the system resources
-8. Using misconfigured NFS
-9. Using windows sticky keys
-10. By bypassing user account control-UAC
-11. By abusing boot or logon initialization scripts
-12. By modifying Domain Policy
-13. Retriving Password Hashes of other domain controllers using DCsync Attack
-14. other p.e techniques
-15. P.E. Tools
-16. Defend
-17. Defend tools
-18. tools for defend against DLL and Dylib Hijacking
-19. tools against spectre and meltdown vulnerabilities
-
-
-
+         
+**8. Using misconfigured NFS**
+   - NFS protocol used to share and access data and file over secure network,port is 2049
+     
+**9. Using windows sticky keys**
+   - change file location of sethc.exe and cmd.exe to %systemroot%\system32
+   - after restarting system it and pressing 5 time shift key it will open command prompt with system access.
+   - On-screen Keyboard: osk.exe
+   - Magnifier: magnify.exe
+   - Narrator: narrator.exe
+   - Display Switcher: DisplaySwitch.exe
+   - App switcher : AtBroker.exe
+   - Sticky Keys: Sethc.exe
+     
+**10. By bypassing user account control-UAC**
+   - using metasploit exploit (malware injection,fodhelper registry key,eventvwr Registry key, COM handler hijack)
+     
+**11. By abusing boot or logon initialization scripts**
+   - logon script
+      - windows:   HKCU\Environment\UserInitMprLogonScript
+      - MacOS:logon script(login hooks)
+      - Network logon scripts: allocated using AD or GPOs.
+      - RC scripts: unix based system
+      - startup items in macOS: StartupParameters.plist 
+      
+**12. By modifying Domain Policy**
+   - Group policy modification
+      -  \<DOMAIN>\SYSVOL\<DOMAIN>\Policies\ : alter policy
+      -  <GPO_PATH>\Machine\Preferences\ScheduledTasks\ScheduledTasks.xml  : modify scheduled tasks
+      -  <GPO_PATH>\MACHINE\Microsoft\Windows NT\SecEdit\GptTmpl.inf : Modify user rights
+   - Domain trust modification
+      -    C:\Windows\system32>nltest /domain_trusts
+        
+**13. Retriving Password Hashes of other domain controllers using DCsync Attack**
+   - DCSync attack is a technique used by attackers on selective DCs. In this attack, an attacker initially compromises and obtains privileged account access with domain replication rights.
+   - 8 stages to perform this attack: external recon,compromise targeted machine,perform internal recon,escalate local privilege, Compromise credentials by sending commands to DC, perform admin level recon, remote cade execution,gain domain admin credentials
+   - mimikatz tool used to perform DCSync attack
+     
+**14. other p.e techniques**
+   - access token manipulation, Parent PID spoofing, Application Shimming( compatibility between the older and newer versions of Windows), Filesystem permission weakness, path interception, abusing accessibility fetures, SID history injection, COM(Component Object model) hijacking, Scheduled tasks in windows(utilities like at,schtasks), s.t.in linux(utilities like cron,crond), launch daemon, Plist modification(in mac property list), setuid & setgid, web shell, abusing sudo rights, abusing suid & sgid permissions, kernal exploits
+   
+**15. P.E. Tools**
+   - BeRoot: post exploitation tool
+   - linpostexp: detailed info of the kernal
+   - Powersploit,fullpowers,PEASS-ng, windows exploit suggester
+   
+**16. tools for defend against DLL and Dylib Hijacking**
+   - Dependency Walker: detect common application problems
+   - Dylib hijack scanner: scan computer for Dynemic library vulnerability
+     
+**17. tools against spectre and meltdown vulnerabilities**
+   - InSpectre: it examines and discloses any windows system's h/w and s/w capability to prevent meltdown and spectre attacks.
+   - Spectre & Meltdown checker: it is shell script to determine whether system is vulnerable against various spectulative execution CVEs. For Linux systems, the script will detect mitigations, including backported non-vanilla patches, regardless of the advertised kernel version number or the distribution (such as Debian, Ubuntu, CentOS, RHEL, Fedora, openSUSE, Arch, etc.).
 
 
 
 # Maintaining Access (Persistence)
-1. Backdoors: Attackers may install backdoor programs or modify existing system components to create secret entry points into the compromised system. These backdoors can provide remote access to the system, allowing attackers to return and regain control even if their initial access is discovered and removed.
-
-2. Rootkits: Rootkits are malicious software designed to hide the presence of other malicious programs or activities on a system. They operate at a deep level within the operating system, making them difficult to detect and remove. Rootkits can be used to maintain access by ensuring that the attacker's tools and processes remain hidden from system administrators and security software.
-
-3. Scheduled Tasks and Cron Jobs: Attackers may create scheduled tasks or cron jobs to execute their malicious code at predefined intervals. By scheduling tasks to run periodically, attackers can maintain access to the compromised system without needing to maintain a constant presence.
-
-4. Persistence Mechanisms: Attackers can leverage various persistence mechanisms built into operating systems to ensure their malicious code runs automatically every time the system boots or a user logs in. Examples include modifying startup scripts, registry keys, or system services.
-
-### Rootkits in more details
-Rootkits are malicious software designed to conceal the presence of other malicious programs or activities on a compromised system. There are several types:
-
-- Kernel-Level Rootkits: Operate at the OS kernel level, replacing or modifying core OS functions.
-- User-Level Rootkits: Exploit vulnerabilities in user-space applications to gain elevated privileges.
-- Bootkits: Infect the boot process (e.g., MBR), controlling the system from startup.
-- Hardware/Firmware Rootkits: Infect system hardware or firmware, controlling the system at a fundamental level.
-- Memory Rootkits: Reside entirely in system memory, injecting malicious code into processes.
-
-## Steganography
-Steganography is the practice of hiding data within other files, known as the **cover medium**. This allows data to be concealed within images, audio, or video files without altering their appearance. It’s commonly used to exfiltrate sensitive information, like personal data or intellectual property, without detection. 
-
-### Example Methods
-- **Slack Space**: Hiding data in unused portions of a file, making it less noticeable.
-- **Edward Snowden Example**: Snowden reportedly used steganography to exfiltrate data.
-
-### Tools
-- **StegSnow**: Embeds hidden text into file slack space with optional compression and password protection.
-- **StegHide**: A versatile tool used for embedding various data types in images and other file types.
-
-## Steganalysis
-Steganalysis is the process of detecting and analyzing hidden data within files, often used in **threat hunting** and cybersecurity defense.
-
-### Detection Methods
-- **Visual Analysis**: Observing abnormalities in files, such as odd pixelation in images or inaudible frequencies in audio files.
-- **File Metadata**: Examining metadata fields for hidden information.
-- **Strings Command**: Searching for readable text in files to identify embedded data.
-
-### Tools
-- **Zsteg**: Analyzes files for hidden data, providing insight into embedded messages and metadata.
-
-Steganography and steganalysis each require specialized techniques and tools, and while steganography is challenging to detect, skilled steganalysis can reveal hidden data.
-
+- **Executing Applications**
+     1. Remote code execution techniques
+        - Exploitation for client Execution
+           - web browser based exploitation,office application based, Third party application based exploitation
+         - Service execution
+         - Windows management instrumentation(WMI)- through distributed component object model-DCOM via port 135 and WinRM/5985and https/5986
+         - windows remote management-winrm
+        - tools for execution applications
+           - Dameware Remote Support : it is remote control and system management tool that mplifies remote Windows administration, provides built-in remote admin tools, and remotely manages Active Directory (AD) environment.
+            - Ninja,pupy,PDQ Deploy,ManageEngine Desktop Central,PsExec
+     2. keylogger
+        - types of keystroke loggers
+           i. H/W keystroke loggers
+              1. PC/BIOS embeded
+              2. Keylogger keyboard
+              3. external keylogger (attached between a standard PC keyboard and a computer. )
+                a. PS/2 and USB k.
+                b. Acoustic/CAM k.
+                c. Bluetooth K.   
+                d. wifi k.
+           ii. S/w Keystroke loggers
+              1. application k.
+              2. Kernel/Rootkit/device driver  k.
+              3. Hypervisor-based k.
+              4. Form Grabbing based K.
+              5. Javascript based K.
+              6. Memory injection based k.
+        - remote keylogger attack using metasploit
+        - hardware keyloggers
+           - KeyGrabber: it is electronic device capable of capturing keystrokes from PS/2 or USB keyboard.
+        - keyloggers for windows
+           - Spyrix keylogger free
+        - keyloggers for mac os
+           - Refog Mac Keylogger
+     3. spyware
+        - Spyware propogation :  it installs itself when you visit and click something on a website, this process is known as “drive-by downloading.” 
+        - spyware tools
+           - Spytech SpyAgent : attackers use Spytech SpyAgent to track the websites visited, online searches performed, programs and apps in use, file and printing information, email communication, user login credentials, etc. of the target system
+           - Power spy : it is pc user activity monitoring software
+        - types of spyware
+           - Desktop Spyware
+           - Email spyware
+           - Internet spyware
+           - child monitoring spyware
+           - Screen capturing spyware
+           - USB Spyware
+           - Audio/video spyware
+           - print spyware
+           - telephone/cellphone spyware
+           - GPS spyware
+     4. defend against keyloggers
+         - anti-keyloggers
+     5. defent against spyware
+         -  anti-spyware
+           
+- **Hiding files**
+    1. Rootkits
+       - types,working,popular rootkits and detect and defending and antirootkit
+    2. NTFS Data Stream 
+       - Create,manipulation,defend,detector
+    3. Steganography
+       - types
+       - tools for mobiles
+       - steganalysis
+       - attacks
+       - detection tools
+- **establishing persistence**
+     1. by abusing Boot or logon Autostart executions
+     2. Domain dominance through different paths
+     3. remote code execution
+     4. abusing data protection API (DPAPI)
+     5. malicious Replication
+     6. Skeleton Key attack
+     7. Golden Ticket Attack
+     8. Silver Ticket Attack
+     9. Maintain Domain Persistence Through AdminSDHolder
+     10. Maintaining persistence through WMI Event Subscription
+     11. Overpass-the hash attack
+     12. linux post exploitation
+     13. windows post exploitation
+     14. defend against persistence attack
 # Covering Tracks
 
 In cybersecurity, attackers, red team members, or penetration testers may attempt to hide their activity on a system. Covering tracks is essential for maintaining access and avoiding detection.
