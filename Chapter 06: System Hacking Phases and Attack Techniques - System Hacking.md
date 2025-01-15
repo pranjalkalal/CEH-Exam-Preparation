@@ -471,21 +471,86 @@ Privilege escalation refers to the process of gaining higher levels of access or
            - telephone/cellphone spyware
            - GPS spyware
      4. defend against keyloggers
-         - anti-keyloggers
+        -  Install a host-based IDS that can monitor the system and disable the installation of keyloggers.
+         - anti-keyloggers: Zemana Antilogger:  The AntiLogger detects the malware at the time it attacks your system, rather than detecting it based on its signature fingerprint.
      5. defent against spyware
-         -  anti-spyware
+         -  anti-spyware : SUPERAntiSpyware
            
 - **Hiding files**
     1. Rootkits
        - types,working,popular rootkits and detect and defending and antirootkit
+         - **Types**: 
+          - Hypervisor-level rootkit (Intel VT and AMD-v)-ring 1
+          - Hardware/Firmware rootkit
+          - kernel level rootkit -ring 0
+          - boot loader level rootkit
+          - Application-level/user-mode rootkit: ring 3
+          - library level rootkit
+         - **Popular Rootkits**: Purple Fox and MoonBounce
+            - purple fox: distributed via a fake malicious telegram installer,TextInputh.exe
+            - MoonBounce: MoonBounce is malicious code concealed within UEFI firmware in the SPI flash that is scheduled to be executed at a specific time.
+            - Dubbed Demodex Rootkit: conceal malware fingerprints
+            - Moriya,iLoBleed,Netfilter,skidmap
+           - **Detecting**:
+             - Integrity based detection : Tripware and AIDE
+             - Signature based detection
+             - Heuristic/Behavior based
+             - Runtime Execution path profiling
+             - Cross view based
+             - Alternative trusted medium : most reliable method
+             - Analyze memory dump
+           - **Anti-Rootkits**
+              - GMER, stinger,Avast one,TDSSkiller,Malwarebytes Anti-rootkit,Rootkit Buster.
     2. NTFS Data Stream 
        - Create,manipulation,defend,detector
+        - NTFS alternate Data stream(ADS) is windows hidden stream
+        - Notepad is a stream-compliant application. You should not use alternate streams to store critical information.
+        - Stream armor tool
     3. Steganography
+       - Classification: technical and linguistic. In technical steganography, a message is hidden using scientific methods, whereas in linguistic steganography, it is hidden in a carrier, which is the medium used to communicate or transfer messages or files.
+       - Technical Stegno:
+          - Invisible Ink or security ink
+          - microdots
+          - Computer based methods
+             - Substitution Technique,Transform domain techniques
+            - Spread spectrum tech.
+            - Statistical Techniques: 1 bit steganography
+            - Distrotion Techniques
+            - Cover Generation Techniques
+        - Linguistic Stegno:
+           - Semagrams: visual,text
+           - open codes
+           - jargon codes: cue code
+           - covered ciphers: null and grille
        - types
-       - tools for mobiles
-       - steganalysis
+          1. Image stegno: LSB,Masking and filtering,algo and transformation
+             - tool: OpenStegno
+          2. Document stegno : Stegnostick
+          3. Folder stegno: GiliSoft File lock pro
+          4. Video stegno : OminiHide Pro
+          5. Audio stegno : Echo hiding,spread spectrum method(Direct sequance s.s,Frequancy hopping s.s,LSB coding,Tone insertion,Phase encoding), tools: DeepSound
+          6. White space stegno : snow
+          7. Web stegno: hide web object behind other object
+          8. Spam/email stegno : Spam Mimic
+          9. DVD-ROM stegno: embeds content in audio and graphical data
+          10. Natural text stegno: convert sensitive info into user-definable free speech.
+          11. Hidden OS stegno: hide one OS behind another
+          12. C++ source code stegno : hide set of tools in file
+       - tools for mobiles: Stegais (hide message in image), SPY PIX,Pixelknot,noclue
+       - steganalysis :  process of discovering the existence of hidden information in a medium.
+          - 2 aspects: detection and distortion of message
+          -  In the detection phase, the analyst observes the relationships between the steganography tools, stego-media, cover, and message. In the distortion phase, the analyst manipulates the stego-media to extract the embedded message and decides whether it is useless and should be removed altogether. 2 types of attack: message and chosen message
        - attacks
-       - detection tools
+          - Stegno only(Stegno object is available)
+          - Known stegno: sccess to stegno algo
+          - known message: access to the hidden message and stegno object
+          - known cover: compare stegno object and cover medium
+          - chosen message: generate stegno object from known message using specific tool
+          - chosen stegno: has access to obj and algo
+          - Chi square: probability analysis
+          - Distiguishing statical: embeded algo
+          - Blind classifier: unmodified data
+       - detection tools : Zsteg: detect stegno hidden data in PNG and BMP files
 - **establishing persistence**
      1. by abusing Boot or logon Autostart executions
      2. Domain dominance through different paths
