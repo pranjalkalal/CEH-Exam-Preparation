@@ -420,7 +420,9 @@ Privilege escalation refers to the process of gaining higher levels of access or
 
 
 # Maintaining Access (Persistence)
-- **Executing Applications**
+
+**Executing Applications**
+
    1. Remote code execution techniques
         - Exploitation for client Execution
            - web browser based exploitation,office application based, Third party application based exploitation
@@ -431,29 +433,34 @@ Privilege escalation refers to the process of gaining higher levels of access or
            - Dameware Remote Support : it is remote control and system management tool that mplifies remote Windows administration, provides built-in remote admin tools, and remotely manages Active Directory (AD) environment.
             - Ninja,pupy,PDQ Deploy,ManageEngine Desktop Central,PsExec
    2. keylogger
-        - types of keystroke loggers
-           i. H/W keystroke loggers
-              1. PC/BIOS embeded
-              2. Keylogger keyboard
-              3. external keylogger (attached between a standard PC keyboard and a computer. )
-                a. PS/2 and USB k.
-                b. Acoustic/CAM k.
-                c. Bluetooth K.   
-                d. wifi k.
-           ii. S/w Keystroke loggers
-              1. application k.
-              2. Kernel/Rootkit/device driver  k.
-              3. Hypervisor-based k.
-              4. Form Grabbing based K.
-              5. Javascript based K.
-              6. Memory injection based k.
-        - remote keylogger attack using metasploit
-        - hardware keyloggers
-           - KeyGrabber: it is electronic device capable of capturing keystrokes from PS/2 or USB keyboard.
-        - keyloggers for windows
-           - Spyrix keylogger free
-        - keyloggers for mac os
-           - Refog Mac Keylogger
+      - types of keystroke loggers
+      
+         i. H/W keystroke loggers
+   
+             1. PC/BIOS embeded
+             2. Keylogger keyboard
+             3. external keylogger (attached between a standard PC keyboard and a computer. )
+               a. PS/2 and USB k.
+               b. Acoustic/CAM k.
+               c. Bluetooth K.   
+               d. wifi k.
+         ii. S/w Keystroke loggers
+         
+             1. application k.
+             2. Kernel/Rootkit/device driver  k.
+             3. Hypervisor-based k.
+             4. Form Grabbing based K.
+             5. Javascript based K.
+             6. Memory injection based k.
+             
+       - remote keylogger attack using metasploit
+       - hardware keyloggers
+          - KeyGrabber: it is electronic device capable of capturing keystrokes from PS/2 or USB keyboard.
+       - keyloggers for windows
+          - Spyrix keylogger free
+       - keyloggers for mac os
+        - Refog Mac Keylogger
+        
    3. spyware
         - Spyware propogation :  it installs itself when you visit and click something on a website, this process is known as “drive-by downloading.” 
         - spyware tools
