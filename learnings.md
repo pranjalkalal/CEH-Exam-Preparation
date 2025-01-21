@@ -95,4 +95,54 @@
   - Microsoft Authentication
       - Security Account manager (SAM) database
       - NTLM Authentication
-      - Kerberos Authentication 
+      - Kerberos Authentication
+
+  - **Privilege Escalation:** Active password changer tool
+      - user->admin: passwd,vulnerability,weak permission(service,file),DLL hijacking
+      - Admin->Others/system: PtH,install service,access,process hijacking
+      - Keystroke loggers:
+        - Hardware Keystroke loggers(PC/BIOS Embedded,Keylogger keyboard,external keylogger,wifi keylogger,bluetooth keylogger,CAM/Acoustic keylogger,PS/2 and USB keylogger)
+        - Software keystroke logger(Application keylogger,Kernel keylogger,hypervisor based keylogger,form grabbing based keylogger)
+       
+
+  - **Rootkit:**Avatar,Necurs,Azazel,ZeroAccess
+    - Hypervisor level rootkit
+    - Hardware/firmware rootkit
+    - kernel level rootkit
+    - boot loader level rootkit
+    - application level rootkit
+    - library level rootkit
+    - Detection techniques:
+      - Integrity based detection,signature bbased detection,Heuristic/Behavior based detection,Runtime execution path profiling,cross view based detection
+    - Anti-rootkits: Stinger,unhackme,GMER
+  - NTFS data stream: LADS and ADSSpy to detect streams,StreamArmor(Detector)
+  - **Stegnography:**
+    - Classification 
+        - Technical stegano
+        - Linguistic stegano:
+          - Semagrams: visual and text
+          - Open codes: Covered ciphers(null and grille) and jargon
+    - whitespace stegno tool: SNOW
+    - Image stegno tool: Quickstegno
+    - Document stegno tool: wbStegno
+    - Video stegno tool: omnHide PRO,Masker
+    - Audio Stegno tool: Deepsound
+    - Folder stegno tool: Invisible secrets 4
+    - Spam/Email stegno tool: Spam Mimic
+    - stegno tools for mobile phones: stegnography master,stegais,SPY PIX
+    - Detection tool: Gargoyle Investigator forensic pro
+
+  - **Covering Tracks**: tools(CCleaner,MRU-Blaster)
+    - Disable auditing: auditpol
+    - Clearing logs
+    - manipulating logs  
+
+
+- Chosen-message: This attack generates stego objects from a known message using specific steganography tools in order to identify the steganography algorithms.
+- Chi-square: The attacker performs probability analysis to test whether a given stego object and original data are the same or not.
+- Known-cover: The attacker compares the stego-object and the cover medium to identify the hidden message.
+- Distinguishing Statistical: The attacker analyzes the embedded algorithm used to detect distinguishing statistical changes along with the length of the embedded data.
+- NetVizor: NetVizor comes with an unparalleled task recording feature-set that in secret records everything employees do on the network. Chats, keystrokes and emails, site and on-line search activity, application usage, file usage, uploads and downloads, computer software setups, and web traffic represent simply a sampling of the NetVizor activity recording capabilities.
+- Stream Armor: Stream Armor is a tool used to discover hidden ADSs and clean them completely from your system. Its advanced auto analysis, coupled with an online threat verification mechanism, helps you eradicate any ADSs that may be present
+- GFI LanGuard: GFI LanGuard scans for, detects, assesses, and rectifies security vulnerabilities in a network and its connected devices. This is done with minimal administrative effort. It scans the operating systems, virtual environments, and installed applications through vulnerability check databases
+- CCleaner: CCleaner is a system optimization, privacy, and cleaning tool. It allows attackers to remove unused files and cleans traces of Internet browsing details from the target PC. With this tool, an attacker can very easily erase his/her tracks
