@@ -48,4 +48,51 @@
     - ICMP Type 11 code:
       - 0:time to live exceeded in transit,1:fragment reassemblt time exceeded
   - Angry IP scanner: ping each IP to check if it's live
-  -   
+  
+  - Hping3: CLI network scanning and packet crafting tool for TCP/IP protocol
+    - ICMP scan -1,UDP scan -2,syn scan -8
+   
+- **Scan TCP network service**:
+  - Open TCP scan: TCP connect/full open scan
+  - Stealth TCP scan: Half open scan,Inverse TCP flag scan(Xmas,FIN,NULL), ACK flag probe scan
+  - Third party and spoofed TCP scan: IDLE/IP ID Header scan
+ 
+  - **Flags:**
+    - -O: OS
+    - -Pn: port scan only
+    - -sT: TCP connect
+    - -sS: half opend scan
+    - -sF,-sN: inverse TCP scan (also known as fin,urg,psh scan based on flag use and if ther is no flag use then it's null scan)
+    - -sX: Xmas scan
+    - -sA: ACK flag scan
+    - -sL: IDLE/IPID scan
+    - -sU: UDP scan
+    - -sn/-sP/-sL(list scan): ICMP ECHO scan
+
+- **Enumeration:**
+  - ports and services:
+      - 53(DNS),135(RPC),137(Netbios name service),139:(netbios session service,smb over netbios),445(SMB over ICP,direct host),161(simple network management protocol-snmp),389(LDAP),3268(Global catalog service),25(simple mail transfer protocol),162(SNMP Trap)
+  - NetBIOS enumeration tool:
+    - Superscan,hayena,winfingerprint,netbios enumerator,nsaditor network security auditor
+  - SNMP enumeration tools: Oputils
+  - LDAP e.: 389
+  - NTP e.:  123, ntptrace(trace chain of NTP servers),ntpdc(monitor NTP daemon,ntpd),ntpq(monitor ntp daemon and determines performance)
+  - SMTP e.: VRFY,EXPN,RCPT TO
+      - tools:netscan tool pro,telnet,smtp user enum
+  - DNS e.: NSlookup
+ 
+ - **Vulnerability assessment tools**:
+     - Qualys,Nessus,GFI LanGuard,Nikto,OpenVAS,Retina CS,SAINT,MBSA(microsoft baseline security analyzer),AVDS(Automated vulnerability detection system),Core Impact Pro,N-Stalker WASS,Acunetix web vulnerability scanner,Nipper studio,Nexpose,PSI,Burp,NSauditor,ScanLine,Nmap
+     - Retina cs for mobile, Security metrics mobile,netscan
+     - A typical report will show the vulnerability categories, severity levels, vulnerability name, risk score, and exploits available
+  
+- **System Hacking:**
+  - Password cracking:
+    - Non-Electronic Attacks: shoulder surfing,social engineering,dumpster diving
+    - Active Online Attack: dictionary,brute force, hash injection,phishing,Trojan/spyware/keyloggers,password guessing
+    - Passive online attack: wire sniffing,Man-in-the-middle,Replay
+    - offline attack: Pre computed hashes(rainbow table),distributed network       
+  - Microsoft Authentication
+      - Security Account manager (SAM) database
+      - NTLM Authentication
+      - Kerberos Authentication 
